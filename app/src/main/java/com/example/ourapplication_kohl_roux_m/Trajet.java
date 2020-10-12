@@ -9,25 +9,25 @@ public class Trajet {
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
-    @ColumnInfo(name="Véhicule")
+    @ColumnInfo(name="Voiture")
     public String carName;
 
-    @ColumnInfo(name = "Nom du trajet")
+    @ColumnInfo(name = "Nom_trajet")
     public String name;
 
     @ColumnInfo(name = "Distance")
     public float kmTot;
 
-    @ColumnInfo(name = "Dénivelée positif")
+    @ColumnInfo(name = "Denivellation_positif")
     public float totRise;
 
-    @ColumnInfo(name = "Dénivelée négatif")
+    @ColumnInfo(name = "Denivellation_negatif")
     public float totDeep;
 
-    @ColumnInfo(name = "Consommation Essence")
+    @ColumnInfo(name = "Consommation_Essence")
     public float gasolinTot;
 
-    @ColumnInfo(name = "Recharge électrique")
+    @ColumnInfo(name = "Recharge_electrique")
     public float electricityTot;
 
     public String getName() {
