@@ -1,16 +1,17 @@
 package com.example.ourapplication_kohl_roux_m;
+import android.graphics.Bitmap;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
 public class Trajet {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
-
-    @ColumnInfo(name="Voiture")
-    public String carName;
 
     @ColumnInfo(name = "Nom_trajet")
     public String name;
@@ -29,6 +30,10 @@ public class Trajet {
 
     @ColumnInfo(name = "Recharge_electrique")
     public float electricityTot;
+
+    @Ignore
+    Bitmap picture;
+
 
     public String getName() {
         return name;
@@ -66,16 +71,23 @@ public class Trajet {
         return gasolinTot;
     }
 
-    public void setGasolinTot(float gasolinTot) {
-        this.gasolinTot = gasolinTot;
+    public void addGasolin(float gasolinTot) {
+        this.gasolinTot += gasolinTot;
+    }
+
+    public void removeGasolin(float gasolinTot) {
+        this.gasolinTot -= gasolinTot;
     }
 
     public float getElectricityTot() {
         return electricityTot;
     }
 
-    public void setElectricityTot(float electricityTot) {
-        this.electricityTot = electricityTot;
+    public void addElectricity(float electricityTot) {
+        this.electricityTot += electricityTot;
+    }
+
+    public void removeElectricity(float electricityTot) { this.electricityTot -= electricityTot;
     }
 
 }

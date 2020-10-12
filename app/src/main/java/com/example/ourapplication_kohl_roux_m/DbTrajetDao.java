@@ -45,6 +45,11 @@ public interface DbTrajetDao {
     @Update
     public void updateTrajet(Trajet... trajets);
 
+    @Update
+    public void updateConsoGasolin(Trajet... trajet);
+    @Update
+    public void updateConsoElectric(Trajet... trajet);
+
     @Delete
     void delete(Trajet trajet);
 }
