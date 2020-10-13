@@ -13,6 +13,9 @@ public class Trajet {
     @PrimaryKey(autoGenerate = true)
     public int uid;
 
+    @ColumnInfo(name="Voiture_id")
+    public int carId;
+
     @ColumnInfo(name = "Nom_trajet")
     public String name;
 
@@ -41,6 +44,10 @@ public class Trajet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getCarId() {
+        return carId;
     }
 
     public float getKmTot() {
