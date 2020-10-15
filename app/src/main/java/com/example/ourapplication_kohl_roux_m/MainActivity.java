@@ -13,6 +13,9 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,4 +60,26 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // gestion des saisies d'énergies
+    EditText editTextCarb = (EditText) findViewById (R.id.saisieCarb);
+    long quantityCarb =  Long.valueOf(editTextCarb.getText().toString());
+
+    EditText editTextElect = (EditText) findViewById (R.id.saisieElect);
+    long quantityElect =  Long.valueOf(editTextElect.getText().toString());
+
+    // bouton d'ajout de la saisie
+    public ArrayList<Long> listCarb;
+    public ArrayList <Long> listElect;
+
+    public void addEnergyConsumpt (int power) {
+
+        if(quantityCarb > 0)
+            listCarb.add(quantityCarb);
+
+        if(quantityElect > 0)
+            listElect.add(quantityElect);
+
+    }
+
 }
