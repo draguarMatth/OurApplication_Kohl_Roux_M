@@ -1,7 +1,9 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import androidx.room.Dao;
 import androidx.room.Query;
+
+import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 
 import java.util.List;
 

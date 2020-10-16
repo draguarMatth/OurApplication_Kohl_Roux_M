@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -32,4 +32,33 @@ public class Car {
     @ColumnInfo(name = "taille_jante")
     public float wheelSize;
 
+    public int getUid() {
+        return uid;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    @NonNull
+    public String getCarTradeMark() {
+        return carTradeMark;
+    }
+
+    @NonNull
+    public String getModel() {
+        return model;
+    }
+
+    public float getConsoEssence() {
+        return consoEssence;
+    }
+
+    public float getBatteryPower() {
+        return batteryPower;
+    }
+
+    public float getWheelSize() {
+        return wheelSize;
+    }
 }

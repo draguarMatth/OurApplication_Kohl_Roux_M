@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -20,6 +20,9 @@ public interface DbTrajetDao {
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")
     List<Trajet> loadAllByIds(int[] trajetIds);
+
+    @Query("SELECT * FROM trajets WHERE uid IN (:date)")
+    List<Trajet> loadAllByDate(String[] date);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name) LIMIT 1")
     Trajet findByName(String name);

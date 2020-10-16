@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 import android.graphics.Bitmap;
 
 import androidx.room.ColumnInfo;
@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+
+import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
 public class Trajet {
@@ -21,6 +23,9 @@ public class Trajet {
 
     @ColumnInfo(name = "Distance")
     public float kmTot;
+
+    @ColumnInfo(name = "Date")
+    public String date;
 
     @ColumnInfo(name = "Denivellation_positif")
     public float totRise;
@@ -57,6 +62,8 @@ public class Trajet {
     public void setKmTot(float kmTot) {
         this.kmTot = kmTot;
     }
+
+    public String getDate() {return date;}
 
     public float getTotRise() {
         return totRise;

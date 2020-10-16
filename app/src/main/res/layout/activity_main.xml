@@ -23,6 +23,15 @@
 
     <include layout="@layout/content_main" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/first_fragment_label"
+        tools:text="Essence" />
+
     <Button
         android:id="@+id/button2"
         android:layout_width="60dp"
@@ -42,8 +51,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text='"Plein" Essence (litre)'
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:text="@string/nav_app_bar_navigate_up_description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:text='"Plein" Essence (litre)' />
 
     <EditText
         android:id="@+id/saisieCarb"
@@ -80,8 +90,9 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="Charge électrique (%)"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:text="@string/nav_app_bar_navigate_up_description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:text="Charge électrique (%)" />
 
     <Button
         android:id="@+id/button"
@@ -92,5 +103,24 @@
         android:background="@android:drawable/arrow_down_float"
         android:visibility="visible"
         tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="600dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="Validation"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/hello_first_fragment"
+        tools:text="Electricité" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

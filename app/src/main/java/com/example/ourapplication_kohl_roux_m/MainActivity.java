@@ -2,6 +2,7 @@ package com.example.ourapplication_kohl_roux_m;
 
 import android.os.Bundle;
 
+import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
