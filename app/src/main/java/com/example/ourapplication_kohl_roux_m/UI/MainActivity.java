@@ -1,18 +1,22 @@
-package com.example.ourapplication_kohl_roux_m.UI;
+package com.example.ourapplication_kohl_roux_m;
 
 import android.os.Bundle;
 
-import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppDataBase db = Room.databaseBuilder(getApplicationContext(),
+                AppDataBase.class, "database-name").build();
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,4 +61,26 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    // gestion des saisies d'énergies
+    EditText editTextCarb = (EditText) findViewById (R.id.saisieCarb);
+    long quantityCarb =  Long.valueOf(editTextCarb.getText().toString());
+
+    EditText editTextElect = (EditText) findViewById (R.id.saisieElect);
+    long quantityElect =  Long.valueOf(editTextElect.getText().toString());
+
+    // bouton d'ajout de la saisie
+    public ArrayList<Long> listCarb;
+    public ArrayList <Long> listElect;
+
+    public void addEnergyConsumpt (int power) {
+
+        if(quantityCarb > 0)
+            listCarb.add(quantityCarb);
+
+        if(quantityElect > 0)
+            listElect.add(quantityElect);
+
+    }
+
 }
