@@ -1,10 +1,12 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.UI;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ourapplication_kohl_roux_m.R;
 
 public class list_trajet extends AppCompatActivity {
 
