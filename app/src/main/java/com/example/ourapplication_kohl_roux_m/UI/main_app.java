@@ -2,6 +2,8 @@ package com.example.ourapplication_kohl_roux_m.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -37,5 +39,11 @@ public class main_app extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_actionbar_navigation, menu);
+        return true;
     }
 }

@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_cantons"
-        android:icon="@drawable/ic_map_black_24dp"
+        android:id="@+id/nav_main"
+        android:icon="@drawable/ic_baseline_directions_car_24"
         android:title="Mes voitures" />
 
     <item
-        android:id="@+id/nav_search"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:id="@+id/nav_list_trajet"
+        android:icon="@drawable/ic_baseline_call_split_24"
         android:title="Liste des trajets" />
 
     <item
-        android:id="@+id/nav_add"
-        android:icon="@drawable/ic_add_circle_black_24dp"
+        android:id="@+id/nav_trajet_en_cours"
+        android:icon="@drawable/ic_baseline_add_24"
         android:title="trajet en cours" />
 
     <item
-        android:id="@+id/nav_profil"
-        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:id="@+id/nav_stat_dernier_trajet"
+        android:icon="@drawable/ic_baseline_arrow_back_ios_24"
         android:title="Dernier trajet" />
 
 </menu>
