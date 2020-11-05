@@ -16,6 +16,7 @@ public class main_app extends AppCompatActivity {
     private Button choix1;
     private Button choix2;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
@@ -41,9 +42,9 @@ public class main_app extends AppCompatActivity {
         });
     }
 
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.top_actionbar_navigation, menu);
+        getMenuInflater().inflate(R.menu.top_actionbar_navigation, menu);
         return true;
     }
 }
