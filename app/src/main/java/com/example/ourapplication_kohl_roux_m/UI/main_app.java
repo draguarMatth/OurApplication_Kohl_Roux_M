@@ -21,14 +21,13 @@ public class main_app extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
 
-
         choix1 = findViewById(R.id.btn);
         choix2 = findViewById(R.id.button2);
 
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(main_app.this, list_trajet.class);
+                Intent intent = new Intent(main_app.this, stats_dernier_trajet.class);
                 startActivity(intent);
             }
         });
