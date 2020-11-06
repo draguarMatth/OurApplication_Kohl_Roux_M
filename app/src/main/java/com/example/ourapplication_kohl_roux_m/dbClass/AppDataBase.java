@@ -9,4 +9,6 @@ public abstract class AppDataBase extends RoomDatabase {
 
     public abstract DbTrajetDao trajetDao();
     public abstract DbCarDao carDao();
+
+
 }

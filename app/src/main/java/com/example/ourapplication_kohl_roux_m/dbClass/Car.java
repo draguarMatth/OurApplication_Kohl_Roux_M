@@ -5,11 +5,13 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class Car {
+import java.util.Objects;
+
+@Entity(tableName = "voitures")
+public class Car implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    public Long uid;
 
     @ColumnInfo(name="Nickname")
     public String nickName;
@@ -32,7 +34,18 @@ public class Car {
     @ColumnInfo(name = "taille_jante")
     public float wheelSize;
 
-    public int getUid() {
+    public Car(){}
+    public Car(String nickName, @NonNull String carTradeMark, @NonNull String model, float consoEssence, float batteryPower, float wheelSize) {
+
+        this.nickName = nickName;
+        this.carTradeMark = carTradeMark;
+        this.model = model;
+        this.consoEssence = consoEssence;
+        this.batteryPower = batteryPower;
+        this.wheelSize = wheelSize;
+    }
+
+    public Long getUid() {
         return uid;
     }
 
@@ -61,4 +74,30 @@ public class Car {
     public float getWheelSize() {
         return wheelSize;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return uid == car.uid &&
+                Float.compare(car.batteryPower, batteryPower) == 0 &&
+                Float.compare(car.wheelSize, wheelSize) == 0 &&
+                nickName.equals(car.nickName) &&
+                carTradeMark.equals(car.carTradeMark) &&
+                model.equals(car.model);
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return toString().compareTo(o.toString());
+    }
+
+    @Override
+    public String toString()
+    {
+        return uid + "/" + model + "/" + nickName;
+    }
+
+
 }

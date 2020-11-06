@@ -55,4 +55,7 @@ public interface DbTrajetDao {
 
     @Delete
     void delete(Trajet trajet);
+
+    @Query("DELETE FROM trajets")
+    void deleteAll();
 }

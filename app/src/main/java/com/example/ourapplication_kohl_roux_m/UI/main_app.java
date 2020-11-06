@@ -27,8 +27,8 @@ public class main_app extends AppCompatActivity {
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(main_app.this, stats_dernier_trajet.class);
-                startActivity(intent);
+                    Intent intent = new Intent(main_app.this, stats_dernier_trajet.class);
+                    startActivity(intent);
             }
         });
 
@@ -46,4 +46,5 @@ public class main_app extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.top_actionbar_navigation, menu);
         return true;
     }
+
 }

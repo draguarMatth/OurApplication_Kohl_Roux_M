@@ -1,6 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.dbClass;
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -9,14 +10,18 @@ import androidx.room.PrimaryKey;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Objects;
+
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
-public class Trajet {
+public class Trajet implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    public Long uid;
 
     @ColumnInfo(name="Voiture_id")
-    public int carId;
+    public Long carId;
 
     @ColumnInfo(name = "Nom_trajet")
     public String name;
@@ -42,6 +47,24 @@ public class Trajet {
     @Ignore
     Bitmap picture;
 
+    public Trajet (){
+
+        this.date = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(new Date());
+    }
+
+    public Trajet (Long carId, String name, float kmTot,float totRise, float totDeep, float gasolinTot, float electricityTot) {
+
+        this.carId = carId;
+        this.name = name;
+        this.date = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(new Date());
+        this.kmTot = kmTot;
+        this.totRise = totRise;
+        this.totDeep = totDeep;
+        this.gasolinTot = gasolinTot;
+        this.electricityTot = electricityTot;
+
+    }
+
 
     public String getName() {
         return name;
@@ -51,7 +74,7 @@ public class Trajet {
         this.name = name;
     }
 
-    public int getCarId() {
+    public Long getCarId() {
         return carId;
     }
 
@@ -104,4 +127,34 @@ public class Trajet {
     public void removeElectricity(float electricityTot) { this.electricityTot -= electricityTot;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trajet trajet = (Trajet) o;
+        return carId == trajet.carId &&
+                Float.compare(trajet.kmTot, kmTot) == 0 &&
+                Float.compare(trajet.totRise, totRise) == 0 &&
+                Float.compare(trajet.totDeep, totDeep) == 0 &&
+                Float.compare(trajet.gasolinTot, gasolinTot) == 0 &&
+                Float.compare(trajet.electricityTot, electricityTot) == 0 &&
+                name.equals(trajet.name) &&
+                date.equals(trajet.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(carId, name, kmTot, date, totRise, totDeep, gasolinTot, electricityTot);
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return toString().compareTo(o.toString());
+    }
+
+    @Override
+    public String toString()
+    {
+        return uid + "/" + carId + "/" + date;
+    }
 }
