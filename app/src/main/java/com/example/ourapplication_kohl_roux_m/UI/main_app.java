@@ -31,19 +31,6 @@ public class main_app extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.i8);
 
-        bottomNavigationView = findViewById(R.id.nav_add_car);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectFragment = null;
-                switch (item.getItemId()){
-                    case R.id.nav_add_car:
-                }
-                return true;
-            }
-        });
-
-
         choix1 = (Button) findViewById(R.id.btn);
         choix2 = (Button) findViewById(R.id.button2);
 
