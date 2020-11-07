@@ -30,12 +30,13 @@ public class Car {
     public double batteryPower;
 
     @ColumnInfo(name = "taille_jante")
-    public double wheelSize;
+    public String wheelSize;
 
     @ColumnInfo(name = "active")
+    @NonNull
     public boolean carForTrip;
 
-    public Car(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
+/*    public Car(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
 
         this.carTradeMark = carTradeMark;
         this.model = model;
@@ -43,6 +44,19 @@ public class Car {
         this.batteryPower = batteryPower;
         this.carForTrip = activate;
 
+    }
+
+ */
+
+    public Car(String nickName, @NonNull String carTradeMark, @NonNull String model,
+               double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
+        this.nickName = nickName;
+        this.carTradeMark = carTradeMark;
+        this.model = model;
+        this.consoEssence = consoEssence;
+        this.batteryPower = batteryPower;
+        this.wheelSize = wheelSize;
+        this.carForTrip = carForTrip;
     }
 
     public int getUid() {
@@ -71,7 +85,23 @@ public class Car {
         return batteryPower;
     }
 
-    public double getWheelSize() {
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void setWheelSize(String wheelSize) {
+        this.wheelSize = wheelSize;
+    }
+
+    public String getWheelSize() {
         return wheelSize;
+    }
+
+    public boolean isCarForTrip() {
+        return carForTrip;
+    }
+
+    public void setCarForTrip(boolean carForTrip) {
+        this.carForTrip = carForTrip;
     }
 }

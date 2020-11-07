@@ -20,7 +20,7 @@ public interface DbCarDao {
     @Query("SELECT * FROM car WHERE uid IN (:carIds)")
     List<Car> loadAllByIds(int[] carIds);
 
-    @Query("SELECT uid FROM car WHERE active IS 1 ")
+    @Query("SELECT uid FROM car WHERE active = 1 ")
     int getActive();
 
     @Query("SELECT * FROM car WHERE Nickname LIKE (:name) LIMIT 1")

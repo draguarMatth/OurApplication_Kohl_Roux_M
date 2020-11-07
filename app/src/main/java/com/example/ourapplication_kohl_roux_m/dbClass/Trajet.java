@@ -1,6 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.dbClass;
 import android.graphics.Bitmap;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -16,12 +17,14 @@ public class Trajet {
     public int uid;
 
     @ColumnInfo(name="Voiture_id")
+    @NonNull
     public int carId;
 
     @ColumnInfo(name = "Nom_trajet")
     public String name;
 
     @ColumnInfo(name = "Date")
+    @NonNull
     public String date;
 
     @ColumnInfo(name = "Distance")
@@ -42,13 +45,14 @@ public class Trajet {
     @Ignore
     Bitmap picture;
 
-    public Trajet(int carId, String date) {
+/*    public Trajet(int carId, String date) {
         this.carId = carId;
         this.date = date;
     }
-
-    public Trajet(int carId, String name, String date, double kmTot,
+*/
+    public Trajet(@NonNull int carId, String name, @NonNull String date, double kmTot,
                   double totRise, double totDeep, double gasolinTot, double electricityTot) {
+        this.carId = carId;
         this.name = name;
         this.kmTot = kmTot;
         this.date = date;
