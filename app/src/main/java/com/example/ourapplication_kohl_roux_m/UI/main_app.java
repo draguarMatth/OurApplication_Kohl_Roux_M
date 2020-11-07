@@ -4,18 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class main_app extends AppCompatActivity {
 
     private Button choix1;
     private Button choix2;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -24,6 +30,19 @@ public class main_app extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.i8);
+
+        bottomNavigationView = findViewById(R.id.nav_add_car);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectFragment = null;
+                switch (item.getItemId()){
+                    case R.id.nav_add_car:
+                }
+                return true;
+            }
+        });
+
 
         choix1 = (Button) findViewById(R.id.btn);
         choix2 = (Button) findViewById(R.id.button2);
@@ -52,5 +71,6 @@ public class main_app extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
 }

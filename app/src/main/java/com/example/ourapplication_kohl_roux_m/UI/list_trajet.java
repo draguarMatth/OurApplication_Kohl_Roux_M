@@ -4,18 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Contacts;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class list_trajet extends AppCompatActivity {
 
     ListView listView;
+    BottomNavigationView bottomNavigationView;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -37,6 +42,21 @@ public class list_trajet extends AppCompatActivity {
                     Intent intent = new Intent(view.getContext(), stats_dernier_trajet.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        bottomNavigationView = findViewById(R.id.nav_vehicule);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment selectFragment = null;
+
+                switch (item.getItemId()){
+                    case R.id.nav_vehicule:
+                        new main_app();
+                        break;
+                }
+                return true;
             }
         });
     }
