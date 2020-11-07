@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/nav_back_trajet"
+        android:id="@+id/nav_back_stats"
         android:icon="@drawable/ic_baseline_arrow_back_24"
-        android:title="back_trajet"
+        android:title="back_stat"
         app:showAsAction="always"/>
 
 </menu>

@@ -19,7 +19,7 @@ public class map_dernier_trajet extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.top_actionbar_navigation, menu);
+        getMenuInflater().inflate(R.menu.menu_map_trajet, menu);
         return true;
     }
 }
