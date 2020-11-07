@@ -24,13 +24,26 @@ public class Car {
 
     @ColumnInfo(name = "conso_essence")
     @NonNull
-    public float consoEssence;
+    public double consoEssence;
 
     @ColumnInfo(name = "charge_batterie")
-    public float batteryPower;
+    public double batteryPower;
 
     @ColumnInfo(name = "taille_jante")
-    public float wheelSize;
+    public double wheelSize;
+
+    @ColumnInfo(name = "active")
+    public boolean carForTrip;
+
+    public Car(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
+
+        this.carTradeMark = carTradeMark;
+        this.model = model;
+        this.consoEssence = consoEssence;
+        this.batteryPower = batteryPower;
+        this.carForTrip = activate;
+
+    }
 
     public int getUid() {
         return uid;
@@ -50,15 +63,15 @@ public class Car {
         return model;
     }
 
-    public float getConsoEssence() {
+    public double getConsoEssence() {
         return consoEssence;
     }
 
-    public float getBatteryPower() {
+    public double getBatteryPower() {
         return batteryPower;
     }
 
-    public float getWheelSize() {
+    public double getWheelSize() {
         return wheelSize;
     }
 }

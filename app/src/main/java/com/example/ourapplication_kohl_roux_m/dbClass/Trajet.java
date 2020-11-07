@@ -21,27 +21,42 @@ public class Trajet {
     @ColumnInfo(name = "Nom_trajet")
     public String name;
 
-    @ColumnInfo(name = "Distance")
-    public float kmTot;
-
     @ColumnInfo(name = "Date")
     public String date;
 
+    @ColumnInfo(name = "Distance")
+    public double kmTot;
+
     @ColumnInfo(name = "Denivellation_positif")
-    public float totRise;
+    public double totRise;
 
     @ColumnInfo(name = "Denivellation_negatif")
-    public float totDeep;
+    public double totDeep;
 
     @ColumnInfo(name = "Consommation_Essence")
-    public float gasolinTot;
+    public double gasolinTot;
 
     @ColumnInfo(name = "Recharge_electrique")
-    public float electricityTot;
+    public double electricityTot;
 
     @Ignore
     Bitmap picture;
 
+    public Trajet(int carId, String date) {
+        this.carId = carId;
+        this.date = date;
+    }
+
+    public Trajet(int carId, String name, String date, double kmTot,
+                  double totRise, double totDeep, double gasolinTot, double electricityTot) {
+        this.name = name;
+        this.kmTot = kmTot;
+        this.date = date;
+        this.totRise = totRise;
+        this.totDeep = totDeep;
+        this.gasolinTot = gasolinTot;
+        this.electricityTot = electricityTot;
+    }
 
     public String getName() {
         return name;
@@ -55,7 +70,7 @@ public class Trajet {
         return carId;
     }
 
-    public float getKmTot() {
+    public double getKmTot() {
         return kmTot;
     }
 
@@ -65,7 +80,7 @@ public class Trajet {
 
     public String getDate() {return date;}
 
-    public float getTotRise() {
+    public double getTotRise() {
         return totRise;
     }
 
@@ -73,7 +88,7 @@ public class Trajet {
         this.totRise = totRise;
     }
 
-    public float getTotDeep() {
+    public double getTotDeep() {
         return totDeep;
     }
 
@@ -81,7 +96,7 @@ public class Trajet {
         this.totDeep = totDeep;
     }
 
-    public float getGasolinTot() {
+    public double getGasolinTot() {
         return gasolinTot;
     }
 
@@ -93,7 +108,7 @@ public class Trajet {
         this.gasolinTot -= gasolinTot;
     }
 
-    public float getElectricityTot() {
+    public double getElectricityTot() {
         return electricityTot;
     }
 

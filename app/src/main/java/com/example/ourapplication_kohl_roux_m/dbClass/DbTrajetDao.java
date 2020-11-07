@@ -1,5 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.dbClass;
 
+import android.database.sqlite.SQLiteConstraintException;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface DbTrajetDao {
-    Trajet trajet = new Trajet();
+//    Trajet trajet = new Trajet();
 
     @Query("SELECT * FROM trajets")
     List<Trajet> getAllTrajets();
@@ -45,6 +47,9 @@ public interface DbTrajetDao {
     @Insert
     void insertAll(Trajet... trajets);
 
+    @Insert
+    void insert(Trajet trajet) throws SQLiteConstraintException;
+
     @Update
     public void updateTrajet(Trajet... trajets);
 
@@ -55,4 +60,8 @@ public interface DbTrajetDao {
 
     @Delete
     void delete(Trajet trajet);
+
+    @Query("DELETE FROM trajets")
+    void deleteAll();
+
 }
