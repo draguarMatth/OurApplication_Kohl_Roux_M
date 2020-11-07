@@ -21,16 +21,20 @@ public class main_app extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_app);
 
-        choix1 = findViewById(R.id.btn);
-        choix2 = findViewById(R.id.button2);
+
+
+        choix1 = (Button) findViewById(R.id.btn);
+        choix2 = (Button) findViewById(R.id.button2);
 
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(main_app.this, stats_dernier_trajet.class);
+                Intent intent = new Intent(main_app.this, list_trajet.class);
                 startActivity(intent);
             }
         });
+
+
 
         choix2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,4 +50,5 @@ public class main_app extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.top_actionbar_navigation, menu);
         return true;
     }
+
 }

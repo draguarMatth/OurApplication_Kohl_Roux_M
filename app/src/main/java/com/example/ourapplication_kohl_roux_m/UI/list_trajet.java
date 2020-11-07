@@ -3,6 +3,7 @@ package com.example.ourapplication_kohl_roux_m.UI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Contacts;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,5 +39,11 @@ public class list_trajet extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.top_actionbar_navigation, menu);
+        return true;
     }
 }
