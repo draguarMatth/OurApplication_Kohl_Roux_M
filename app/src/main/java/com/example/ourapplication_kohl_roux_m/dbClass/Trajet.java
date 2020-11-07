@@ -11,7 +11,7 @@ import androidx.room.PrimaryKey;
 import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
-public class Trajet {
+public class Trajet implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -61,6 +61,8 @@ public class Trajet {
         this.gasolinTot = gasolinTot;
         this.electricityTot = electricityTot;
     }
+
+    public int getUid() { return uid; }
 
     public String getName() {
         return name;
@@ -121,6 +123,25 @@ public class Trajet {
     }
 
     public void removeElectricity(float electricityTot) { this.electricityTot -= electricityTot;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Trajet)) return false;
+        Trajet o = (Trajet) obj;
+        return true ;
+    }
+
+    @Override
+    public String toString() {
+        return uid + " / " + carId + " / " + name + " / " + date;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return toString().compareTo(o.toString());
     }
 
 }

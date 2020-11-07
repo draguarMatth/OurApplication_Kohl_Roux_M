@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.dbClass.Repository;
+package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import android.os.AsyncTask;
 import android.util.Log;

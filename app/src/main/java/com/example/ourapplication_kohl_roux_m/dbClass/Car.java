@@ -104,4 +104,5 @@ public class Car {
     public void setCarForTrip(boolean carForTrip) {
         this.carForTrip = carForTrip;
     }
+
 }
