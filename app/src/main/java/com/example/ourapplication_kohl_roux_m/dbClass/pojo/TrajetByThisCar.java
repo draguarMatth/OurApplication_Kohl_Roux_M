@@ -13,5 +13,6 @@ public class TrajetByThisCar {
     public Trajet trajet;
 
     @Relation(parentColumn = "uid", entityColumn = "Voiture_id", entity = Car.class)
+
     public List<Car> carList;
 }

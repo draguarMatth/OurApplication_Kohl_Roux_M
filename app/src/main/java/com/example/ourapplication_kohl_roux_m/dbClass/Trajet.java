@@ -64,6 +64,8 @@ public class Trajet implements Comparable {
 
     public int getUid() { return uid; }
 
+    public int getUid() { return uid; }
+
     public String getName() {
         return name;
     }

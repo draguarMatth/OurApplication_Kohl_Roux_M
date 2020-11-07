@@ -24,6 +24,9 @@ public interface DbTrajetDao {
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name) LIMIT 1")
     Trajet findByName(String name);
 
+    @Query("SELECT * FROM trajets WHERE Date LIKE (:date) LIMIT 1")
+    Trajet findByDate(String date);
+
     @Query("SELECT * FROM trajets WHERE Distance LIKE :km LIMIT 1")
     Trajet findByKilometers(float km);
 
@@ -43,7 +46,7 @@ public interface DbTrajetDao {
     void insertAll(Trajet... trajets);
 
     @Update
-    public void updateTrajet(Trajet trajets);
+    public void update(Trajet trajets);
 
     @Update
     public void updateConsoGasolin(Trajet trajet);
