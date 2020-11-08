@@ -14,22 +14,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.ourapplication_kohl_roux_m.List_Trajet_Fragment;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class list_trajet extends AppCompatActivity {
 
     ListView listView;
-    BottomNavigationView bottomNavigationView;
 
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_trajet);
 
         listView = findViewById(R.id.listview);
 
         String[] values = new String[]{
-                "Trajet 24.10.20    12km", "Trajet 25.10.20    12km","Trajet 26.10.20    13km"
+                "Trajet 24.10.20    12km", "Trajet 25.10.20    12km", "Trajet 26.10.20    13km"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
@@ -38,28 +38,37 @@ public class list_trajet extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0) {
+                if (position == 0) {
                     Intent intent = new Intent(view.getContext(), stats_dernier_trajet.class);
                     startActivity(intent);
                 }
             }
         });
 
-        bottomNavigationView = findViewById(R.id.nav_vehicule);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectFragment = null;
-
-                switch (item.getItemId()){
-                    case R.id.nav_vehicule:
-                        new main_app();
-                        break;
-                }
-                return true;
-            }
-        });
+      //  BottomNavigationView bottomNavigationView = findViewById(R.id.nav_vehicule);
+      //  bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemReselectedListener);
     }
+
+    /*
+    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemReselectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener(){
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                   Fragment selectedFragment = null;
+
+                   switch (item.getItemId()){
+                       case R.id.nav_vehicule:
+                           selectedFragment = new List_Trajet_Fragment();
+                           break;
+                   }
+                   getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
+                   return true;
+                }
+            };
+
+
+     */
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
