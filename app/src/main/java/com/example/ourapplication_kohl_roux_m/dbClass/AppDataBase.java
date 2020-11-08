@@ -11,6 +11,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.ourapplication_kohl_roux_m.dbClass.dao.DbCarDao;
+import com.example.ourapplication_kohl_roux_m.dbClass.dao.DbTrajetDao;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+
 import java.util.concurrent.Executors;
 
 @Database(entities = {Trajet.class, Car.class}, version = 1)

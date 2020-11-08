@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.dbClass;
+package com.example.ourapplication_kohl_roux_m.dbClass.dao;
 
 import android.database.sqlite.SQLiteConstraintException;
 
@@ -8,7 +8,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.ourapplication_kohl_roux_m.dbClass.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
 
 import java.util.List;
 

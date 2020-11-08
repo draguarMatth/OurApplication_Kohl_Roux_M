@@ -1,22 +1,16 @@
-package com.example.ourapplication_kohl_roux_m.UI;
+package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Contacts;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import com.example.ourapplication_kohl_roux_m.List_Trajet_Fragment;
 import com.example.ourapplication_kohl_roux_m.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class list_trajet extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.dbClass.dao;
 
 import android.database.sqlite.SQLiteConstraintException;
 
@@ -9,6 +9,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
@@ -17,10 +18,10 @@ import java.util.List;
 public interface DbTrajetDao {
 //    Trajet trajet = new Trajet();
 
-    @Query("SELECT * FROM trajets WHERE Date = :date")
+    @Query("SELECT * FROM trajets WHERE Date LIKE (:date)")
     LiveData<List<Trajet>> getByDate(String date);
 
-    @Query("SELECT * FROM trajets WHERE Nom_trajet = :name")
+    @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name)")
     /* LiveData<List<Trajet>> */ LiveData<TrajetByThisCar> getByName(String name);
 
     @Query("SELECT * FROM trajets")

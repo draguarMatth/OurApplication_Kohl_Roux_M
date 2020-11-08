@@ -1,19 +1,19 @@
-package com.example.ourapplication_kohl_roux_m.dbClass.asynch;
+package com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
-public class DeleteTrajet extends AsyncTask<Trajet, Void, Void> {
+public class CreateTrajet extends AsyncTask<Trajet, Void, Void> {
 
     private AppDataBase database;
     private OnAsyncEventListener callback;
     private Exception exception;
 
-    public DeleteTrajet(Context context, OnAsyncEventListener callback) {
+    public CreateTrajet(Context context, OnAsyncEventListener callback) {
         database = AppDataBase.getInstance(context);
         this.callback = callback;
     }
@@ -22,7 +22,7 @@ public class DeleteTrajet extends AsyncTask<Trajet, Void, Void> {
     protected Void doInBackground(Trajet... params) {
         try {
             for (Trajet trajet : params)
-                database.trajetDao().delete(trajet);
+                database.trajetDao().insert(trajet);
         } catch (Exception e) {
             exception = e;
         }

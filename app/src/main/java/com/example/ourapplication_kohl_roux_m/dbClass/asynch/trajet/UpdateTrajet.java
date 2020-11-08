@@ -1,10 +1,10 @@
-package com.example.ourapplication_kohl_roux_m.dbClass.asynch;
+package com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class UpdateTrajet extends AsyncTask<Trajet, Void, Void> {

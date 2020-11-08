@@ -1,10 +1,10 @@
-package com.example.ourapplication_kohl_roux_m.dbClass.asynch;
+package com.example.ourapplication_kohl_roux_m.dbClass.asynch.car;
 
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class CreateCar extends AsyncTask<Car, Void, Void> {

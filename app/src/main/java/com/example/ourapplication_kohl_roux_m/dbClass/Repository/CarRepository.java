@@ -5,10 +5,9 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
-import com.example.ourapplication_kohl_roux_m.dbClass.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.Trajet;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.CreateCar;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.DeleteCar;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
+import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.DeleteCar;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 import java.util.List;

@@ -1,6 +1,5 @@
-package com.example.ourapplication_kohl_roux_m.UI;
+package com.example.ourapplication_kohl_roux_m.ui;
 
-import android.app.AppComponentFactory;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;

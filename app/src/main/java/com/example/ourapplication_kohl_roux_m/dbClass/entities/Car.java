@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.dbClass;
+package com.example.ourapplication_kohl_roux_m.dbClass.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

@@ -1,8 +1,7 @@
-package com.example.ourapplication_kohl_roux_m.UI;
+package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 

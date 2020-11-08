@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.dbClass;
+package com.example.ourapplication_kohl_roux_m.dbClass.entities;
 import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
@@ -7,8 +7,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
 public class Trajet implements Comparable {
@@ -64,7 +62,7 @@ public class Trajet implements Comparable {
 
     public int getUid() { return uid; }
 
-    public int getUid() { return uid; }
+//    public int getUid() { return uid; }
 
     public String getName() {
         return name;

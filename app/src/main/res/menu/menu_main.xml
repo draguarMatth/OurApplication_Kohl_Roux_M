@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.ourapplication_kohl_roux_m.UI.MainActivity">
+    tools:context="com.example.ourapplication_kohl_roux_m.ui.MainActivity">
 
     <item
         android:id="@+id/nav_add_car"
