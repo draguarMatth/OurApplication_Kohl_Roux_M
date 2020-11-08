@@ -2,11 +2,14 @@ package com.example.ourapplication_kohl_roux_m.dbClass;
 
 import android.database.sqlite.SQLiteConstraintException;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
 
@@ -14,10 +17,19 @@ import java.util.List;
 public interface DbTrajetDao {
 //    Trajet trajet = new Trajet();
 
+    @Query("SELECT * FROM trajets WHERE Date = :date")
+    LiveData<List<Trajet>> getByDate(String date);
+
+    @Query("SELECT * FROM trajets WHERE Nom_trajet = :name")
+    /* LiveData<List<Trajet>> */ LiveData<TrajetByThisCar> getByName(String name);
+
+    @Query("SELECT * FROM trajets")
+    LiveData<List<Trajet>> getAll();
+
     @Query("SELECT * FROM trajets")
     List<Trajet> getAllTrajets();
 
-    @Query("SELECT * FROM trajets WHERE Voiture_id LIKE :carId Limit 1")
+    @Query("SELECT * FROM trajets WHERE Voiture_id = :carId Limit 1")
     List<Trajet> getAllTrajetsByCar(String carId);
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")

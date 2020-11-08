@@ -7,7 +7,11 @@ import androidx.lifecycle.LiveData;
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.Car;
 import com.example.ourapplication_kohl_roux_m.dbClass.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.asynch.CreateCar;
+import com.example.ourapplication_kohl_roux_m.dbClass.asynch.DeleteCar;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
+
+import java.util.List;
 
 public class CarRepository {
 
@@ -19,27 +23,24 @@ public class CarRepository {
 
     public static CarRepository getInstance() {
         if (instance == null) {
-  //          synchronized (AccountRepository.class) {
+            synchronized (CarRepository.class) {
                 if (instance == null) {
                     instance = new CarRepository();
                 }
             }
-   //     }
+        }
         return instance;
     }
-
-
 
     public LiveData<Car> getCar(final int carId, Application application) {
         return ((BaseApp) application).getDatabase().carDao().getById(carId);
     }
 
-/*    public LiveData<List<Trajet>> getOtherClientsWithAccounts(final String owner,
-                                                              Application application) {
-        return ((BaseApp) application).getDatabase().clientDao().getOtherClientsWithAccounts(owner);
+    public LiveData<List<Car>> getAllCar(Application application) {
+        return ((BaseApp) application).getDatabase().carDao().getAll();
     }
 
- */
+
 
     public void insert(final Car car, OnAsyncEventListener callback,
                        Application application) {
