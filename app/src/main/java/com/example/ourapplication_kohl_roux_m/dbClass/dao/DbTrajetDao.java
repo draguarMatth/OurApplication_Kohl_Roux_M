@@ -22,7 +22,7 @@ public interface DbTrajetDao {
     LiveData<List<Trajet>> getByDate(String date);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name)")
-    /* LiveData<List<Trajet>> */ LiveData<TrajetByThisCar> getByName(String name);
+    /* LiveData<Trajet> */ LiveData<List<TrajetByThisCar>> getByName(String name);
 
     @Query("SELECT * FROM trajets")
     LiveData<List<Trajet>> getAll();

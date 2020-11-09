@@ -30,6 +30,9 @@ public interface DbCarDao {
 
  */
 
+    @Query("SELECT * FROM car WHERE uid = (:uid) ")
+    Car getCar(int uid);
+
     @Query("SELECT * FROM car WHERE uid IN (:carIds)")
     List<Car> loadAllByIds(int[] carIds);
 

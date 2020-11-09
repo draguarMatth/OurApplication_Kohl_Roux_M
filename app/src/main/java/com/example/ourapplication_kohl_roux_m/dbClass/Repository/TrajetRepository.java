@@ -35,7 +35,7 @@ public class TrajetRepository {
         return ((BaseApp) application).getDatabase().trajetDao().getByDate(date);
     }
 
-    public LiveData<TrajetByThisCar> getTrajetByName(final String name,
+    public LiveData<List<TrajetByThisCar>> getTrajetByName(final String name,
                                                                    Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByName(name);
     }

@@ -12,7 +12,6 @@ public class TrajetByThisCar {
     @Embedded
     public Trajet trajet;
 
-    @Relation(parentColumn = "uid", entityColumn = "Voiture_id", entity = Car.class)
-
-    public List<Car> carList;
+    @Relation(parentColumn = "Voiture_id", entityColumn = "uid", entity = Car.class)
+    public Car car;
 }

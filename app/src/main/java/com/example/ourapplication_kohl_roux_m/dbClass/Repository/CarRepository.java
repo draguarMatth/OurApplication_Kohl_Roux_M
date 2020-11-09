@@ -19,7 +19,6 @@ public class CarRepository {
     private CarRepository() {
     }
 
-
     public static CarRepository getInstance() {
         if (instance == null) {
             synchronized (CarRepository.class) {
@@ -38,8 +37,6 @@ public class CarRepository {
     public LiveData<List<Car>> getAllCar(Application application) {
         return ((BaseApp) application).getDatabase().carDao().getAll();
     }
-
-
 
     public void insert(final Car car, OnAsyncEventListener callback,
                        Application application) {
