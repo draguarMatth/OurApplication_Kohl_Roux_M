@@ -12,24 +12,25 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
 
-public class TrajetListViewModel extends AndroidViewModel {
+public class TrajetListByNameViewModel extends AndroidViewModel {
 
     private Application application;
 
     private TrajetRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
-    private final MediatorLiveData<List<TrajetByThisCar>> observableTrajets;
+    private final MediatorLiveData<List<Trajet>> observableTrajets;
 //    private final MediatorLiveData<List<Car>> observableCars;
 
-    public TrajetListViewModel(@NonNull Application application,
-                                final String tripName,
-                              // CarRepository carRepository,
-                               TrajetRepository trajetRepository) {
+    public TrajetListByNameViewModel(@NonNull Application application,
+                                     final String tripName,
+                                     // CarRepository carRepository,
+                                     TrajetRepository trajetRepository) {
         super(application);
 
         this.application = application;
@@ -42,7 +43,7 @@ public class TrajetListViewModel extends AndroidViewModel {
         observableTrajets.setValue(null);
  //       observableCars.setValue(null);
 
-        LiveData<List<TrajetByThisCar>> trajetList =
+        LiveData<List<Trajet>> trajetList =
                 repository.getTrajetByName(tripName, application);
 //        LiveData<List<Car>> ownAccounts = repository.getByOwner(ownerId, application);
 
@@ -61,28 +62,30 @@ public class TrajetListViewModel extends AndroidViewModel {
 
         private final String tripName;
 
+ //       private final int carId;
+
         private final TrajetRepository trajetRepository;
 
-        private final CarRepository carRepository;
+ //       private final CarRepository carRepository;
 
         public Factory(@NonNull Application application, String tripName) {
             this.application = application;
             this.tripName = tripName;
             trajetRepository = ((BaseApp) application).getTrajetRepository();
-            carRepository = ((BaseApp) application).getCarRepository();
+//            carRepository = ((BaseApp) application).getCarRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new TrajetListViewModel(application, tripName, trajetRepository /* , carRepository */);
+            return (T) new TrajetListByNameViewModel(application, tripName, trajetRepository /* , carRepository */);
         }
     }
 
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<TrajetByThisCar>> getTrajet() {
+    public LiveData<List<Trajet>> getTrajet() {
         return observableTrajets;
     }
 

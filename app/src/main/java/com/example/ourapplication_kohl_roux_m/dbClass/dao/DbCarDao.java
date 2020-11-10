@@ -7,8 +7,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 
 import java.util.List;
 
@@ -21,6 +23,9 @@ public interface DbCarDao {
 
     @Query("SELECT * FROM car")
     LiveData<List<Car>> getAll();
+
+    @Query("SELECT * FROM car WHERE active = 1 ")
+    LiveData<List<Car>> getByActivity();
 
 /*    @Query("SELECT * FROM car WHERE uid LIKE (:UID) LIMIT 1")
     Car getById(int UID);
@@ -44,6 +49,9 @@ public interface DbCarDao {
 
     @Insert
     void insert(Car car) throws SQLiteConstraintException;
+
+    @Update
+    public void update(Car car);
 
     @Query("DELETE FROM car")
     void deleteAll();

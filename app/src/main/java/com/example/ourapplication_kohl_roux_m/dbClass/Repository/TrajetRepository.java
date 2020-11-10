@@ -31,11 +31,16 @@ public class TrajetRepository {
         }
         return instance;
     }
+
     public LiveData<List<Trajet>> getTrajetByDate(final String date, Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByDate(date);
     }
 
-    public LiveData<List<TrajetByThisCar>> getTrajetByName(final String name,
+    public LiveData<List<TrajetByThisCar>> getTrajetByCarId(final int carId, Application application) {
+        return ((BaseApp) application).getDatabase().trajetDao().getByCarId(carId);
+    }
+
+    public LiveData<List<Trajet>> getTrajetByName(final String name,
                                                                    Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByName(name);
     }

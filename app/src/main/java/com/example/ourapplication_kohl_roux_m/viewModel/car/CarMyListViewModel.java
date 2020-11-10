@@ -1,38 +1,51 @@
 package com.example.ourapplication_kohl_roux_m.viewModel.car;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.ourapplication_kohl_roux_m.BaseApp;
+import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
+
+import java.util.List;
+
 public class CarMyListViewModel extends AndroidViewModel {
 
     private Application application;
 
-    private AccountRepository repository;
+    private CarRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
-    private final MediatorLiveData<List<ClientWithAccounts>> observableClientAccounts;
-    private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
+    private final MediatorLiveData<List<Car>> observableCars;
+ //   private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
 
-    public AccountListViewModel(@NonNull Application application,
-                                final String ownerId,
-                                ClientRepository clientRepository,
-                                AccountRepository accountRepository) {
+    public CarMyListViewModel(@NonNull Application application,
+                                CarRepository carRepository) {
         super(application);
 
         this.application = application;
 
-        repository = accountRepository;
+        repository = carRepository;
 
-        observableClientAccounts = new MediatorLiveData<>();
-        observableOwnAccounts = new MediatorLiveData<>();
+//        observableClientAccounts = new MediatorLiveData<>();
+        observableCars = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
-        observableClientAccounts.setValue(null);
-        observableOwnAccounts.setValue(null);
+        observableCars.setValue(null);
 
-        LiveData<List<ClientWithAccounts>> clientAccounts =
-                clientRepository.getOtherClientsWithAccounts(ownerId, application);
-        LiveData<List<AccountEntity>> ownAccounts = repository.getByOwner(ownerId, application);
+        LiveData<List<Car>> carList =
+                carRepository.getMyCars(application);
+        LiveData<List<Car>> ownAccounts = repository.getMyCars(application);
 
         // observe the changes of the entities from the database and forward them
-        observableClientAccounts.addSource(clientAccounts, observableClientAccounts::setValue);
-        observableOwnAccounts.addSource(ownAccounts, observableOwnAccounts::setValue);
+//        observableClientAccounts.addSource(clientAccounts, observableClientAccounts::setValue);
+        observableCars.addSource(carList, observableCars::setValue);
     }
 
     /**
@@ -43,46 +56,44 @@ public class CarMyListViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-        private final String ownerId;
+//        private final boolean active;
 
-        private final ClientRepository clientRepository;
+        private final CarRepository carRepsitory;
 
-        private final AccountRepository accountRepository;
+//        private final AccountRepository accountRepository;
 
-        public Factory(@NonNull Application application, String ownerId) {
+        public Factory(@NonNull Application application) {
             this.application = application;
-            this.ownerId = ownerId;
-            clientRepository = ((BaseApp) application).getClientRepository();
-            accountRepository = ((BaseApp) application).getAccountRepository();
+            carRepsitory = ((BaseApp) application).getCarRepository();
+//            accountRepository = ((BaseApp) application).getAccountRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new AccountListViewModel(application, ownerId, clientRepository, accountRepository);
+            return (T) new CarMyListViewModel(application, carRepsitory);
         }
     }
 
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<ClientWithAccounts>> getClientAccounts() {
-        return observableClientAccounts;
+    public LiveData<List<Car>> getMyCars() {
+        return observableCars;
     }
 
     /**
      * Expose the LiveData AccountEntities query so the UI can observe it.
      */
-    public LiveData<List<AccountEntity>> getOwnAccounts() {
-        return observableOwnAccounts;
+    public LiveData<List<Car>> getOwnAccounts() {
+        return observableCars;
     }
 
-    public void deleteAccount(AccountEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback, application);
+    public void deleteOneCar(Car car, OnAsyncEventListener callback) {
+        repository.delete(car, callback, application);
     }
 
-    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
-                                   OnAsyncEventListener callback) {
-        repository.transaction(sender, recipient, callback, application);
+    public void executeModify(final Car car, OnAsyncEventListener callback) {
+        repository.update(car, callback, application);
     }
 }
