@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Car {
+public class Car implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -103,6 +103,25 @@ public class Car {
 
     public void setCarForTrip(boolean carForTrip) {
         this.carForTrip = carForTrip;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof Car)) return false;
+        Car o = (Car) obj;
+        return true ;
+    }
+
+    @Override
+    public String toString() {
+        return uid + " / " + nickName ;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        return toString().compareTo(o.toString());
     }
 
 }
