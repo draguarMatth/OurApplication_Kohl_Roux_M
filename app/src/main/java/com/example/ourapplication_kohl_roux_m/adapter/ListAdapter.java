@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ch.hevs.aislab.demo.R;
 
 public class ListAdapter<T> extends ArrayAdapter<T> {
 

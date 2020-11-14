@@ -100,7 +100,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                     if (mData instanceof Car) {
                         Car newCar = (Car) data.get(newItemPosition);
                         Car oldCar = (Car) mData.get(newItemPosition);
-                        return newCar.getUid().equals(oldCar.getUid())
+                        return Objects.equals(newCar.getUid(),(oldCar.getUid()))
                                 && Objects.equals(newCar.getNickName(), oldCar.getNickName())
                                /* && Objects.equals(newCar.getBalance(), oldCar.getBalance())
                                 && newCar.getOwner().equals(oldCar.getOwner()) */ ;
