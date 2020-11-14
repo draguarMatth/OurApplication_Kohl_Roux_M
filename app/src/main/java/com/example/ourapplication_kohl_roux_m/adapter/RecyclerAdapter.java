@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
@@ -86,11 +87,11 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                 @Override
                 public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
                     if (mData instanceof Car) {
-                        return ((Car) mData.get(oldItemPosition)).getUid().equals(((Car) data.get(newItemPosition)).getUid());
+                        return ((Car) mData.get(oldItemPosition)).equals(((Car) data.get(newItemPosition)));
                     }
                     if (mData instanceof Trajet) {
-                        return ((Trajet) mData.get(oldItemPosition)).getCarId().equals(
-                                ((Trajet) data.get(newItemPosition)).getCarId());
+                        return ((Trajet) mData.get(oldItemPosition)).equals(
+                                ((Trajet) data.get(newItemPosition)));
                     }
                     return false;
                 }

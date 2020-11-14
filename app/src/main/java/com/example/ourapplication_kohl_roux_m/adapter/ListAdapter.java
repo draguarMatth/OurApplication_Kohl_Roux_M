@@ -1,5 +1,6 @@
 package com.example.ourapplication_kohl_roux_m.adapter;
 
+import com.example.ourapplication_kohl_roux_m.R;
 import android.content.Context;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
                     .inflate(mResource, parent, false);
 
             viewHolder = new ViewHolder();
-            viewHolder.itemView = convertView.findViewById(R.id.tvClientView);
+            viewHolder.itemView = convertView.findViewById(R.id.tvRowListView);
 
             convertView.setTag(viewHolder);
         } else {

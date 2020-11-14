@@ -111,6 +111,7 @@ public class Car implements Comparable {
         if (obj == this) return true;
         if (!(obj instanceof Car)) return false;
         Car o = (Car) obj;
+        if (o.getUid() != this.getUid()) return false;
         return true ;
     }
 

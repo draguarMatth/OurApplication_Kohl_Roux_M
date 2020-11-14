@@ -25,7 +25,7 @@ public class list_trajet extends AppCompatActivity {
         listView = findViewById(R.id.listview);
 
         TrajetRepository repositTrajet;
-        TrajetListByNameViewModel listTest = new TrajetListByNameViewModel(getApplicationContext(), "Jvéoboulo",repositTrajet);
+//        TrajetListByNameViewModel listTest = new TrajetListByNameViewModel(getApplicationContext(), "Jvéoboulo",repositTrajet);
         String[] values = new String[]{
                 "Trajet 24.10.20    12km", "Trajet 25.10.20    12km", "Trajet 26.10.20    13km"
         };

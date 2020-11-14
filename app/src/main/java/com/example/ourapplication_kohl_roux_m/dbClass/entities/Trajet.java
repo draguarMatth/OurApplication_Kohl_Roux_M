@@ -131,6 +131,7 @@ public class Trajet implements Comparable {
         if (obj == this) return true;
         if (!(obj instanceof Trajet)) return false;
         Trajet o = (Trajet) obj;
+        if (o.getUid() != this.getUid() && o.getCarId() != this.getCarId()) return false;
         return true ;
     }
 
