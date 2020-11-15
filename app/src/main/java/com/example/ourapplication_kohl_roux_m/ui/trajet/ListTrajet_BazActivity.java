@@ -1,10 +1,16 @@
 package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
@@ -13,17 +19,19 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
+import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByNameViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListTrajet_BazActivity extends AppCompatActivity {
+public class ListTrajet_BazActivity extends BaseActivity {
 
     private static final String TAG = "ListTrajet";
 
@@ -77,7 +85,7 @@ public class ListTrajet_BazActivity extends AppCompatActivity {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + trajets.get(position).getName());
 
-                Intent intent = new Intent(ListTrajet_BazActivity.this, AccountDetailActivity.class);
+                Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivty.class);
                 intent.setFlags(
                         Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                 Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -97,7 +105,7 @@ public class ListTrajet_BazActivity extends AppCompatActivity {
 
 /*        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(AccountsActivity.this, EditAccountActivity.class);
+                    Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivty.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -105,7 +113,9 @@ public class ListTrajet_BazActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
         );
-*/
+
+ */
+
         String traj = "Jvéoboulot";
         TrajetListByNameViewModel.Factory factory = new TrajetListByNameViewModel.Factory(
                 getApplication(), traj);
@@ -120,24 +130,24 @@ public class ListTrajet_BazActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-/*    @Override
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == BaseActivity.position) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
 
- */
+
         /*
         The activity has to be finished manually in order to guarantee the navigation hierarchy working.
         */
- /*       finish();
+        finish();
         return super.onNavigationItemSelected(item);
 
     }
-*/
+
     private void createDeleteDialog(final int position) {
-/*        final AccountEntity account = accounts.get(position);
+   /*     final TrajetEntity account = trajets.get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view = inflater.inflate(R.layout.row_delete_item, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -162,7 +172,7 @@ public class ListTrajet_BazActivity extends AppCompatActivity {
             });
             toast.show();
         });
- */
+*/
     }
 
 }
