@@ -17,13 +17,13 @@ import java.util.List;
 public interface DbCarDao {
 //    CarEntity carEntity = new CarEntity();
 
-    @Query("SELECT * FROM CarEntity WHERE uid LIKE (:id) LIMIT 1")
-    LiveData<CarEntity> getById(int id);
+    @Query("SELECT * FROM cars WHERE uid IN (:carIds)")
+    LiveData<CarEntity> getById(int [] carIds);
 
-    @Query("SELECT * FROM CarEntity")
+    @Query("SELECT * FROM cars")
     LiveData<List<CarEntity>> getAll();
 
-    @Query("SELECT * FROM CarEntity WHERE active = 1 ")
+    @Query("SELECT * FROM cars WHERE active = 1 ")
     LiveData<List<CarEntity>> getByActivity();
 
 /*    @Query("SELECT * FROM carEntity WHERE uid LIKE (:UID) LIMIT 1")
@@ -34,16 +34,13 @@ public interface DbCarDao {
 
  */
 
-    @Query("SELECT * FROM CarEntity WHERE uid = (:uid) ")
+    @Query("SELECT * FROM cars WHERE uid = (:uid) ")
     CarEntity getCar(int uid);
 
-    @Query("SELECT * FROM CarEntity WHERE uid IN (:carIds)")
-    List<CarEntity> loadAllByIds(int[] carIds);
-
-    @Query("SELECT uid FROM CarEntity WHERE active = 1 ")
+    @Query("SELECT uid FROM cars WHERE active = 1 ")
     int getActive();
 
-    @Query("SELECT * FROM CarEntity WHERE Nickname LIKE (:name)")
+    @Query("SELECT * FROM cars WHERE Nickname LIKE (:name)")
     CarEntity findByNickName(String name);
 
     @Insert
@@ -52,7 +49,7 @@ public interface DbCarDao {
     @Update
     public void update(CarEntity carEntity);
 
-    @Query("DELETE FROM CarEntity")
+    @Query("DELETE FROM cars")
     void deleteAll();
 
     @Delete

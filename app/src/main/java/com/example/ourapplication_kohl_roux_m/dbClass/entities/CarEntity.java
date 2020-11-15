@@ -5,9 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity (tableName = "cars")
 public class CarEntity implements Comparable {
 
+    @ColumnInfo(name="uid")
     @PrimaryKey(autoGenerate = true)
     public int uid;
 

@@ -31,7 +31,7 @@ public class CarRepository {
         return instance;
     }
 
-    public LiveData<CarEntity> getCar(final int carId, Application application) {
+    public LiveData<CarEntity> getCar(final int [] carId, Application application) {
         return ((BaseApp) application).getDatabase().carDao().getById(carId);
     }
 

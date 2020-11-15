@@ -14,7 +14,7 @@ public class list_trajet extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_trajet);
+/*        setContentView(R.layout.activity_list_trajet);
 
         listView = findViewById(R.id.listview);
 
@@ -24,5 +24,7 @@ public class list_trajet extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
 
         listView.setAdapter(adapter);
+
+ */
     }
 }
