@@ -6,7 +6,7 @@
     android:visibility="visible"
     tools:visibility="visible">
 
-    <com.example.ourapplication_kohl_roux_m.ConsumptionsCapture
+    <com.example.ourapplication_kohl_roux_m.ui.management.ConsumptionsCapture
         android:id="@+id/consumptionsCapture2"
         android:layout_width="150dp"
         android:layout_height="361dp"
@@ -21,7 +21,7 @@
         app:exampleString="Hello, ConsumptionsCapture"
         tools:visibility="visible" />
 
-    <com.example.ourapplication_kohl_roux_m.ConsumptionsCapture
+    <com.example.ourapplication_kohl_roux_m.ui.management.ConsumptionsCapture
         android:id="@+id/ListChargeElectricQ"
         android:layout_width="150dp"
         android:layout_height="361dp"

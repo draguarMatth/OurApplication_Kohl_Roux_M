@@ -1,10 +1,11 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.os.Bundle;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.example.ourapplication_kohl_roux_m.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,13 +18,13 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-/*
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_app);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }
 
@@ -85,4 +86,3 @@ public class MainActivity extends AppCompatActivity {
 
 }
 
- */

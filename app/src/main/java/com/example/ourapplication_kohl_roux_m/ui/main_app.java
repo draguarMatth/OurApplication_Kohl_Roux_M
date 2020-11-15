@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class main_app extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class main_app extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }
 

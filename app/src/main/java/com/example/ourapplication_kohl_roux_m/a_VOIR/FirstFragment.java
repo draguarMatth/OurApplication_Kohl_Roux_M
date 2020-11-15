@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.a_VOIR;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.ourapplication_kohl_roux_m.R;
 
 public class FirstFragment extends Fragment {
 

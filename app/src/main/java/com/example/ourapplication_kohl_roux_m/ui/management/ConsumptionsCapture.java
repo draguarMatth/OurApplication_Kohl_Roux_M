@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m;
+package com.example.ourapplication_kohl_roux_m.ui.management;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,6 +12,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.ourapplication_kohl_roux_m.R;
 
 import java.util.ArrayList;
 

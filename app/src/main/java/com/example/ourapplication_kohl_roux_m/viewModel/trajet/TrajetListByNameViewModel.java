@@ -10,10 +10,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
-import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
-import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 
 import java.util.List;
 
@@ -24,8 +22,8 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
     private TrajetRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
-    private final MediatorLiveData<List<Trajet>> observableTrajets;
-//    private final MediatorLiveData<List<Car>> observableCars;
+    private final MediatorLiveData<List<TrajetEntity>> observableTrajets;
+//    private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public TrajetListByNameViewModel(@NonNull Application application,
                                      final String tripName,
@@ -43,9 +41,9 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
         observableTrajets.setValue(null);
  //       observableCars.setValue(null);
 
-        LiveData<List<Trajet>> trajetList =
+        LiveData<List<TrajetEntity>> trajetList =
                 repository.getTrajetByName(tripName, application);
-//        LiveData<List<Car>> ownAccounts = repository.getByOwner(ownerId, application);
+//        LiveData<List<CarEntity>> ownAccounts = repository.getByOwner(ownerId, application);
 
         // observe the changes of the entities from the database and forward them
         observableTrajets.addSource(trajetList, observableTrajets::setValue);
@@ -85,7 +83,7 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<Trajet>> getTrajet() {
+    public LiveData<List<TrajetEntity>> getTrajet() {
         return observableTrajets;
     }
 

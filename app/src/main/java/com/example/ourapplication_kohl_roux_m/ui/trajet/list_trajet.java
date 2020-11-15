@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.ui;
+package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByNameViewModel;
 
 public class list_trajet extends AppCompatActivity {
 
@@ -27,7 +26,7 @@ public class list_trajet extends AppCompatActivity {
         TrajetRepository repositTrajet;
 //        TrajetListByNameViewModel listTest = new TrajetListByNameViewModel(getApplicationContext(), "Jvéoboulo",repositTrajet);
         String[] values = new String[]{
-                "Trajet 24.10.20    12km", "Trajet 25.10.20    12km", "Trajet 26.10.20    13km"
+                "TrajetEntity 24.10.20    12km", "TrajetEntity 25.10.20    12km", "TrajetEntity 26.10.20    13km"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
 

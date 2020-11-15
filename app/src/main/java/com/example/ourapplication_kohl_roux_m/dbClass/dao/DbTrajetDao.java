@@ -9,73 +9,73 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
 
 @Dao
 public interface DbTrajetDao {
-//    Trajet trajet = new Trajet();
+//    TrajetEntity trajetEntity = new TrajetEntity();
 
     @Query("SELECT * FROM trajets WHERE Date LIKE (:date)")
-    LiveData<List<Trajet>> getByDate(String date);
+    LiveData<List<TrajetEntity>> getByDate(String date);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name)")
-    /* LiveData<Trajet> */ LiveData<List<Trajet>> getByName(String name);
+    /* LiveData<TrajetEntity> */ LiveData<List<TrajetEntity>> getByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId)")
-        /* LiveData<Trajet> */ LiveData<List<TrajetByThisCar>> getByCarId(int carId);
+        /* LiveData<TrajetEntity> */ LiveData<List<TrajetByThisCar>> getByCarId(int carId);
 
     @Query("SELECT * FROM trajets")
-    LiveData<List<Trajet>> getAll();
+    LiveData<List<TrajetEntity>> getAll();
 
     @Query("SELECT * FROM trajets")
-    List<Trajet> getAllTrajets();
+    List<TrajetEntity> getAllTrajets();
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = :carId Limit 1")
-    List<Trajet> getAllTrajetsByCar(String carId);
+    List<TrajetEntity> getAllTrajetsByCar(String carId);
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")
-    List<Trajet> loadAllByIds(int[] trajetIds);
+    List<TrajetEntity> loadAllByIds(int[] trajetIds);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name) LIMIT 1")
-    Trajet findByName(String name);
+    TrajetEntity findByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Date LIKE (:date) LIMIT 1")
-    Trajet findByDate(String date);
+    TrajetEntity findByDate(String date);
 
     @Query("SELECT * FROM trajets WHERE Distance LIKE :km LIMIT 1")
-    Trajet findByKilometers(float km);
+    TrajetEntity findByKilometers(float km);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_positif LIKE :rise LIMIT 1")
-    Trajet findByRising(float rise);
+    TrajetEntity findByRising(float rise);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_positif <= :rise LIMIT 1")
-    Trajet findByIntervalRising(float rise);
+    TrajetEntity findByIntervalRising(float rise);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_negatif LIKE :deep LIMIT 1")
-    Trajet findByDeep(float deep);
+    TrajetEntity findByDeep(float deep);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_negatif LIKE :deep LIMIT 1")
-    Trajet findByIntevalDeep(float deep);
+    TrajetEntity findByIntevalDeep(float deep);
 
     @Insert
-    void insertAll(Trajet... trajets);
+    void insertAll(TrajetEntity... trajets);
 
     @Insert
-    void insert(Trajet trajet) throws SQLiteConstraintException;
+    void insert(TrajetEntity trajetEntity) throws SQLiteConstraintException;
 
     @Update
-    public void update(Trajet trajets);
+    public void update(TrajetEntity trajets);
 
     @Update
-    public void updateConsoGasolin(Trajet trajet);
+    public void updateConsoGasolin(TrajetEntity trajetEntity);
     @Update
-    public void updateConsoElectric(Trajet trajet);
+    public void updateConsoElectric(TrajetEntity trajetEntity);
 
     @Delete
-    void delete(Trajet trajet);
+    void delete(TrajetEntity trajetEntity);
 
     @Query("DELETE FROM trajets")
     void deleteAll();

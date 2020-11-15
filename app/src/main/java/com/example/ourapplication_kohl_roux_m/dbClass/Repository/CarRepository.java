@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.UpdateCar;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.DeleteCar;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
@@ -31,32 +31,32 @@ public class CarRepository {
         return instance;
     }
 
-    public LiveData<Car> getCar(final int carId, Application application) {
+    public LiveData<CarEntity> getCar(final int carId, Application application) {
         return ((BaseApp) application).getDatabase().carDao().getById(carId);
     }
 
-    public LiveData<List<Car>> getMyCars(Application application) {
+    public LiveData<List<CarEntity>> getMyCars(Application application) {
         return ((BaseApp) application).getDatabase().carDao().getByActivity();
     }
 
-    public LiveData<List<Car>> getAllCar(Application application) {
+    public LiveData<List<CarEntity>> getAllCar(Application application) {
         return ((BaseApp) application).getDatabase().carDao().getAll();
     }
 
-    public void insert(final Car car, OnAsyncEventListener callback,
+    public void insert(final CarEntity carEntity, OnAsyncEventListener callback,
                        Application application) {
-        new CreateCar(application, callback).execute(car);
+        new CreateCar(application, callback).execute(carEntity);
     }
 
-    public void update(final Car car, OnAsyncEventListener callback,
+    public void update(final CarEntity carEntity, OnAsyncEventListener callback,
                        Application application) {
-        new UpdateCar(application, callback).execute(car);
+        new UpdateCar(application, callback).execute(carEntity);
     }
 
 
 
-    public void delete(final Car car, OnAsyncEventListener callback,
+    public void delete(final CarEntity carEntity, OnAsyncEventListener callback,
                        Application application) {
-        new DeleteCar(application, callback).execute(car);
+        new DeleteCar(application, callback).execute(carEntity);
     }
 }

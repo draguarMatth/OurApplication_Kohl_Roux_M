@@ -9,4 +9,11 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="disclaimer" translatable="false">Copyright &#169; 2020\nHES-SO Valais//Wallis Sierre</string>
+    <string name="impressum" translatable="false">644-1 Mobile &amp; Cloud Computing \nPromotion 605_3 / Kohl Mathieu - Roux Matthieu</string>
+    <string name="pref_about_text">This application was developed as part of a study project based on the newly released Android Architecture Components</string>
+    <string name="pref_header_about">About (May be, it can not running)</string>
+
+
 </resources>

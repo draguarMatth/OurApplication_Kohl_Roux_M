@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class CarMyListViewModel extends AndroidViewModel {
     private CarRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
-    private final MediatorLiveData<List<Car>> observableCars;
+    private final MediatorLiveData<List<CarEntity>> observableCars;
  //   private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
 
     public CarMyListViewModel(@NonNull Application application,
@@ -39,9 +39,9 @@ public class CarMyListViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableCars.setValue(null);
 
-        LiveData<List<Car>> carList =
+        LiveData<List<CarEntity>> carList =
                 carRepository.getMyCars(application);
-        LiveData<List<Car>> ownAccounts = repository.getMyCars(application);
+        LiveData<List<CarEntity>> ownAccounts = repository.getMyCars(application);
 
         // observe the changes of the entities from the database and forward them
 //        observableClientAccounts.addSource(clientAccounts, observableClientAccounts::setValue);
@@ -78,22 +78,22 @@ public class CarMyListViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<Car>> getMyCars() {
+    public LiveData<List<CarEntity>> getMyCars() {
         return observableCars;
     }
 
     /**
      * Expose the LiveData AccountEntities query so the UI can observe it.
      */
-    public LiveData<List<Car>> getOwnAccounts() {
+    public LiveData<List<CarEntity>> getOwnAccounts() {
         return observableCars;
     }
 
-    public void deleteOneCar(Car car, OnAsyncEventListener callback) {
-        repository.delete(car, callback, application);
+    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.delete(carEntity, callback, application);
     }
 
-    public void executeModify(final Car car, OnAsyncEventListener callback) {
-        repository.update(car, callback, application);
+    public void executeModify(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.update(carEntity, callback, application);
     }
 }

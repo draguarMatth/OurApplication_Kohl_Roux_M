@@ -11,8 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public class CarChoiceListViewModel extends AndroidViewModel {
     private CarRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
-    private final MediatorLiveData<List<Car>> observableCars;
+    private final MediatorLiveData<List<CarEntity>> observableCars;
 //    private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
 
     public CarChoiceListViewModel(@NonNull Application application,
@@ -38,9 +37,9 @@ public class CarChoiceListViewModel extends AndroidViewModel {
         // set by default null, until we get data from the database.
         observableCars.setValue(null);
 
-        LiveData<List<Car>> carAllList =
+        LiveData<List<CarEntity>> carAllList =
                 carRepository.getAllCar(application);
-        LiveData<List<Car>> ownAccounts = repository.getAllCar(application);
+        LiveData<List<CarEntity>> ownAccounts = repository.getAllCar(application);
 
         // observe the changes of the entities from the database and forward them
         observableCars.addSource(carAllList, observableCars::setValue);
@@ -71,19 +70,19 @@ public class CarChoiceListViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<Car>> getAllCar() {
+    public LiveData<List<CarEntity>> getAllCar() {
         return observableCars;
     }
 
     /**
      * Expose the LiveData AccountEntities query so the UI can observe it.
      */
-    public LiveData<List<Car>> getOwnAccounts() {
+    public LiveData<List<CarEntity>> getOwnAccounts() {
         return observableCars;
     }
 
- /*   public void insertTunedCar(Car car, OnAsyncEventListener callback) {
-        repository.insertTunedCar(car, callback, application);
+ /*   public void insertTunedCar(CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.insertTunedCar(carEntity, callback, application);
     }
 
     public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,

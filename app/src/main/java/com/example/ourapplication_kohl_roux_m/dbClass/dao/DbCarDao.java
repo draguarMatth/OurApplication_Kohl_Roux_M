@@ -9,54 +9,53 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 
 import java.util.List;
 
 @Dao
 public interface DbCarDao {
-//    Car car = new Car();
+//    CarEntity carEntity = new CarEntity();
 
-    @Query("SELECT * FROM car WHERE uid LIKE (:id) LIMIT 1")
-    LiveData<Car> getById(int id);
+    @Query("SELECT * FROM CarEntity WHERE uid LIKE (:id) LIMIT 1")
+    LiveData<CarEntity> getById(int id);
 
-    @Query("SELECT * FROM car")
-    LiveData<List<Car>> getAll();
+    @Query("SELECT * FROM CarEntity")
+    LiveData<List<CarEntity>> getAll();
 
-    @Query("SELECT * FROM car WHERE active = 1 ")
-    LiveData<List<Car>> getByActivity();
+    @Query("SELECT * FROM CarEntity WHERE active = 1 ")
+    LiveData<List<CarEntity>> getByActivity();
 
-/*    @Query("SELECT * FROM car WHERE uid LIKE (:UID) LIMIT 1")
-    Car getById(int UID);
+/*    @Query("SELECT * FROM carEntity WHERE uid LIKE (:UID) LIMIT 1")
+    CarEntity getById(int UID);
 
-    @Query("SELECT * FROM car")
-    List<Car> getAllCar();
+    @Query("SELECT * FROM carEntity")
+    List<CarEntity> getAllCar();
 
  */
 
-    @Query("SELECT * FROM car WHERE uid = (:uid) ")
-    Car getCar(int uid);
+    @Query("SELECT * FROM CarEntity WHERE uid = (:uid) ")
+    CarEntity getCar(int uid);
 
-    @Query("SELECT * FROM car WHERE uid IN (:carIds)")
-    List<Car> loadAllByIds(int[] carIds);
+    @Query("SELECT * FROM CarEntity WHERE uid IN (:carIds)")
+    List<CarEntity> loadAllByIds(int[] carIds);
 
-    @Query("SELECT uid FROM car WHERE active = 1 ")
+    @Query("SELECT uid FROM CarEntity WHERE active = 1 ")
     int getActive();
 
-    @Query("SELECT * FROM car WHERE Nickname LIKE (:name)")
-    Car findByNickName(String name);
+    @Query("SELECT * FROM CarEntity WHERE Nickname LIKE (:name)")
+    CarEntity findByNickName(String name);
 
     @Insert
-    void insert(Car car) throws SQLiteConstraintException;
+    void insert(CarEntity carEntity) throws SQLiteConstraintException;
 
     @Update
-    public void update(Car car);
+    public void update(CarEntity carEntity);
 
-    @Query("DELETE FROM car")
+    @Query("DELETE FROM CarEntity")
     void deleteAll();
 
     @Delete
-    void delete(Car car);
+    void delete(CarEntity carEntity);
 
 }

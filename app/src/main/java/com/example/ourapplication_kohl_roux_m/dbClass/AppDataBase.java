@@ -13,13 +13,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.dao.DbCarDao;
 import com.example.ourapplication_kohl_roux_m.dbClass.dao.DbTrajetDao;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {Trajet.class, Car.class}, version = 1)
-//@Database(entities = {Car.class}, version= 1)
+@Database(entities = {TrajetEntity.class, CarEntity.class}, version = 1)
+//@Database(entities = {CarEntity.class}, version= 1)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static final String TAG = "AppDataBase";

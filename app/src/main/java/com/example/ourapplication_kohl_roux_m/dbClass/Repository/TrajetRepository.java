@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.DeleteTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.UpdateTrajet;
@@ -32,7 +32,7 @@ public class TrajetRepository {
         return instance;
     }
 
-    public LiveData<List<Trajet>> getTrajetByDate(final String date, Application application) {
+    public LiveData<List<TrajetEntity>> getTrajetByDate(final String date, Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByDate(date);
     }
 
@@ -40,23 +40,23 @@ public class TrajetRepository {
         return ((BaseApp) application).getDatabase().trajetDao().getByCarId(carId);
     }
 
-    public LiveData<List<Trajet>> getTrajetByName(final String name,
-                                                                   Application application) {
+    public LiveData<List<TrajetEntity>> getTrajetByName(final String name,
+                                                        Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByName(name);
     }
 
-    public void insert(final Trajet trajet, OnAsyncEventListener callback,
+    public void insert(final TrajetEntity trajetEntity, OnAsyncEventListener callback,
                        Application application) {
-        new CreateTrajet(application, callback).execute(trajet);
+        new CreateTrajet(application, callback).execute(trajetEntity);
     }
 
-    public void update(final Trajet trajet, OnAsyncEventListener callback,
+    public void update(final TrajetEntity trajetEntity, OnAsyncEventListener callback,
                        Application application) {
-        new UpdateTrajet(application, callback).execute(trajet);
+        new UpdateTrajet(application, callback).execute(trajetEntity);
     }
 
-    public void delete(final Trajet trajet, OnAsyncEventListener callback,
+    public void delete(final TrajetEntity trajetEntity, OnAsyncEventListener callback,
                        Application application) {
-        new DeleteTrajet(application, callback).execute(trajet);
+        new DeleteTrajet(application, callback).execute(trajetEntity);
     }
 }

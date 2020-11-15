@@ -10,9 +10,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
-import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
@@ -25,7 +23,7 @@ public class TrajetListByCarViewModel extends AndroidViewModel {
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<TrajetByThisCar>> observableTrajets;
-//    private final MediatorLiveData<List<Car>> observableCars;
+//    private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public TrajetListByCarViewModel(@NonNull Application application,
                                      final int carId,
@@ -45,7 +43,7 @@ public class TrajetListByCarViewModel extends AndroidViewModel {
 
         LiveData<List<TrajetByThisCar>> trajetList =
                 repository.getTrajetByCarId(carId, application);
-//        LiveData<List<Car>> ownAccounts = repository.getByOwner(ownerId, application);
+//        LiveData<List<CarEntity>> ownAccounts = repository.getByOwner(ownerId, application);
 
         // observe the changes of the entities from the database and forward them
         observableTrajets.addSource(trajetList, observableTrajets::setValue);

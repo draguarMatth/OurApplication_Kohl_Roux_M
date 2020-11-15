@@ -4,10 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
-public class CreateTrajet extends AsyncTask<Trajet, Void, Void> {
+public class CreateTrajet extends AsyncTask<TrajetEntity, Void, Void> {
 
     private AppDataBase database;
     private OnAsyncEventListener callback;
@@ -19,10 +19,10 @@ public class CreateTrajet extends AsyncTask<Trajet, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(Trajet... params) {
+    protected Void doInBackground(TrajetEntity... params) {
         try {
-            for (Trajet trajet : params)
-                database.trajetDao().insert(trajet);
+            for (TrajetEntity trajetEntity : params)
+                database.trajetDao().insert(trajetEntity);
         } catch (Exception e) {
             exception = e;
         }

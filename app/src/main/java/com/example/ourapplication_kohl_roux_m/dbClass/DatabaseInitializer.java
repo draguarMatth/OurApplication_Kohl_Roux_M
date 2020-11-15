@@ -3,8 +3,8 @@ package com.example.ourapplication_kohl_roux_m.dbClass;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 
 public class DatabaseInitializer {
 
@@ -17,30 +17,30 @@ public class DatabaseInitializer {
     }
 
  /*   private static void addTrajet(final AppDataBase db, final int carId, final String date) {
-        Trajet trajet = new Trajet(carId, date);
-        db.trajetDao().insert(trajet);
+        TrajetEntity trajetEntity = new TrajetEntity(carId, date);
+        db.trajetDao().insert(trajetEntity);
     }
 */
     private static void addTrajet(final AppDataBase db, final int carId, final String name, final String date,
                                       final double kmTot, final double totRise, final double totDeep,
                                       final double gasolinTot, final double electricityTot) {
-        Trajet trajet = new Trajet(carId, name, date, kmTot, totRise, totDeep, gasolinTot, electricityTot);
-        db.trajetDao().insert(trajet);
+        TrajetEntity trajetEntity = new TrajetEntity(carId, name, date, kmTot, totRise, totDeep, gasolinTot, electricityTot);
+        db.trajetDao().insert(trajetEntity);
     }
 
 /*    private static void addCar(final AppDataBase db, final String carTradeMark, final String model,
                                final double consoEssence, final double batteryPower, Boolean activate) {
 
-        Car car = new Car(carTradeMark, model, consoEssence, batteryPower, activate);
-        db.carDao().insert(car);
+        CarEntity carEntity = new CarEntity(carTradeMark, model, consoEssence, batteryPower, activate);
+        db.carDao().insert(carEntity);
     }
 
  */
     private static void addCar(final AppDataBase db, final String nickName, final String carTradeMark, final String model,
                                final double consoEssence, final double batteryPower, final String wheelSize, final boolean carForTrip) {
 
-        Car car = new Car(nickName, carTradeMark, model, consoEssence, batteryPower, wheelSize, carForTrip);
-        db.carDao().insert(car);
+        CarEntity carEntity = new CarEntity(nickName, carTradeMark, model, consoEssence, batteryPower, wheelSize, carForTrip);
+        db.carDao().insert(carEntity);
     }
     // String nickName, @NonNull String carTradeMark, @NonNull String model,
     //               double consoEssence, double batteryPower, double wheelSize, @NonNull boolean carForTrip

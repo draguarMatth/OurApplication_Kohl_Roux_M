@@ -4,11 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
-public class UpdateCar extends AsyncTask<Car, Void, Void> {
+public class UpdateCar extends AsyncTask<CarEntity, Void, Void> {
 
     private AppDataBase database;
     private OnAsyncEventListener callback;
@@ -20,10 +19,10 @@ public class UpdateCar extends AsyncTask<Car, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(Car... params) {
+    protected Void doInBackground(CarEntity... params) {
         try {
-            for (Car car : params)
-                database.carDao().update(car);
+            for (CarEntity carEntity : params)
+                database.carDao().update(carEntity);
         } catch (Exception e) {
             exception = e;
         }

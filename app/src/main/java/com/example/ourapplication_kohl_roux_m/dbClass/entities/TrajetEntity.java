@@ -8,8 +8,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = Car.class, parentColumns = "uid", childColumns = "Voiture_id"))
-public class Trajet implements Comparable {
+@Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = CarEntity.class, parentColumns = "uid", childColumns = "Voiture_id"))
+public class TrajetEntity implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -43,13 +43,13 @@ public class Trajet implements Comparable {
     @Ignore
     Bitmap picture;
 
-/*    public Trajet(int carId, String date) {
+/*    public TrajetEntity(int carId, String date) {
         this.carId = carId;
         this.date = date;
     }
 */
-    public Trajet(@NonNull int carId, String name, @NonNull String date, double kmTot,
-                  double totRise, double totDeep, double gasolinTot, double electricityTot) {
+    public TrajetEntity(@NonNull int carId, String name, @NonNull String date, double kmTot,
+                        double totRise, double totDeep, double gasolinTot, double electricityTot) {
         this.carId = carId;
         this.name = name;
         this.kmTot = kmTot;
@@ -129,8 +129,8 @@ public class Trajet implements Comparable {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (obj == this) return true;
-        if (!(obj instanceof Trajet)) return false;
-        Trajet o = (Trajet) obj;
+        if (!(obj instanceof TrajetEntity)) return false;
+        TrajetEntity o = (TrajetEntity) obj;
         if (o.getUid() != this.getUid() && o.getCarId() != this.getCarId()) return false;
         return true ;
     }

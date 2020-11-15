@@ -3,15 +3,13 @@ package com.example.ourapplication_kohl_roux_m.dbClass.pojo;
 import androidx.room.Embedded;
 import androidx.room.Relation;
 
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
-
-import java.util.List;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 
 public class TrajetByThisCar {
     @Embedded
-    public Trajet trajet;
+    public TrajetEntity trajetEntity;
 
-    @Relation(parentColumn = "Voiture_id", entityColumn = "uid", entity = Car.class)
-    public Car car;
+    @Relation(parentColumn = "Voiture_id", entityColumn = "uid", entity = CarEntity.class)
+    public CarEntity carEntity;
 }

@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.ui;
+package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.os.Bundle;
 import android.view.Menu;

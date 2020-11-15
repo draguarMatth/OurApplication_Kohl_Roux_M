@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class Car implements Comparable {
+public class CarEntity implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
     public int uid;
@@ -36,7 +36,7 @@ public class Car implements Comparable {
     @NonNull
     public boolean carForTrip;
 
-/*    public Car(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
+/*    public CarEntity(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
 
         this.carTradeMark = carTradeMark;
         this.model = model;
@@ -48,8 +48,8 @@ public class Car implements Comparable {
 
  */
 
-    public Car(String nickName, @NonNull String carTradeMark, @NonNull String model,
-               double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
+    public CarEntity(String nickName, @NonNull String carTradeMark, @NonNull String model,
+                     double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
         this.nickName = nickName;
         this.carTradeMark = carTradeMark;
         this.model = model;
@@ -109,8 +109,8 @@ public class Car implements Comparable {
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (obj == this) return true;
-        if (!(obj instanceof Car)) return false;
-        Car o = (Car) obj;
+        if (!(obj instanceof CarEntity)) return false;
+        CarEntity o = (CarEntity) obj;
         if (o.getUid() != this.getUid()) return false;
         return true ;
     }

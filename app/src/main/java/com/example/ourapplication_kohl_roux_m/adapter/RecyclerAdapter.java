@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Car;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.Trajet;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 
 import java.util.List;
@@ -53,10 +53,10 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         T item = mData.get(position);
-        if (item.getClass().equals(Car.class))
-            holder.mTextView.setText(((Car) item).getNickName());
-        if (item.getClass().equals(Trajet.class))
-            holder.mTextView.setText(((Trajet) item).getName() + " " + ((Trajet) item).getKmTot());
+        if (item.getClass().equals(CarEntity.class))
+            holder.mTextView.setText(((CarEntity) item).getNickName());
+        if (item.getClass().equals(TrajetEntity.class))
+            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getKmTot());
     }
 
     @Override
@@ -86,29 +86,29 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
                 @Override
                 public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-                    if (mData instanceof Car) {
-                        return ((Car) mData.get(oldItemPosition)).equals(((Car) data.get(newItemPosition)));
+                    if (mData instanceof CarEntity) {
+                        return ((CarEntity) mData.get(oldItemPosition)).equals(((CarEntity) data.get(newItemPosition)));
                     }
-                    if (mData instanceof Trajet) {
-                        return ((Trajet) mData.get(oldItemPosition)).equals(
-                                ((Trajet) data.get(newItemPosition)));
+                    if (mData instanceof TrajetEntity) {
+                        return ((TrajetEntity) mData.get(oldItemPosition)).equals(
+                                ((TrajetEntity) data.get(newItemPosition)));
                     }
                     return false;
                 }
 
                 @Override
                 public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-                    if (mData instanceof Car) {
-                        Car newCar = (Car) data.get(newItemPosition);
-                        Car oldCar = (Car) mData.get(newItemPosition);
-                        return Objects.equals(newCar.getUid(),(oldCar.getUid()))
-                                && Objects.equals(newCar.getNickName(), oldCar.getNickName())
-                               /* && Objects.equals(newCar.getBalance(), oldCar.getBalance())
-                                && newCar.getOwner().equals(oldCar.getOwner()) */ ;
+                    if (mData instanceof CarEntity) {
+                        CarEntity newCarEntity = (CarEntity) data.get(newItemPosition);
+                        CarEntity oldCarEntity = (CarEntity) mData.get(newItemPosition);
+                        return Objects.equals(newCarEntity.getUid(),(oldCarEntity.getUid()))
+                                && Objects.equals(newCarEntity.getNickName(), oldCarEntity.getNickName())
+                               /* && Objects.equals(newCarEntity.getBalance(), oldCarEntity.getBalance())
+                                && newCarEntity.getOwner().equals(oldCarEntity.getOwner()) */ ;
                     }
-                    if (mData instanceof Trajet) {
-                        Trajet newClient = (Trajet) data.get(newItemPosition);
-                        Trajet oldClient = (Trajet) mData.get(newItemPosition);
+                    if (mData instanceof TrajetEntity) {
+                        TrajetEntity newClient = (TrajetEntity) data.get(newItemPosition);
+                        TrajetEntity oldClient = (TrajetEntity) mData.get(newItemPosition);
                         return Objects.equals(newClient.getCarId(), oldClient.getCarId())
                                 && Objects.equals(newClient.getName(), oldClient.getName())
                                 && Objects.equals(newClient.getDate(), oldClient.getDate())
