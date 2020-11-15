@@ -56,7 +56,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         if (item.getClass().equals(CarEntity.class))
             holder.mTextView.setText(((CarEntity) item).getNickName());
         if (item.getClass().equals(TrajetEntity.class))
-            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getKmTot());
+            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
     }
 
     @Override

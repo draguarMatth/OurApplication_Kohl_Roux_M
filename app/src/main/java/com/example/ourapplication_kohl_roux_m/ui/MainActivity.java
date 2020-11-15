@@ -1,88 +1,45 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.os.Bundle;
-
-import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import androidx.core.view.GravityCompat;
+import androidx.appcompat.app.AlertDialog;
 import com.example.ourapplication_kohl_roux_m.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.room.Room;
 
-import android.view.View;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.EditText;
-
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_app);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+ //       getLayoutInflater().inflate(R.layout.activity_main_app, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
 
-        AppDataBase db = Room.databaseBuilder(getApplicationContext(),
-                AppDataBase.class, "database-name").build();
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setTitle(getString(R.string.app_name));
+        navigationView.setCheckedItem(R.id.nav_none);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
-        return true;
+    protected void onResume() {
+        super.onResume();
+        setTitle(getString(R.string.app_name));
+        navigationView.setCheckedItem(R.id.nav_none);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return;
         }
+        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//        alertDialog.setTitle(getString(R.string.action_logout));
 
-        return super.onOptionsItemSelected(item);
+        alertDialog.setTitle("Ceci devrait afficher une boite de dialogue d'alerte !");
+
+        alertDialog.setCancelable(false);
+//        alertDialog.setMessage(getString(R.string.logout_msg));
+//        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_logout), (dialog, which) -> logout());
+ //       alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.action_cancel), (dialog, which) -> alertDialog.dismiss());
+        alertDialog.show();
     }
-
-    // gestion des saisies d'énergies
-    EditText editTextCarb = (EditText) findViewById (R.id.saisieCarb);
-    long quantityCarb =  Long.valueOf(editTextCarb.getText().toString());
-
-    EditText editTextElect = (EditText) findViewById (R.id.saisieElect);
-    long quantityElect =  Long.valueOf(editTextElect.getText().toString());
-
-    // bouton d'ajout de la saisie
-    public ArrayList<Long> listCarb;
-    public ArrayList <Long> listElect;
-
-    public void addEnergyConsumpt (int power) {
-
-        if(quantityCarb > 0)
-            listCarb.add(quantityCarb);
-
-        if(quantityElect > 0)
-            listElect.add(quantityElect);
-
-    }
-
 }
-

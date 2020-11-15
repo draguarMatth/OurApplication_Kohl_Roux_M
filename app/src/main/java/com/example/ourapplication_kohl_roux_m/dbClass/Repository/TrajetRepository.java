@@ -23,13 +23,17 @@ public class TrajetRepository {
 
     public static TrajetRepository getInstance() {
         if (instance == null) {
-            synchronized (CarRepository.class) {
+            synchronized (TrajetRepository.class) {
                 if (instance == null) {
                     instance = new TrajetRepository();
                 }
             }
         }
         return instance;
+    }
+
+    public LiveData<List<TrajetEntity>> getTrajet(Application application) {
+        return ((BaseApp) application).getDatabase().trajetDao().getAll();
     }
 
     public LiveData<List<TrajetEntity>> getTrajetByDate(final String date, Application application) {

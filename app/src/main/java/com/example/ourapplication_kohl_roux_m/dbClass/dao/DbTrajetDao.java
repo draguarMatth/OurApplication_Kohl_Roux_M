@@ -46,19 +46,19 @@ public interface DbTrajetDao {
     TrajetEntity findByDate(String date);
 
     @Query("SELECT * FROM trajets WHERE Distance LIKE :km LIMIT 1")
-    TrajetEntity findByKilometers(float km);
+    TrajetEntity findByKilometers(double km);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_positif LIKE :rise LIMIT 1")
-    TrajetEntity findByRising(float rise);
+    TrajetEntity findByRising(double rise);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_positif <= :rise LIMIT 1")
-    TrajetEntity findByIntervalRising(float rise);
+    TrajetEntity findByIntervalRising(double rise);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_negatif LIKE :deep LIMIT 1")
-    TrajetEntity findByDeep(float deep);
+    TrajetEntity findByDeep(double deep);
 
     @Query("SELECT * FROM trajets WHERE Denivellation_negatif LIKE :deep LIMIT 1")
-    TrajetEntity findByIntevalDeep(float deep);
+    TrajetEntity findByIntevalDeep(double deep);
 
     @Insert
     void insertAll(TrajetEntity... trajets);

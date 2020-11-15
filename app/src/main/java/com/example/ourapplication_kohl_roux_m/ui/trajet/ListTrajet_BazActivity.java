@@ -2,12 +2,11 @@ package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
@@ -25,7 +24,7 @@ import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByNameViewModel;
+import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
     private List<TrajetEntity> trajets;
     private RecyclerAdapter<TrajetEntity> adapter;
-    private TrajetListByNameViewModel viewModel;
+    private TrajetListViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        //mRecyclerView.setHasFixedSize(true);
+        // mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -61,8 +60,8 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-//        SharedPreferences settings = getSharedPreferences(AppCompatActivity.PREFS_NAME, 0);
-//        String user = settings.getString(AppCompatActivity.PREFS_USER, null);
+        SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
+//        String user = settings.getString(BaseActivity.PREFS_USER, null);
 
 /*        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_trajet);
@@ -85,7 +84,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + trajets.get(position).getName());
 
-                Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivty.class);
+                Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivity.class);
                 intent.setFlags(
                         Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                 Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -103,9 +102,9 @@ public class ListTrajet_BazActivity extends BaseActivity {
             }
         });
 
-/*        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivty.class);
+                    Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivity.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -114,12 +113,12 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 }
         );
 
- */
 
-        String traj = "Jvéoboulot";
-        TrajetListByNameViewModel.Factory factory = new TrajetListByNameViewModel.Factory(
-                getApplication(), traj);
-        viewModel = ViewModelProviders.of(this, factory).get(TrajetListByNameViewModel.class);
+
+     //   String traj = "Jvéoboulot";
+        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
+                getApplication());
+        viewModel = ViewModelProviders.of(this, factory).get(TrajetListViewModel.class);
         viewModel.getTrajet().observe(this, trajetsL -> {
             if (trajetsL != null) {
                 trajets = trajetsL;

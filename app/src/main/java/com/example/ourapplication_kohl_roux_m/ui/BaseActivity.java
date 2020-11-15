@@ -5,7 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 
+import com.example.ourapplication_kohl_roux_m.ui.car.CarDescriptionActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.TrajetActivity;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -47,14 +50,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         frameLayout = findViewById(R.id.flContent);
 
-  /*      drawerLayout = findViewById(R.id.base_drawer_layout);
+        drawerLayout = findViewById(R.id.base_drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-*/
- //       navigationView = findViewById(R.id.base_nav_view);
-  //      navigationView.setNavigationItemSelectedListener(this);
+
+        navigationView = findViewById(R.id.base_nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -107,18 +110,17 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = null;
 
         navigationView.setCheckedItem(id);
-/*
-        if (id == R.id.nav_client) {
-            intent = new Intent(this, ClientActivity.class);
-        } else if (id == R.id.nav_accounts) {
-            intent = new Intent(this, AccountsActivity.class);
-        } else if (id == R.id.nav_transaction) {
+
+        if (id == R.id.nav_trajet) {
+            intent = new Intent(this, TrajetActivity.class);
+        } else if (id == R.id.nav_vehicule) {
+            intent = new Intent(this, CarDescriptionActivity.class);
+/*        } else if (id == R.id.nav_transaction) {
             intent = new Intent(this, TransactionActivity.class);
-        } else if (id == R.id.nav_logout) {
+  */      } else if (id == R.id.nav_logout) {
             logout();
         }
 
- */
         if (intent != null) {
             intent.setFlags(
                     Intent.FLAG_ACTIVITY_NO_ANIMATION
