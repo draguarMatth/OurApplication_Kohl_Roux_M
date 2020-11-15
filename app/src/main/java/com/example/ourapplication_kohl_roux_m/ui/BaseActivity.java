@@ -6,9 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 import com.example.ourapplication_kohl_roux_m.ui.car.CarDescriptionActivity;
+import com.example.ourapplication_kohl_roux_m.ui.management.ConsumptionsCapture;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.TrajetActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -111,13 +114,15 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setCheckedItem(id);
 
-        if (id == R.id.nav_trajet) {
-            intent = new Intent(this, TrajetActivity.class);
-        } else if (id == R.id.nav_vehicule) {
+        if (id == R.id.nav_vehicule) {
             intent = new Intent(this, CarDescriptionActivity.class);
-/*        } else if (id == R.id.nav_transaction) {
-            intent = new Intent(this, TransactionActivity.class);
-  */      } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_list_trajet) {
+            intent = new Intent(this, list_trajet.class);
+        } else if (id == R.id.nav_map) {
+            intent = new Intent(this, map_dernier_trajet.class);
+        } else if (id == R.id.nav_consumption) {
+            intent = new Intent(this, ConsumptionsCapture.class);
+        } else if (id == R.id.nav_logout) {
             logout();
         }
 

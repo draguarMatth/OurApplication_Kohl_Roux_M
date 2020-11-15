@@ -3,17 +3,21 @@ package com.example.ourapplication_kohl_roux_m.ui.trajet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
+import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 
-public class list_trajet extends AppCompatActivity {
+public class list_trajet extends BaseActivity {
 
     ListView listView;
 
@@ -46,25 +50,19 @@ public class list_trajet extends AppCompatActivity {
       //  bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemReselectedListener);
     }
 
-    /*
-    private BottomNavigationView.OnNavigationItemSelectedListener navigationItemReselectedListener =
-            new BottomNavigationView.OnNavigationItemSelectedListener(){
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                   Fragment selectedFragment = null;
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == BaseActivity.position) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return false;
+        }
+        /*
+        The activity has to be finished manually in order to guarantee the navigation hierarchy working.
+        */
 
-                   switch (item.getItemId()){
-                       case R.id.nav_vehicule:
-                           selectedFragment = new List_Trajet_Fragment();
-                           break;
-                   }
-                   getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, selectedFragment).commit();
-                   return true;
-                }
-            };
-
-
-     */
+        finish();
+        return super.onNavigationItemSelected(item);
+    }
 
 
     @Override
