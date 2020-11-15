@@ -23,7 +23,7 @@ public class list_trajet extends BaseActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_trajet);
+/*        setContentView(R.layout.activity_list_trajet);
 
         listView = findViewById(R.id.listview);
 
@@ -48,6 +48,8 @@ public class list_trajet extends BaseActivity {
 
       //  BottomNavigationView bottomNavigationView = findViewById(R.id.nav_vehicule);
       //  bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemReselectedListener);
+
+ */
     }
 
     @Override

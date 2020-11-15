@@ -83,7 +83,7 @@ public class TrajetListViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<TrajetEntity>> getTrajet() {
+    public LiveData<List<TrajetEntity>> getTrajetsviewMod() {
         return observableTrajets;
     }
 

@@ -6,12 +6,13 @@
         android:name=".BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".ui.trajet.list_trajet"
+            android:name=".ui.main_app"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,36 +20,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
+       <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".ui.trajet.list_trajet"
+            android:parentActivityName=".ui.main_app"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.main_app" />
         </activity>
         <activity
             android:name=".ui.management.SettingsActivity"
-            android:label="// @string/title_activity_settings"
+            android:label="@string/title_activity_settings"
             android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
         <activity
+            android:name=".ui.trajet.ListTrajet_BazActivity"
+            android:label="/ @string/title_activity_ListTrajet"
+            android:parentActivityName=".ui.main_app"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.main_app" />
+        </activity>
+<!--       <activity
                    android:name=".ui.BaseActivity"
                    android:theme="@style/AppTheme.NoActionBar" />
 
- <!--                     <activity
-                           android:name=".ui.transaction.TransactionActivity"
-                           android:label="@string/title_activity_transaction"
-                           android:parentActivityName=".ui.MainActivity"
-                           android:theme="@style/AppTheme.NoActionBar">
-                           <meta-data
-                               android:name="android.support.PARENT_ACTIVITY"
-                               android:value="ch.hevs.aislab.demo.ui.MainActivity" />
-                       </activity>
+
                        <activity
                            android:name=".ui.account.AccountsActivity"
                            android:label="@string/title_activity_accounts"

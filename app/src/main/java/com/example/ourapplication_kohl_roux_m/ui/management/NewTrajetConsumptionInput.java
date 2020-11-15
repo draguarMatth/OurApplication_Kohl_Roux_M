@@ -1,4 +1,9 @@
 package com.example.ourapplication_kohl_roux_m.ui.management;
 
-public class NewTrajetConsumptionInput {
+import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+
+public class NewTrajetConsumptionInput extends BaseActivity {
+
+
+
 }

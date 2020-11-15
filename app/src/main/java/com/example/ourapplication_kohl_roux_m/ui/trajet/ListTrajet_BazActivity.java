@@ -113,13 +113,11 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 }
         );
 
-
-
      //   String traj = "Jvéoboulot";
         TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
                 getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(TrajetListViewModel.class);
-        viewModel.getTrajet().observe(this, trajetsL -> {
+        viewModel.getTrajetsviewMod().observe(this, trajetsL -> {
             if (trajetsL != null) {
                 trajets = trajetsL;
                 adapter.setData(trajets);
