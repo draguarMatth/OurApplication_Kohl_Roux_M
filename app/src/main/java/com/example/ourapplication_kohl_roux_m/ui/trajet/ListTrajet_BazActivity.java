@@ -2,7 +2,6 @@ package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.content.Intent;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
+import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

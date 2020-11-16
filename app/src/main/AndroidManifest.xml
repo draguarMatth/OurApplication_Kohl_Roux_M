@@ -48,7 +48,7 @@
         </activity>
 
        <activity
-           android:name=".ui.management.NewTrajetConsumptionInput"
+           android:name=".ui.management.consumptionInputs.NewTrajetConsumptionInput"
            android:label="Saisie de vos données de connsommation"
            android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
            android:theme="@style/AppTheme.NoActionBar">

@@ -27,36 +27,31 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="270dp"
+        android:layout_marginStart="270dp"
         android:layout_marginTop="70dp"
-        android:text="@string/first_fragment_label"
+        android:text="@string/essence"
         tools:text="Essence" />
 
     <Button
         android:id="@+id/addFuelButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="270dp"
+        android:layout_marginStart="270dp"
         android:layout_marginTop="170dp"
         android:background="@android:drawable/arrow_down_float"
         android:visibility="visible"
         tools:visibility="visible" />
 
-    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fuelInputsRecyclerView"
-        android:scrollbars="vertical"
         android:layout_width="135dp"
         android:layout_height="309dp"
-        android:layout_marginLeft="260dp"
+        android:layout_marginStart="260dp"
         android:layout_marginTop="250dp"
         android:ems="16"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="@string/nav_app_bar_navigate_up_description"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:text='"Plein" Essence (litre)' />
+        android:scrollbars="vertical"
+        />
  <!--   <EditText
         android:id="@+id/editTextTextCarb"
         android:layout_width="140dp"
@@ -74,10 +69,21 @@
         android:id="@+id/saisieCarb"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="240dp"
+        android:layout_marginStart="240dp"
         android:layout_marginTop="100dp"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        />
+
+    <EditText
+        android:id="@+id/saisieElect"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:autofillHints="" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -85,9 +91,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_dialog_email"
+        android:contentDescription="TODO" />
 
-    <EditText
+<!--    <EditText
         android:id="@+id/saisieElect"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
@@ -96,18 +103,18 @@
         android:clickable="false"
         android:ems="10"
         android:inputType="numberDecimal" />
-
+-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/electInputsRecyclerView"
         android:layout_width="110dp"
         android:layout_height="309dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="250dp"
         android:ems="16"
         android:gravity="start|center_horizontal"
-        android:inputType="number|numberDecimal"
-        android:scrollbars="vertical"
-        tools:text='"Plein" Essence (litre)' />
+        android:inputType="text"
+        android:visibility="visible"
+        android:scrollbars="vertical" />
  <!--   <EditText
         android:id="@+id/editTextTElect"
         android:layout_width="140dp"
@@ -125,29 +132,38 @@
         android:id="@+id/addElectButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="80dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="170dp"
         android:background="@android:drawable/arrow_down_float"
         android:visibility="visible"
         tools:visibility="visible" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveTrip"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="600dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@android:color/holo_green_light"
-        android:text="Validation"
+        android:text="@string/fin_du_voyage_save_all"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
+<!--    <Button
+        android:id="@+id/saveTrip"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="550dp"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="Fin du voyage (save all)"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="70dp"
-        android:text="@string/hello_first_fragment"
-        tools:text="Electricité" />
+        android:text="Electricité"
+         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

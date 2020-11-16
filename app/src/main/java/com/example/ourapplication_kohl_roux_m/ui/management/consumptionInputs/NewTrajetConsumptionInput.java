@@ -1,19 +1,17 @@
-package com.example.ourapplication_kohl_roux_m.ui.management;
+package com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.inputmethodservice.ExtractEditText;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -25,11 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
-import com.example.ourapplication_kohl_roux_m.ui.main_app;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +44,14 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     EditText addElectItem;
     EditText addFuelItem;
 
-    EditText listElectInputs;
-    EditText listFuelInputs;
+    TextView electInputToList;
+    TextView fuelInputToList;
 
     private RecyclerAdapter<String> electAdapter;
     private List<String> electInputs;
+
+//    private List<ItemValue> electInputs;
+
     private RecyclerAdapter<String> fuelAdapter;
     private List<String> fuelInputs;
     private int electInputsHashcode;
@@ -63,6 +60,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     private RecyclerView recyclerViewElect;
     private RecyclerView recyclerViewFuel;
 
+    private MyAdapterElectricityEntries myAdapterElect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +68,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_comsumption_input, frameLayout);
 
         setTitle("Saisie des données de consommation");
-//        navigationView.setCheckedItem(position);
+        navigationView.setCheckedItem(position);
 
         addElectItem = (EditText) findViewById(R.id.saisieElect);
         addFuelItem = (EditText) findViewById(R.id.saisieCarb);
@@ -98,15 +96,19 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 //        String user = settings.getString(BaseActivity.PREFS_USER, null);
 
         electInputs = new ArrayList<String>();
+//        electInputs = new ArrayList<ItemValue>();
+
         electInputsHashcode = electInputs.hashCode();
-        electAdapter = new RecyclerAdapter<String>(new RecyclerViewItemClickListener() {
+
+//        myAdapterElect = new MyAdapterElectricityEntries(electInputs);
+
+        electAdapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
  //               Log.d(TAG, "clicked position:" + position);
  //               Log.d(TAG, "clicked on: " + intputsElect.get(position).getName());
 
                 Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
-
             }
 
             @Override
@@ -129,8 +131,6 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 //                Log.d(TAG, "clicked on: " + intputsFuel.get(position).doubleValue());
 
                 Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
-
-
             }
 
             @Override
@@ -156,22 +156,18 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 //               double newValue = Double.valueOf(newValueString);
 
                 electInputs.add(newValue);
+
                 electAdapter.setData(electInputs);
+ //               electAdapter.onAttachedToRecyclerView(recyclerViewElect);
+ //               recyclerViewElect.getDisplay();
+
                 addElectItem.setText("");
 //                Intent intent = new Intent(NewTrajetConsumptionInput.this, NewTrajetConsumptionInput.class);
 //                startActivity(intent);
 
-/*                Intent intent = new Intent(v.getContext(), this.class);
-                intent.putExtra("NUMBER", newValue);
-                startActivity(intent);
-*/
-
 //                recyclerViewElect.refreshDrawableState();
- //               recyclerViewElect.setAdapter(electAdapter);
-
-
+                recyclerViewElect.setAdapter(electAdapter);
             }
-
         });
         addFuelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,13 +178,12 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
                 fuelInputs.add(newValue);
                 fuelAdapter.setData(fuelInputs);
+                addFuelItem.setText("");
 
-                recyclerViewFuel.setAdapter(fuelAdapter);
-
+//                recyclerViewFuel.refreshDrawableState();
+ //               recyclerViewFuel.setAdapter(fuelAdapter);
             }
         });
-
-
     }
 
     @Override
@@ -204,8 +199,10 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     @SuppressLint("StaticFieldLeak")
     private void createModifyDialog(final int position, final int hashcodeInputs) {
 
+        List <String> aModif = getList(hashcodeInputs);
+        RecyclerView recyclerAmodif =  getRecyclerView(hashcodeInputs);
 
-        final double value = (double) getList(hashcodeInputs).get(position);
+        final String value = (String) getList(hashcodeInputs).get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view = inflater.inflate(R.layout.row_delete_item, null);
 
@@ -214,25 +211,17 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         alertDialog.setCancelable(false);
 
         final TextView modifyMessage = view.findViewById(R.id.editNumberToModify);
-        modifyMessage.setText(String.valueOf(value));
+//        modifyMessage.setText(String.valueOf(value));
+        modifyMessage.setText(value);
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Modify", (dialog, which) -> {
             Toast toast = Toast.makeText(this, "Valeur modifiée", Toast.LENGTH_LONG);
 
-            String newValue = (String)modifyMessage.getText();
+            String newValue = modifyMessage.getText().toString();
 
+            aModif.set(position, newValue);
+            recyclerAmodif.refreshDrawableState();
 
-            electInputs.set(position, newValue);
-            toast.show();
-
-            viewmodel = new ViewModel() {
-                @Override
-                protected void onCleared() {
-                    super.onCleared();
-                }
-            };
-
-            recyclerViewElect.refreshDrawableState();
 
             toast.show();
         });
@@ -240,17 +229,10 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Delete", (dialog, which) -> {
             Toast toast = Toast.makeText(this, "Valeur effacée", Toast.LENGTH_LONG);
 
-            double newValue = Double.parseDouble((String)modifyMessage.getText());
 
-            viewmodel = new ViewModel() {
-                @Override
-                protected void onCleared() {
-                    super.onCleared();
-                }
-            };
+            aModif.remove(position);
 
-            electInputs.remove(position);
-            recyclerViewElect.refreshDrawableState();
+            recyclerAmodif.refreshDrawableState();
 
             toast.show();
         });
@@ -260,18 +242,23 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         alertDialog.show();
     }
 
-    private List getList(int hashcode){
+    private List <String> getList(int hashcode){
 
         if(hashcode == electInputsHashcode)
             return electInputs;
         return fuelInputs;
     }
-    private RecyclerAdapter<Number> getAdapter(int hashcode){
+    private RecyclerView getRecyclerView(int hashcode){
 
-        if(hashcode == electInputsHashcode)
-            return electAdapter;
-        return fuelAdapter;
+        if(hashcode == electInputsHashcode){
+            electAdapter.setData(electInputs);
+            recyclerViewElect.setAdapter(electAdapter);
+            return recyclerViewElect;
+        }
+        fuelAdapter.setData(fuelInputs);
+        recyclerViewElect.setAdapter(fuelAdapter);
+        return recyclerViewFuel;
     }
 
-    private void refreshView(List<Number> electInputs, List<Number> fuelInputs){}
+    private void refreshView(List<String> electInputs, List<Number> fuelInputs){}
 }
