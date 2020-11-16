@@ -33,7 +33,7 @@
         tools:text="Essence" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addFuelButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="270dp"
@@ -42,7 +42,22 @@
         android:visibility="visible"
         tools:visibility="visible" />
 
-    <EditText
+    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fuelInputsRecyclerView"
+        android:scrollbars="vertical"
+        android:layout_width="135dp"
+        android:layout_height="309dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="250dp"
+        android:ems="16"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="@string/nav_app_bar_navigate_up_description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:text='"Plein" Essence (litre)' />
+ <!--   <EditText
         android:id="@+id/editTextTextCarb"
         android:layout_width="140dp"
         android:layout_height="309dp"
@@ -54,7 +69,7 @@
         android:text="@string/nav_app_bar_navigate_up_description"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:text='"Plein" Essence (litre)' />
-
+-->
     <EditText
         android:id="@+id/saisieCarb"
         android:layout_width="125dp"
@@ -78,10 +93,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="100dp"
+        android:clickable="false"
         android:ems="10"
         android:inputType="numberDecimal" />
 
-    <EditText
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/electInputsRecyclerView"
+        android:layout_width="110dp"
+        android:layout_height="309dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="250dp"
+        android:ems="16"
+        android:gravity="start|center_horizontal"
+        android:inputType="number|numberDecimal"
+        android:scrollbars="vertical"
+        tools:text='"Plein" Essence (litre)' />
+ <!--   <EditText
         android:id="@+id/editTextTElect"
         android:layout_width="140dp"
         android:layout_height="309dp"
@@ -93,9 +120,9 @@
         android:text="@string/nav_app_bar_navigate_up_description"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         tools:text="Charge électrique (%)" />
-
+-->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addElectButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="80dp"

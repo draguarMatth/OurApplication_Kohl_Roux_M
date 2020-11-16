@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -60,23 +61,10 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
+//        SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
 //        String user = settings.getString(BaseActivity.PREFS_USER, null);
 
-/*        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_trajet);
 
-//        listView = findViewById(R.id.listview);
-
-        TrajetRepository repositTrajet;
-//        TrajetListByNameViewModel listTest = new TrajetListByNameViewModel(getApplicationContext(), "Jvéoboulo",repositTrajet);
-        String[] values = new String[]{
-                "TrajetEntity 24.10.20    12km", "TrajetEntity 25.10.20    12km", "TrajetEntity 26.10.20    13km"
-        };
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, values);
-
-        listView.setAdapter(adapter);
-*/
         trajets = new ArrayList<>();
         adapter = new RecyclerAdapter<TrajetEntity>(new RecyclerViewItemClickListener() {
             @Override
@@ -104,11 +92,13 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivity.class);
-                    intent.setFlags(
+                    Intent intent = new Intent(ListTrajet_BazActivity.this, NewTrajetConsumptionInput.class);
+         /*           intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
+
+          */
                     startActivity(intent);
                 }
         );

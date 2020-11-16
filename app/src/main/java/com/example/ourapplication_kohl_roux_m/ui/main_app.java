@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +12,6 @@ import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class main_app extends AppCompatActivity {
@@ -36,7 +34,7 @@ public class main_app extends AppCompatActivity {
 //        imageView.setImageResource(R.drawable.i8);
 
         choix1 = (Button) findViewById(R.id.btn);
-        choix2 = (Button) findViewById(R.id.button2);
+        choix2 = (Button) findViewById(R.id.addFuelButton);
 
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -46,21 +46,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.main_app" />
         </activity>
-<!--       <activity
-                   android:name=".ui.BaseActivity"
-                   android:theme="@style/AppTheme.NoActionBar" />
 
-
-                       <activity
-                           android:name=".ui.account.AccountsActivity"
-                           android:label="@string/title_activity_accounts"
-                           android:parentActivityName=".ui.MainActivity"
-                           android:theme="@style/AppTheme.NoActionBar">
-                           <meta-data
-                               android:name="android.support.PARENT_ACTIVITY"
-                               android:value="ch.hevs.aislab.demo.ui.MainActivity" />
-                       </activity>
-                       <activity
+       <activity
+           android:name=".ui.management.NewTrajetConsumptionInput"
+           android:label="Saisie de vos données de connsommation"
+           android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
+           android:theme="@style/AppTheme.NoActionBar">
+           <meta-data
+           android:name="android.support.PARENT_ACTIVITY"
+           android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
+       </activity>
+ <!--                            <activity
+           android:name=".ui.BaseActivity"
+           android:theme="@style/AppTheme.NoActionBar" />
+           <activity
                            android:name=".ui.account.EditAccountActivity"
                            android:label="@string/title_activity_edit_account"
                            android:parentActivityName=".ui.account.AccountsActivity"
