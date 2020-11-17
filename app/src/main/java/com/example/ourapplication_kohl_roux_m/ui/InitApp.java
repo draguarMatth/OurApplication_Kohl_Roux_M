@@ -35,7 +35,7 @@ public class InitApp extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_app);
+        getLayoutInflater().inflate(R.layout.activity_main_app, frameLayout);
 
         ImageView imageView = findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.i8);
