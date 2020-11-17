@@ -50,6 +50,8 @@ public class TrajetEntity implements Comparable, Parcelable {
         this.date = date;
     }
 */
+    private TrajetEntity () {};
+
     public TrajetEntity(@NonNull long carId, String name, @NonNull String date, double kmTot,
                         double totRise, double totDeep, double gasolinTot, double electricityTot) {
         this.carId = carId;
@@ -82,37 +84,25 @@ public class TrajetEntity implements Comparable, Parcelable {
         return kmTot;
     }
 
-    public void setKmTot(float kmTot) {
-        this.kmTot = kmTot;
-    }
-
     public String getDate() {return date;}
 
     public double getTotRise() {
         return totRise;
     }
 
-    public void setTotRise(float totRise) {
-        this.totRise = totRise;
-    }
-
     public double getTotDeep() {
         return totDeep;
-    }
-
-    public void setTotDeep(float totDeep) {
-        this.totDeep = totDeep;
     }
 
     public double getGasolinTot() {
         return gasolinTot;
     }
 
-    public void addGasolin(float gasolinTot) {
+    public void addGasolin(double gasolinTot) {
         this.gasolinTot += gasolinTot;
     }
 
-    public void removeGasolin(float gasolinTot) {
+    public void removeGasolin(double gasolinTot) {
         this.gasolinTot -= gasolinTot;
     }
 
@@ -120,11 +110,11 @@ public class TrajetEntity implements Comparable, Parcelable {
         return electricityTot;
     }
 
-    public void addElectricity(float electricityTot) {
+    public void addElectricity(double electricityTot) {
         this.electricityTot += electricityTot;
     }
 
-    public void removeElectricity(float electricityTot) { this.electricityTot -= electricityTot;
+    public void removeElectricity(double electricityTot) { this.electricityTot -= electricityTot;
     }
 
     @Override
@@ -135,6 +125,38 @@ public class TrajetEntity implements Comparable, Parcelable {
         TrajetEntity o = (TrajetEntity) obj;
         if (o.getUid() != this.getUid() && o.getCarId() != this.getCarId()) return false;
         return true ;
+    }
+
+    public void setUid(long uid) {
+        this.uid = uid;
+    }
+
+    public void setCarId(long carId) {
+        this.carId = carId;
+    }
+
+    public void setDate(@NonNull String date) {
+        this.date = date;
+    }
+
+    public void setKmTot(double kmTot) {
+        this.kmTot = kmTot;
+    }
+
+    public void setTotRise(double totRise) {
+        this.totRise = totRise;
+    }
+
+    public void setTotDeep(double totDeep) {
+        this.totDeep = totDeep;
+    }
+
+    public void setGasolinTot(double gasolinTot) {
+        this.gasolinTot = gasolinTot;
+    }
+
+    public void setElectricityTot(double electricityTot) {
+        this.electricityTot = electricityTot;
     }
 
     @Override
@@ -170,14 +192,16 @@ public class TrajetEntity implements Comparable, Parcelable {
 
     public void getFromParcel(Parcel in)
     {
-
-        TrajetEntity(@NonNull long carId, String name, @NonNull String date, double kmTot,
-        double totRise, double totDeep, double gasolinTot, double electricityTot);
-
-            TrajetEntity trajet = new TrajetEntity();
-            trajet.setName(in.readString());
-            trajet.setDate(in.readString());
-            this.add(pers);
+        TrajetEntity trajet = new TrajetEntity();
+        trajet.setName(in.readString());
+        trajet.setDate(in.readString());
+        trajet.setCarId(Long.parseLong(in.readString()));
+        trajet.setUid(Long.parseLong(in.readString()));
+        trajet.setElectricityTot(Double.parseDouble(in.readString()));
+        trajet.setGasolinTot(Double.parseDouble(in.readString()));
+        trajet.setKmTot(Double.parseDouble(in.readString()));
+        trajet.setTotDeep(Double.parseDouble(in.readString()));
+        trajet.setTotRise(Double.parseDouble(in.readString()));
 
     }
 }
