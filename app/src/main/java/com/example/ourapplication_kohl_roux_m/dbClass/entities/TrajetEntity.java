@@ -10,6 +10,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.ourapplication_kohl_roux_m.ui.trajet.TrajetActivity;
+
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = CarEntity.class, parentColumns = "uid", childColumns = "Voiture_id"))
 public class TrajetEntity implements Comparable, Parcelable {
 
@@ -50,7 +52,6 @@ public class TrajetEntity implements Comparable, Parcelable {
         this.date = date;
     }
 */
-    private TrajetEntity () {};
 
     public TrajetEntity(@NonNull long carId, String name, @NonNull String date, double kmTot,
                         double totRise, double totDeep, double gasolinTot, double electricityTot) {
@@ -65,8 +66,6 @@ public class TrajetEntity implements Comparable, Parcelable {
     }
 
     public long getUid() { return uid; }
-
-//    public int getUid() { return uid; }
 
     public String getName() {
         return name;
@@ -176,32 +175,41 @@ public class TrajetEntity implements Comparable, Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        TrajetEntity trajet = this;
-        dest.writeString(trajet.name);
-        dest.writeString(trajet.date);
-        dest.writeString(String.valueOf(trajet.carId));
-        dest.writeString(String.valueOf(trajet.uid));
-        dest.writeString(String.valueOf(trajet.electricityTot));
-        dest.writeString(String.valueOf(trajet.gasolinTot));
-        dest.writeString(String.valueOf(trajet.kmTot));
-        dest.writeString(String.valueOf(trajet.totDeep));
-        dest.writeString(String.valueOf(trajet.totRise));
-
-
+        dest.writeLong(uid);
+        dest.writeLong(carId);
+        dest.writeString(name);
+        dest.writeString(date);
+        dest.writeDouble(kmTot);
+        dest.writeDouble(totRise);
+        dest.writeDouble(totDeep);
+        dest.writeDouble(gasolinTot);
+        dest.writeDouble(electricityTot);
     }
 
-    public void getFromParcel(Parcel in)
-    {
-        TrajetEntity trajet = new TrajetEntity();
-        trajet.setName(in.readString());
-        trajet.setDate(in.readString());
-        trajet.setCarId(Long.parseLong(in.readString()));
-        trajet.setUid(Long.parseLong(in.readString()));
-        trajet.setElectricityTot(Double.parseDouble(in.readString()));
-        trajet.setGasolinTot(Double.parseDouble(in.readString()));
-        trajet.setKmTot(Double.parseDouble(in.readString()));
-        trajet.setTotDeep(Double.parseDouble(in.readString()));
-        trajet.setTotRise(Double.parseDouble(in.readString()));
+    public static final Parcelable.Creator<TrajetEntity> CREATOR = new Parcelable.Creator<TrajetEntity>() {
+        @Override
+        public TrajetEntity createFromParcel(Parcel source) {
+            return new TrajetEntity(source);
+        }
 
+        @Override
+        public TrajetEntity[] newArray(int size) {
+            return new TrajetEntity[size];
+        }
+    };
+
+     public TrajetEntity(Parcel in) {
+        uid = in.readLong();
+        carId = in.readLong();
+        name = in.readString();
+        date = in.readString();
+        kmTot = in.readDouble();
+       totRise = in.readDouble();
+        totDeep = in.readDouble();
+        gasolinTot = in.readDouble();
+        electricityTot = in.readDouble();
     }
+
+
 }
+

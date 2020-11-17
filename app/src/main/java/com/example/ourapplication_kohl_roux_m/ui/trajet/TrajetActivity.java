@@ -19,7 +19,7 @@ public class TrajetActivity extends BaseActivity {
     Bundle bundle;
     private long carId;
     private long trajetId;
-    private TrajetEntity trajet;
+//    private TrajetEntity trajet;
     private CarEntity carConcerned;
 
     TextView nameTrajet;
@@ -46,28 +46,33 @@ public class TrajetActivity extends BaseActivity {
         navigationView.setCheckedItem(position);
 
         nameTrajet = findViewById(R.id.name);
-        modelCar = findViewById(R.id.modelCar);
-        nicknameCar = findViewById(R.id.nickNameCar);
+ //       modelCar = findViewById(R.id.modelCar);
+ //       nicknameCar = findViewById(R.id.nickNameCar);
         distance = findViewById(R.id.distance);
         down = findViewById(R.id.downTrip);
         up = findViewById(R.id.upTrip);
         consoElect = findViewById(R.id.consoElect);
         consoFuel = findViewById(R.id.consoFuel);
 
-        carId = (long) bundle.get("CarId");
-        trajetId = (long) bundle.get("TrajetId");
-        trajet = (TrajetEntity) bundle.get("Trajet");
-//        trajet = ((BaseApp)getApplication()).getDatabase().trajetDao().getById(trajetId);
-        carConcerned = ((BaseApp)getApplication()).getDatabase().carDao().getCar(carId);
+//        carId = (long) bundle.get("CardId");
+//        trajetId = (long) bundle.get("TrajetId");
+        TrajetEntity trajet = bundle.getParcelable("Trajet");
 
-        nameTrajet.setText(trajet.getName());
-        modelCar.setText(carConcerned.getModel());
-        nicknameCar.setText(carConcerned.getNickName());
-        distance.setText(String.valueOf(trajet.getKmTot()));
-        down.setText(String.valueOf(trajet.getTotDeep()));
-        up.setText(String.valueOf(trajet.getTotRise()));
-        consoElect.setText(String.valueOf(trajet.getElectricityTot()));
-        consoFuel.setText(String.valueOf(trajet.getGasolinTot()));
+        String name = trajet.getName();
+        double dist = trajet.getKmTot();
+        double deep = trajet.getTotDeep();
+        double rise =trajet.getTotRise();
+        double consoE = trajet.getElectricityTot();
+        double consoF = trajet.getGasolinTot();
+
+        nameTrajet.setText(name);
+//        modelCar.setText("modelOfCar" /*carConcerned.getModel() */);
+//        nicknameCar.setText("nameOfCar" /* carConcerned.getNickName() */ );
+        distance.setText(String.valueOf(dist));
+        down.setText(String.valueOf(deep));
+        up.setText(String.valueOf(rise));
+        consoElect.setText(String.valueOf(consoE));
+        consoFuel.setText(String.valueOf(consoF));
 
     }
 }

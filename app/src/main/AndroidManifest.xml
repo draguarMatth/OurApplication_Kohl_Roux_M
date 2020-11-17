@@ -60,7 +60,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
-
        <activity
            android:name=".ui.management.consumptionInputs.NewTrajetConsumptionInput"
            android:label="Saisie de vos données de connsommation"
@@ -70,9 +69,6 @@
            android:name="android.support.PARENT_ACTIVITY"
            android:value="com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip" />
        </activity>
-        <activity
-           android:name=".ui.BaseActivity"
-           android:theme="@style/AppTheme.NoActionBar" />
       <activity
            android:name=".ui.management.CreateTrip"
            android:label="Nouveau trajet"
@@ -82,18 +78,15 @@
                android:name="android.support.PARENT_ACTIVITY"
                android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
        </activity>
- <!--                      <activity
-                           android:name=".ui.BaseActivity"
-                           android:theme="@style/AppTheme.NoActionBar" />
-                       <activity
-                           android:name=".ui.account.AccountDetailActivity"
-                           android:theme="@style/AppTheme.NoActionBar"
-                           android:parentActivityName=".ui.account.AccountsActivity">
-                           <meta-data
-                               android:name="android.support.PARENT_ACTIVITY"
-                               android:value="ch.hevs.aislab.demo.ui.account.AccountsActivity" />
-                       </activity>
-                       -->
+       <activity
+           android:name=".ui.trajet.TrajetActivity"
+           android:theme="@style/AppTheme.NoActionBar"
+           android:parentActivityName=".ui.trajet.ListTrajet_BazActivity">
+           <meta-data
+               android:name="android.support.PARENT_ACTIVITY"
+               android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
+       </activity>
+
     </application>
 
 </manifest>
