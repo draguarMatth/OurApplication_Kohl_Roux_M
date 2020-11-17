@@ -16,16 +16,15 @@ import java.util.List;
 
 @Dao
 public interface DbTrajetDao {
-//    TrajetEntity trajetEntity = new TrajetEntity();
 
     @Query("SELECT * FROM trajets WHERE Date LIKE (:date)")
-    LiveData<List<TrajetEntity>> getByDate(String date);
+    TrajetEntity getByDate(String date);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name)")
-    /* LiveData<TrajetEntity> */ LiveData<List<TrajetEntity>> getByName(String name);
+    LiveData<List<TrajetEntity>> getByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId)")
-        LiveData<List<TrajetEntity>> /* LiveData<List<TrajetByThisCar>> */ getByCarId(long carId);
+        LiveData<List<TrajetEntity>> getByCarId(long carId);
 
     @Query("SELECT * FROM trajets")
     LiveData<List<TrajetEntity>> getAll();
@@ -33,8 +32,8 @@ public interface DbTrajetDao {
     @Query("SELECT * FROM trajets")
     List<TrajetEntity> getAllTrajets();
 
-    @Query("SELECT * FROM trajets WHERE Voiture_id = :carId Limit 1")
-    List<TrajetEntity> getAllTrajetsByCar(long carId);
+    @Query("SELECT * FROM trajets WHERE uid = (:uid) Limit 1")
+    TrajetEntity getById(long uid);
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")
     List<TrajetEntity> loadAllByIds(long[] trajetIds);
@@ -61,19 +60,19 @@ public interface DbTrajetDao {
     TrajetEntity findByIntevalDeep(double deep);
 
     @Insert
-    void insertAll(TrajetEntity... trajets);
+    void insertAll(TrajetEntity... trajets) throws SQLiteConstraintException;
 
     @Insert
-    void insert(TrajetEntity trajetEntity) throws SQLiteConstraintException;
+    long insert(TrajetEntity trajetEntity) throws SQLiteConstraintException;
 
     @Update
     public void update(TrajetEntity trajets);
 
-    @Update
+/*    @Update
     public void updateConsoGasolin(TrajetEntity trajetEntity);
     @Update
     public void updateConsoElectric(TrajetEntity trajetEntity);
-
+*/
     @Delete
     void delete(TrajetEntity trajetEntity);
 

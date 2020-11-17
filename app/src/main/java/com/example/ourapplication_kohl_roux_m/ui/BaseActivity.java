@@ -6,10 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 
 import com.example.ourapplication_kohl_roux_m.ui.car.CarDescriptionActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.ConsumptionsCapture;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.TrajetActivity;
+import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
@@ -61,6 +59,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.base_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -121,7 +120,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_map) {
             intent = new Intent(this, map_dernier_trajet.class);
         } else if (id == R.id.nav_consumption) {
-            intent = new Intent(this, ConsumptionsCapture.class);
+            intent = new Intent(this, NewTrajetConsumptionInput.class);
         } else if (id == R.id.nav_logout) {
             logout();
         }

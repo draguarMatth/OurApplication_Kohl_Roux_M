@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ourapplication_kohl_roux_m">
 
     <application
@@ -11,8 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+ <!--       <activity
+            android:name=".ui.InitApp"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+ -->
         <activity
-            android:name=".ui.main_app"
+            android:name=".ui.InitApp"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +34,16 @@
        <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".ui.main_app"
+            android:parentActivityName=".ui.InitApp"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.main_app" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.InitApp" />
         </activity>
         <activity
+            android:name=".ui.BaseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+ <!--       <activity
             android:name=".ui.management.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".ui.MainActivity">
@@ -37,14 +51,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
-        <activity
+-->        <activity
             android:name=".ui.trajet.ListTrajet_BazActivity"
             android:label="/ @string/title_activity_ListTrajet"
-            android:parentActivityName=".ui.main_app"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.main_app" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
 
        <activity
@@ -59,15 +73,15 @@
         <activity
            android:name=".ui.BaseActivity"
            android:theme="@style/AppTheme.NoActionBar" />
-          <activity
-                           android:name=".ui.management.CreateTrip"
-                           android:label="Nouveau trajet"
-                           android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
-                           android:theme="@style/AppTheme.NoActionBar">
-                           <meta-data
-                               android:name="android.support.PARENT_ACTIVITY"
-                               android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
-                       </activity>
+      <activity
+           android:name=".ui.management.CreateTrip"
+           android:label="Nouveau trajet"
+           android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
+           android:theme="@style/AppTheme.NoActionBar">
+           <meta-data
+               android:name="android.support.PARENT_ACTIVITY"
+               android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
+       </activity>
  <!--                      <activity
                            android:name=".ui.BaseActivity"
                            android:theme="@style/AppTheme.NoActionBar" />

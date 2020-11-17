@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs;
+package com.example.ourapplication_kohl_roux_m.a_VOIR;
 
 public class ItemValue {
 

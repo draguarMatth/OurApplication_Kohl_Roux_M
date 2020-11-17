@@ -88,21 +88,8 @@ public class TrajetListViewModel extends AndroidViewModel {
         return observableTrajets;
     }
 
-    /**
-     * Expose the LiveData AccountEntities query so the UI can observe it.
-     */
-/*    public LiveData<List<AccountEntity>> getOwnAccounts() {
-        return observableOwnAccounts;
-    }
-*/
     public void deleteTrajet(TrajetEntity trajet, OnAsyncEventListener callback) {
         repository.delete(trajet, callback, application);
     }
 
-/*    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
-                                   OnAsyncEventListener callback) {
-        repository.transaction(sender, recipient, callback, application);
-
-    }
- */
 }

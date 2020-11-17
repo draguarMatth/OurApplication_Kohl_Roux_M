@@ -16,11 +16,6 @@ public class DatabaseInitializer {
         task.execute();
     }
 
- /*   private static void addTrajet(final AppDataBase db, final int carId, final String date) {
-        TrajetEntity trajetEntity = new TrajetEntity(carId, date);
-        db.trajetDao().insert(trajetEntity);
-    }
-*/
     private static void addTrajet(final AppDataBase db, final long carId, final String name, final String date,
                                       final double kmTot, final double totRise, final double totDeep,
                                       final double gasolinTot, final double electricityTot) {
@@ -28,32 +23,25 @@ public class DatabaseInitializer {
         db.trajetDao().insert(trajetEntity);
     }
 
-/*    private static void addCar(final AppDataBase db, final String carTradeMark, final String model,
-                               final double consoEssence, final double batteryPower, Boolean activate) {
-
-        CarEntity carEntity = new CarEntity(carTradeMark, model, consoEssence, batteryPower, activate);
-        db.carDao().insert(carEntity);
-    }
-
- */
     private static void addCar(final AppDataBase db, final String nickName, final String carTradeMark, final String model,
                                final double consoEssence, final double batteryPower, final String wheelSize, final boolean carForTrip) {
 
         CarEntity carEntity = new CarEntity(nickName, carTradeMark, model, consoEssence, batteryPower, wheelSize, carForTrip);
         db.carDao().insert(carEntity);
     }
-    // String nickName, @NonNull String carTradeMark, @NonNull String model,
-    //               double consoEssence, double batteryPower, double wheelSize, @NonNull boolean carForTrip
 
     private static void populateWithTestData(AppDataBase db) {
-//        db.carDao().deleteAll();
-//        db.trajetDao().deleteAll();
+        db.carDao().deleteAll();
+        db.trajetDao().deleteAll();
 
         addCar(db, "titine","Hyundahi", "Bionic", 1.1, 8.9, "205 55 R16",true);
         addCar(db, "CharAbeuh","Fourragie", "TTonic", 3.4, 7.2, "",true);
 
-        //       addCar(db, "Merco", "Cé 350", 2.1, 6.2);
-        // String name, float kmTot, String date, float totRise, float totDeep, float gasolinTot, float electricityTot
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         addTrajet(db, db.carDao().getActive().get(0).getUid(),"Anonymous", "07 novembre 2020", 0, 0,0,0,0);
         addTrajet(db, db.carDao().getActive().get(0).getUid(), "Jvéoboulo","07.11.2019", 152.3, 3, 4, 5, 95);

@@ -11,7 +11,7 @@ import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class CreateTrajet extends AsyncTask<TrajetEntity, Void, Void> {
 
-//    private AppDataBase database;
+//    private AppDataBase appDatabase;
     private Application application;
     private OnAsyncEventListener callback;
     private Exception exception;
@@ -25,8 +25,11 @@ public class CreateTrajet extends AsyncTask<TrajetEntity, Void, Void> {
     @Override
     protected Void doInBackground(TrajetEntity... params) {
         try {
-            for (TrajetEntity trajetEntity : params)
+            AppDataBase.getInstance(application.getBaseContext()).getDatabaseCreated();
+
+            for (TrajetEntity trajetEntity : params) {
                 ((BaseApp) application).getDatabase().trajetDao().insert(trajetEntity);
+            }
         } catch (Exception e) {
             exception = e;
         }

@@ -24,7 +24,6 @@ public class CarMyListViewModel extends AndroidViewModel {
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<CarEntity>> observableCars;
- //   private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
 
     public CarMyListViewModel(@NonNull Application application,
                                 CarRepository carRepository) {
@@ -34,38 +33,31 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         repository = carRepository;
 
-//        observableClientAccounts = new MediatorLiveData<>();
         observableCars = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
         observableCars.setValue(null);
 
         LiveData<List<CarEntity>> carList =
                 repository.getMyCars(application);
-   //     LiveData<List<CarEntity>> ownAccounts = repository.getMyCars(application);
+
 
         // observe the changes of the entities from the database and forward them
-//        observableClientAccounts.addSource(clientAccounts, observableClientAccounts::setValue);
         observableCars.addSource(carList, observableCars::setValue);
     }
 
     /**
-     * A creator is used to inject the account id into the ViewModel
+     * A creator is used to inject the id into the ViewModel
      */
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
         private final Application application;
 
-//        private final boolean active;
-
         private final CarRepository repository;
-
-//        private final AccountRepository accountRepository;
 
         public Factory(@NonNull Application application) {
             this.application = application;
             repository = ((BaseApp) application).getCarRepository();
-//            accountRepository = ((BaseApp) application).getAccountRepository();
         }
 
         @Override
@@ -76,19 +68,12 @@ public class CarMyListViewModel extends AndroidViewModel {
     }
 
     /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     * Expose the LiveData MyCars query so the UI can observe it.
      */
     public LiveData<List<CarEntity>> getMyCarsViewMod() {
         return observableCars;
     }
 
-    /**
-     * Expose the LiveData AccountEntities query so the UI can observe it.
-     */
- /*   public LiveData<List<CarEntity>> getOwnAccounts() {
-        return observableCars;
-    }
-*/
     public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
         repository.delete(carEntity, callback, application);
     }

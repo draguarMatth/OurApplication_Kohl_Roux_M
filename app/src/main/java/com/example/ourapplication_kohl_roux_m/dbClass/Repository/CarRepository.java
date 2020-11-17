@@ -40,8 +40,6 @@ public class CarRepository {
         LiveData <List<CarEntity>> carsLiveD = ((BaseApp)application).getDatabase().carDao().getByActivity();
         List <CarEntity> cars = carsLiveD.getValue();
 
-        System.out.println("---------------- Cars ------------------" + cars.size() + " ---------------- " + "cars.get(0).toString()");
-
         return ((BaseApp) application).getDatabase().carDao().getByActivity();
     }
 

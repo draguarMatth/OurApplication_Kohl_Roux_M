@@ -40,6 +40,7 @@ public abstract class AppDataBase extends RoomDatabase {
                     instance = buildDatabase(context.getApplicationContext());
                     instance.updateDatabaseCreated(context.getApplicationContext());
                 }
+                instance.updateDatabaseCreated(context.getApplicationContext());
             }
         }
         return instance;
@@ -80,10 +81,15 @@ public abstract class AppDataBase extends RoomDatabase {
         });
     }
 
+    public static void initialiizeDb(Context appContext) {
+        Room.databaseBuilder(appContext, AppDataBase.class, DATABASE_NAME);
+    }
+
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
     private void updateDatabaseCreated(final Context context) {
+        System.out.println("//////////////////////////////////////////////////////////////////////////////");
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             Log.i(TAG, "Database initialized.");
             setDatabaseCreated();
@@ -95,6 +101,9 @@ public abstract class AppDataBase extends RoomDatabase {
     }
 
     public LiveData<Boolean> getDatabaseCreated() {
+
+        System.out.println("------------------base CREE --------------------------------------");
+
         return isDatabaseCreated;
     }
 

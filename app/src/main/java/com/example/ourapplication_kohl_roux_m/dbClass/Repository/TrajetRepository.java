@@ -36,7 +36,7 @@ public class TrajetRepository {
         return ((BaseApp) application).getDatabase().trajetDao().getAll();
     }
 
-    public LiveData<List<TrajetEntity>> getTrajetByDate(final String date, Application application) {
+    public static TrajetEntity getTrajetByDate(final String date, Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByDate(date);
     }
 
@@ -47,6 +47,10 @@ public class TrajetRepository {
     public LiveData<List<TrajetEntity>> getTrajetByName(final String name,
                                                         Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByName(name);
+    }
+
+    public TrajetEntity getTrajetById (final long trajetId, Application application){
+        return ((BaseApp) application).getDatabase().trajetDao().getById(trajetId);
     }
 
     public void insert(final TrajetEntity trajetEntity, OnAsyncEventListener callback,

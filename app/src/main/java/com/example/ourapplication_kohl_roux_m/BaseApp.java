@@ -21,11 +21,6 @@ public class BaseApp extends Application {
         return AppDataBase.getInstance(this);
     }
 
-/*    public CarRepository getCarRepository(long id) {
-        return CarRepository.getInstance();
-    }
-
- */
     public CarRepository getCarRepository() {
         return CarRepository.getInstance();
     }

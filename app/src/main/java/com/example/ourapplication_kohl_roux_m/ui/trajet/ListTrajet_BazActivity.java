@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -43,27 +44,19 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
     private List<TrajetEntity> trajets;
     private RecyclerAdapter<TrajetEntity> adapter;
-//    private TrajetListViewModel viewModel;
     private TrajetListViewModel viewModel;
-//    private TrajetListByCarViewModel viewModel;
-    private Intent previousIntent;
-    private int carId;
+    private long carId = 1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
-//        previousIntent = getIntent();
 
-        setTitle(/* getString(R.string.title_activity_accounts) */ "Liste Trajets");
+        setTitle( "Liste Trajets");
         navigationView.setCheckedItem(position);
 
         RecyclerView recyclerView = findViewById(R.id.trajetsRecyclerView);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        // mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -73,23 +66,23 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-//        SharedPreferences settings = getSharedPreferences(BaseActivity.PREFS_NAME, 0);
-//        String user = settings.getString(BaseActivity.PREFS_USER, null);
-
 
         trajets = new ArrayList<>();
-        adapter = new RecyclerAdapter<TrajetEntity>(new RecyclerViewItemClickListener() {
+        adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + trajets.get(position).getName());
 
+                TrajetEntity trajet = trajets.get(position);
                 Intent intent = new Intent(ListTrajet_BazActivity.this, TrajetActivity.class);
                 intent.setFlags(
                         Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                 Intent.FLAG_ACTIVITY_NO_HISTORY
                 );
-//                intent.putExtra("TraejtId", trajets.get(position).getUid());
+                intent.putExtra("Trajet", (Parcelable) trajet);
+                intent.putExtra("TrajetId", trajets.get(position).getUid());
+                intent.putExtra("CardId", carId);
                 startActivity(intent);
             }
 
@@ -97,7 +90,6 @@ public class ListTrajet_BazActivity extends BaseActivity {
             public void onItemLongClick(View v, int position) {
                 Log.d(TAG, "longClicked position:" + position);
                 Log.d(TAG, "longClicked on: " + trajets.get(position).getName());
-
                 createDeleteDialog(position);
             }
         });
@@ -105,31 +97,16 @@ public class ListTrajet_BazActivity extends BaseActivity {
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
                     Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
-         /*           intent.setFlags(
+                    intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
-
-          */
+                    intent.putExtra("CarId", carId);
                     startActivity(intent);
                 }
         );
 
-
-/*        Bundle idcarBundle = previousIntente.getExtras();
-        carId = (int) idcarBundle.get("CarId");
-*/
-     //   String traj = "Jvéoboulot";
-/*        TrajetListByCarViewModel.Factory factory = new TrajetListByCarViewModel.Factory(
-                getApplication(), carId);
-        viewModel = ViewModelProviders.of(this, factory).get(TrajetListByCarViewModel.class);
-        viewModel.getTrajetByCarViewModel().observe(this, trajetsL -> {
-            if (trajetsL != null) {
-                trajets = trajetsL;
-                adapter.setData(trajets);
-            }
-        });
-*/        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
+        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
                 getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(TrajetListViewModel.class);
         viewModel.getTrajetsviewMod().observe(this, trajetsL -> {
@@ -149,30 +126,29 @@ public class ListTrajet_BazActivity extends BaseActivity {
             return false;
         }
 
-
-        /*
-        The activity has to be finished manually in order to guarantee the navigation hierarchy working.
-        */
         finish();
         return super.onNavigationItemSelected(item);
 
     }
 
     private void createDeleteDialog(final int position) {
+
         final TrajetEntity trajet = trajets.get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
+
         final View view = inflater.inflate(R.layout.row_delete_item, null);
+
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Attention, ne fois effacé, ce trajet sera définitivement perdu !");
-        alertDialog.setCancelable(false);
+        alertDialog.setTitle("Trajet effacé, Trajet perdu");
+        alertDialog.setCancelable(true);
 
         final TextView deleteMessage = view.findViewById(R.id.tv_delete_item);
-        deleteMessage.setText("Attention, une fois effacé, ce trajet, " + trajet.getName() + ", sera définitivement perdu !");
+        deleteMessage.setText("Attention, " + trajet.getName() + ", sera définitivement perdu !");
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Ce trajet a bien été effacé.", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Trajet effacé.", Toast.LENGTH_LONG);
+
             viewModel.deleteTrajet(trajet, new OnAsyncEventListener() {
-            //viewModel.deleteTrajetViewModel(trajet, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
                     Log.d(TAG, "deleteAccount: success");
@@ -182,9 +158,11 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 public void onFailure(Exception e) {
                     Log.d(TAG, "deleteAccount: failure", e);
                 }
-            } /* , getApplication() */);
+            }
+            );
             toast.show();
         });
+        alertDialog.show();
     }
 
 }

@@ -77,6 +77,17 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/saveTrip"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="@string/fin_du_voyage_save_all"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints" />
+
     <!--   <TextView
            android:id="@+id/voitureId"
            android:layout_width="222dp"

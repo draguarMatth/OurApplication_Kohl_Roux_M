@@ -1,5 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.dbClass.entities;
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -9,10 +11,10 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = CarEntity.class, parentColumns = "uid", childColumns = "Voiture_id"))
-public class TrajetEntity implements Comparable {
+public class TrajetEntity implements Comparable, Parcelable {
 
     @PrimaryKey(autoGenerate = true)
-    public long uid = 1;
+    public long uid;
 
     @ColumnInfo(name="Voiture_id")
     @NonNull
@@ -145,4 +147,37 @@ public class TrajetEntity implements Comparable {
         return toString().compareTo(o.toString());
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        TrajetEntity trajet = this;
+        dest.writeString(trajet.name);
+        dest.writeString(trajet.date);
+        dest.writeString(String.valueOf(trajet.carId));
+        dest.writeString(String.valueOf(trajet.uid));
+        dest.writeString(String.valueOf(trajet.electricityTot));
+        dest.writeString(String.valueOf(trajet.gasolinTot));
+        dest.writeString(String.valueOf(trajet.kmTot));
+        dest.writeString(String.valueOf(trajet.totDeep));
+        dest.writeString(String.valueOf(trajet.totRise));
+
+
+    }
+
+    public void getFromParcel(Parcel in)
+    {
+
+        TrajetEntity(@NonNull long carId, String name, @NonNull String date, double kmTot,
+        double totRise, double totDeep, double gasolinTot, double electricityTot);
+
+            TrajetEntity trajet = new TrajetEntity();
+            trajet.setName(in.readString());
+            trajet.setDate(in.readString());
+            this.add(pers);
+
+    }
 }

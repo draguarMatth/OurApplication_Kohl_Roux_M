@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -26,14 +27,6 @@ public interface DbCarDao {
     @Query("SELECT * FROM cars WHERE active = 1 ")
     LiveData<List<CarEntity>> getByActivity();
 
-/*    @Query("SELECT * FROM carEntity WHERE uid LIKE (:UID) LIMIT 1")
-    CarEntity getById(int UID);
-
-    @Query("SELECT * FROM carEntity")
-    List<CarEntity> getAllCar();
-
- */
-
     @Query("SELECT * FROM cars WHERE uid = (:uid) ")
     CarEntity getCar(long uid);
 
@@ -44,7 +37,10 @@ public interface DbCarDao {
     CarEntity findByNickName(String name);
 
     @Insert
-    public void insert(CarEntity carEntity) throws SQLiteConstraintException;
+    long insert(CarEntity carEntity) throws SQLiteConstraintException;
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<CarEntity> carEntityList);
 
     @Update
     public void update(CarEntity carEntity);

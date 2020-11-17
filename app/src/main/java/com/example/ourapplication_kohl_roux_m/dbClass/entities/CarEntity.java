@@ -10,7 +10,7 @@ public class CarEntity implements Comparable {
 
     @ColumnInfo(name="uid")
     @PrimaryKey(autoGenerate = true)
-    public long uid = 1;
+    public long uid;
 
     @ColumnInfo(name="Nickname")
     public String nickName;
