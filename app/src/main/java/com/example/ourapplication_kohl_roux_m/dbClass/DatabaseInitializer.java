@@ -21,7 +21,7 @@ public class DatabaseInitializer {
         db.trajetDao().insert(trajetEntity);
     }
 */
-    private static void addTrajet(final AppDataBase db, final int carId, final String name, final String date,
+    private static void addTrajet(final AppDataBase db, final long carId, final String name, final String date,
                                       final double kmTot, final double totRise, final double totDeep,
                                       final double gasolinTot, final double electricityTot) {
         TrajetEntity trajetEntity = new TrajetEntity(carId, name, date, kmTot, totRise, totDeep, gasolinTot, electricityTot);
@@ -46,17 +46,19 @@ public class DatabaseInitializer {
     //               double consoEssence, double batteryPower, double wheelSize, @NonNull boolean carForTrip
 
     private static void populateWithTestData(AppDataBase db) {
-        db.carDao().deleteAll();
-        db.trajetDao().deleteAll();
+//        db.carDao().deleteAll();
+//        db.trajetDao().deleteAll();
 
-        addCar(db, "","Hyundahi", "Bionic", 1.1, 8.9, "",true);
- //       addCar(db, "Merco", "Cé 350", 2.1, 6.2);
+        addCar(db, "titine","Hyundahi", "Bionic", 1.1, 8.9, "205 55 R16",true);
+        addCar(db, "CharAbeuh","Fourragie", "TTonic", 3.4, 7.2, "",true);
+
+        //       addCar(db, "Merco", "Cé 350", 2.1, 6.2);
         // String name, float kmTot, String date, float totRise, float totDeep, float gasolinTot, float electricityTot
 
-        addTrajet(db, db.carDao().getActive(),"Anonymous", "07 novembre 2020", 0, 0,0,0,0);
-        addTrajet(db, db.carDao().getActive(), "Jvéoboulo","07.11.2019", 152.3, 3, 4, 5, 95);
-        addTrajet(db, db.carDao().getActive(), "", "24.02.2020", 64.8, 12, 3, 42.3, 56.4);
-        addTrajet(db, db.carDao().getActive(), "Parlavass","12.08.2020", 152.3, 3, 4, 12.6, 60);
+        addTrajet(db, db.carDao().getActive().get(0).getUid(),"Anonymous", "07 novembre 2020", 0, 0,0,0,0);
+        addTrajet(db, db.carDao().getActive().get(0).getUid(), "Jvéoboulo","07.11.2019", 152.3, 3, 4, 5, 95);
+        addTrajet(db, db.carDao().getActive().get(0).getUid(), "", "24.02.2020", 64.8, 12, 3, 42.3, 56.4);
+        addTrajet(db, db.carDao().getActive().get(0).getUid(), "Parlavass","12.08.2020", 152.3, 3, 4, 12.6, 60);
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

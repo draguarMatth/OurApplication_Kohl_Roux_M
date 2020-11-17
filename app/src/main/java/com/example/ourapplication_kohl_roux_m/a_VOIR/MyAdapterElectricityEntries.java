@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs;
+package com.example.ourapplication_kohl_roux_m.a_VOIR;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MyAdapterElectricityEntries extends RecyclerView.Adapter<MyAdapterElectricityEntries.MyViewHolder>{
+/*public class MyAdapterElectricityEntries extends RecyclerView.Adapter<MyAdapterElectricityEntries.MyViewHolder>{
 
     private ItemValue defaultValue = new ItemValue(0.0);
     private List <ItemValue> electricityValues;
@@ -64,7 +64,7 @@ public class MyAdapterElectricityEntries extends RecyclerView.Adapter<MyAdapterE
                 });
 
   */
-            }
+/*            }
 
             public void display(ItemValue electValue) {
                 currentValue = electValue;
@@ -73,3 +73,4 @@ public class MyAdapterElectricityEntries extends RecyclerView.Adapter<MyAdapterE
         }
 
 }
+*/

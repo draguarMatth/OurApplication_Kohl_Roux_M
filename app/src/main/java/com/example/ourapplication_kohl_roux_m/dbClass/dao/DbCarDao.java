@@ -18,7 +18,7 @@ public interface DbCarDao {
 //    CarEntity carEntity = new CarEntity();
 
     @Query("SELECT * FROM cars WHERE uid IN (:carIds)")
-    LiveData<CarEntity> getById(int [] carIds);
+    LiveData<CarEntity> getById(long [] carIds);
 
     @Query("SELECT * FROM cars")
     LiveData<List<CarEntity>> getAll();
@@ -35,16 +35,16 @@ public interface DbCarDao {
  */
 
     @Query("SELECT * FROM cars WHERE uid = (:uid) ")
-    CarEntity getCar(int uid);
+    CarEntity getCar(long uid);
 
-    @Query("SELECT uid FROM cars WHERE active = 1 ")
-    int getActive();
+    @Query("SELECT * FROM cars WHERE active = 1 ")
+    List<CarEntity> getActive();
 
     @Query("SELECT * FROM cars WHERE Nickname LIKE (:name)")
     CarEntity findByNickName(String name);
 
     @Insert
-    void insert(CarEntity carEntity) throws SQLiteConstraintException;
+    public void insert(CarEntity carEntity) throws SQLiteConstraintException;
 
     @Update
     public void update(CarEntity carEntity);

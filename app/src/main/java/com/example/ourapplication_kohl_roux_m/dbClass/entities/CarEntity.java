@@ -10,7 +10,7 @@ public class CarEntity implements Comparable {
 
     @ColumnInfo(name="uid")
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    public long uid = 1;
 
     @ColumnInfo(name="Nickname")
     public String nickName;
@@ -49,8 +49,8 @@ public class CarEntity implements Comparable {
 
  */
 
-    public CarEntity(String nickName, @NonNull String carTradeMark, @NonNull String model,
-                     double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
+    public CarEntity(@NonNull String nickName, @NonNull String carTradeMark, @NonNull String model,
+                     @NonNull double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
         this.nickName = nickName;
         this.carTradeMark = carTradeMark;
         this.model = model;
@@ -60,7 +60,7 @@ public class CarEntity implements Comparable {
         this.carForTrip = carForTrip;
     }
 
-    public int getUid() {
+    public long getUid() {
         return uid;
     }
 
@@ -68,12 +68,10 @@ public class CarEntity implements Comparable {
         return nickName;
     }
 
-    @NonNull
     public String getCarTradeMark() {
         return carTradeMark;
     }
 
-    @NonNull
     public String getModel() {
         return model;
     }

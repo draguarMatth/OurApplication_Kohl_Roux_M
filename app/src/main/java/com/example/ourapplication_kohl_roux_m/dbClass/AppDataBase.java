@@ -59,12 +59,25 @@ public abstract class AppDataBase extends RoomDatabase {
                         super.onCreate(db);
                         Executors.newSingleThreadExecutor().execute(() -> {
                             AppDataBase database = AppDataBase.getInstance(appContext);
-                            DatabaseInitializer.populateDatabase(database);
+   //                         DatabaseInitializer.populateDatabase(database);
+                            initializeDemoData(database);
                             // notify that the database was created and it's ready to be used
                             database.setDatabaseCreated();
                         });
                     }
                 }).build();
+    }
+
+    public static void initializeDemoData(final AppDataBase database) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            database.runInTransaction(() -> {
+                Log.i(TAG, "Wipe database.");
+             //   database.trajetDao().deleteAll();
+             //   database.carDao().deleteAll();
+
+                DatabaseInitializer.populateDatabase(database);
+            });
+        });
     }
 
     /**

@@ -40,8 +40,8 @@ public class CarMyListViewModel extends AndroidViewModel {
         observableCars.setValue(null);
 
         LiveData<List<CarEntity>> carList =
-                carRepository.getMyCars(application);
-        LiveData<List<CarEntity>> ownAccounts = repository.getMyCars(application);
+                repository.getMyCars(application);
+   //     LiveData<List<CarEntity>> ownAccounts = repository.getMyCars(application);
 
         // observe the changes of the entities from the database and forward them
 //        observableClientAccounts.addSource(clientAccounts, observableClientAccounts::setValue);
@@ -58,37 +58,37 @@ public class CarMyListViewModel extends AndroidViewModel {
 
 //        private final boolean active;
 
-        private final CarRepository carRepsitory;
+        private final CarRepository repository;
 
 //        private final AccountRepository accountRepository;
 
         public Factory(@NonNull Application application) {
             this.application = application;
-            carRepsitory = ((BaseApp) application).getCarRepository();
+            repository = ((BaseApp) application).getCarRepository();
 //            accountRepository = ((BaseApp) application).getAccountRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new CarMyListViewModel(application, carRepsitory);
+            return (T) new CarMyListViewModel(application, repository);
         }
     }
 
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<CarEntity>> getMyCars() {
+    public LiveData<List<CarEntity>> getMyCarsViewMod() {
         return observableCars;
     }
 
     /**
      * Expose the LiveData AccountEntities query so the UI can observe it.
      */
-    public LiveData<List<CarEntity>> getOwnAccounts() {
+ /*   public LiveData<List<CarEntity>> getOwnAccounts() {
         return observableCars;
     }
-
+*/
     public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
         repository.delete(carEntity, callback, application);
     }

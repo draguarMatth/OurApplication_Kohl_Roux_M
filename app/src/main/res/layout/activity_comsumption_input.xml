@@ -51,7 +51,7 @@
         android:ems="16"
         android:gravity="start|top"
         android:scrollbars="vertical"
-        />
+        tools:listitem="@layout/activity_list_trajet" />
  <!--   <EditText
         android:id="@+id/editTextTextCarb"
         android:layout_width="140dp"
@@ -113,8 +113,9 @@
         android:ems="16"
         android:gravity="start|center_horizontal"
         android:inputType="text"
+        android:scrollbars="vertical"
         android:visibility="visible"
-        android:scrollbars="vertical" />
+        tools:listitem="@layout/activity_list_trajet" />
  <!--   <EditText
         android:id="@+id/editTextTElect"
         android:layout_width="140dp"

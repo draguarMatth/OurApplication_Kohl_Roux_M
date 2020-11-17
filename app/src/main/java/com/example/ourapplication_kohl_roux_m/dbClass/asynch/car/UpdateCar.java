@@ -1,20 +1,22 @@
 package com.example.ourapplication_kohl_roux_m.dbClass.asynch.car;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class UpdateCar extends AsyncTask<CarEntity, Void, Void> {
 
-    private AppDataBase database;
+    private Application application;
     private OnAsyncEventListener callback;
     private Exception exception;
 
-    public UpdateCar(Context context, OnAsyncEventListener callback) {
-        database = AppDataBase.getInstance(context);
+    public UpdateCar(Application application, OnAsyncEventListener callback) {
+        this.application = application;
         this.callback = callback;
     }
 
@@ -22,7 +24,7 @@ public class UpdateCar extends AsyncTask<CarEntity, Void, Void> {
     protected Void doInBackground(CarEntity... params) {
         try {
             for (CarEntity carEntity : params)
-                database.carDao().update(carEntity);
+                ((BaseApp) application).getDatabase().carDao().update(carEntity);
         } catch (Exception e) {
             exception = e;
         }

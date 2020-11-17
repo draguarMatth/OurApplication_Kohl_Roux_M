@@ -60,7 +60,7 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
 
         private final String tripName;
 
- //       private final int carId;
+ //       private final long carId;
 
         private final TrajetRepository trajetRepository;
 

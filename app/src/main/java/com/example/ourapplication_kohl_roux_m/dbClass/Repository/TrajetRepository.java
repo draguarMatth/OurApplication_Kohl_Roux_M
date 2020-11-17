@@ -40,7 +40,7 @@ public class TrajetRepository {
         return ((BaseApp) application).getDatabase().trajetDao().getByDate(date);
     }
 
-    public LiveData<List<TrajetByThisCar>> getTrajetByCarId(final int carId, Application application) {
+    public LiveData<List<TrajetEntity>> getTrajetByCarId(final long carId, Application application) {
         return ((BaseApp) application).getDatabase().trajetDao().getByCarId(carId);
     }
 

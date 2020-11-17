@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
+import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class TrajetListViewModel extends AndroidViewModel {
 
        // private final String tripName;
 
-        //       private final int carId;
+        //       private final long carId;
 
         private final TrajetRepository trajetRepository;
 
@@ -93,12 +94,12 @@ public class TrajetListViewModel extends AndroidViewModel {
 /*    public LiveData<List<AccountEntity>> getOwnAccounts() {
         return observableOwnAccounts;
     }
-
-    public void deleteAccount(AccountEntity account, OnAsyncEventListener callback) {
-        repository.delete(account, callback, application);
+*/
+    public void deleteTrajet(TrajetEntity trajet, OnAsyncEventListener callback) {
+        repository.delete(trajet, callback, application);
     }
 
-    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
+/*    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
                                    OnAsyncEventListener callback) {
         repository.transaction(sender, recipient, callback, application);
 

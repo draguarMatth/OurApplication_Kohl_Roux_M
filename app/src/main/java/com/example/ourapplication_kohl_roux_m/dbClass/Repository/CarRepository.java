@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
+import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.UpdateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
@@ -31,11 +32,16 @@ public class CarRepository {
         return instance;
     }
 
-    public LiveData<CarEntity> getCar(final int [] carId, Application application) {
+    public LiveData<CarEntity> getCar(final long [] carId, Application application) {
         return ((BaseApp) application).getDatabase().carDao().getById(carId);
     }
 
     public LiveData<List<CarEntity>> getMyCars(Application application) {
+        LiveData <List<CarEntity>> carsLiveD = ((BaseApp)application).getDatabase().carDao().getByActivity();
+        List <CarEntity> cars = carsLiveD.getValue();
+
+        System.out.println("---------------- Cars ------------------" + cars.size() + " ---------------- " + "cars.get(0).toString()");
+
         return ((BaseApp) application).getDatabase().carDao().getByActivity();
     }
 

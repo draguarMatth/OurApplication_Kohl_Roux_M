@@ -1,11 +1,15 @@
 package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
@@ -22,8 +26,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
 import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
+import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
+import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByCarViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,12 +43,18 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
     private List<TrajetEntity> trajets;
     private RecyclerAdapter<TrajetEntity> adapter;
+//    private TrajetListViewModel viewModel;
     private TrajetListViewModel viewModel;
+//    private TrajetListByCarViewModel viewModel;
+    private Intent previousIntent;
+    private int carId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
+//        previousIntent = getIntent();
 
         setTitle(/* getString(R.string.title_activity_accounts) */ "Liste Trajets");
         navigationView.setCheckedItem(position);
@@ -76,7 +89,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
                         Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                 Intent.FLAG_ACTIVITY_NO_HISTORY
                 );
-                intent.putExtra("TraejtId", trajets.get(position).getUid());
+//                intent.putExtra("TraejtId", trajets.get(position).getUid());
                 startActivity(intent);
             }
 
@@ -91,7 +104,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(ListTrajet_BazActivity.this, NewTrajetConsumptionInput.class);
+                    Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
          /*           intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -102,8 +115,21 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 }
         );
 
+
+/*        Bundle idcarBundle = previousIntente.getExtras();
+        carId = (int) idcarBundle.get("CarId");
+*/
      //   String traj = "Jvéoboulot";
-        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
+/*        TrajetListByCarViewModel.Factory factory = new TrajetListByCarViewModel.Factory(
+                getApplication(), carId);
+        viewModel = ViewModelProviders.of(this, factory).get(TrajetListByCarViewModel.class);
+        viewModel.getTrajetByCarViewModel().observe(this, trajetsL -> {
+            if (trajetsL != null) {
+                trajets = trajetsL;
+                adapter.setData(trajets);
+            }
+        });
+*/        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
                 getApplication());
         viewModel = ViewModelProviders.of(this, factory).get(TrajetListViewModel.class);
         viewModel.getTrajetsviewMod().observe(this, trajetsL -> {
@@ -133,19 +159,20 @@ public class ListTrajet_BazActivity extends BaseActivity {
     }
 
     private void createDeleteDialog(final int position) {
-   /*     final TrajetEntity account = trajets.get(position);
+        final TrajetEntity trajet = trajets.get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view = inflater.inflate(R.layout.row_delete_item, null);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle(getString(R.string.title_activity_delete_account));
+        alertDialog.setTitle("Attention, ne fois effacé, ce trajet sera définitivement perdu !");
         alertDialog.setCancelable(false);
 
         final TextView deleteMessage = view.findViewById(R.id.tv_delete_item);
-        deleteMessage.setText(String.format(getString(R.string.account_delete_msg), account.getName()));
+        deleteMessage.setText("Attention, une fois effacé, ce trajet, " + trajet.getName() + ", sera définitivement perdu !");
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.action_accept), (dialog, which) -> {
-            Toast toast = Toast.makeText(this, getString(R.string.account_deleted), Toast.LENGTH_LONG);
-            viewModel.deleteAccount(account, new OnAsyncEventListener() {
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
+            Toast toast = Toast.makeText(this, "Ce trajet a bien été effacé.", Toast.LENGTH_LONG);
+            viewModel.deleteTrajet(trajet, new OnAsyncEventListener() {
+            //viewModel.deleteTrajetViewModel(trajet, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
                     Log.d(TAG, "deleteAccount: success");
@@ -155,10 +182,9 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 public void onFailure(Exception e) {
                     Log.d(TAG, "deleteAccount: failure", e);
                 }
-            });
+            } /* , getApplication() */);
             toast.show();
         });
-*/
     }
 
 }

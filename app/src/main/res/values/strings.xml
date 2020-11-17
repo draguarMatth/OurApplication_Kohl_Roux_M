@@ -26,6 +26,9 @@
     <string name="pref_header_about">About (May be, it can not running)</string>
     <string name="essence">Essence</string>
     <string name="fin_du_voyage_save_all">Fin du voyage (save all)</string>
+    <string name="nom_du_trajet">Nom du trajet</string>
+    <string name="date_du_trajet">Date du trajet</string>
+    <string name="save">SAVE</string>
 
 
 </resources>

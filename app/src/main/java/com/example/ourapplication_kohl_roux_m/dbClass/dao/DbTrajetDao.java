@@ -25,7 +25,7 @@ public interface DbTrajetDao {
     /* LiveData<TrajetEntity> */ LiveData<List<TrajetEntity>> getByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId)")
-        /* LiveData<TrajetEntity> */ LiveData<List<TrajetByThisCar>> getByCarId(int carId);
+        LiveData<List<TrajetEntity>> /* LiveData<List<TrajetByThisCar>> */ getByCarId(long carId);
 
     @Query("SELECT * FROM trajets")
     LiveData<List<TrajetEntity>> getAll();
@@ -34,10 +34,10 @@ public interface DbTrajetDao {
     List<TrajetEntity> getAllTrajets();
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = :carId Limit 1")
-    List<TrajetEntity> getAllTrajetsByCar(String carId);
+    List<TrajetEntity> getAllTrajetsByCar(long carId);
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")
-    List<TrajetEntity> loadAllByIds(int[] trajetIds);
+    List<TrajetEntity> loadAllByIds(long[] trajetIds);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name) LIMIT 1")
     TrajetEntity findByName(String name);

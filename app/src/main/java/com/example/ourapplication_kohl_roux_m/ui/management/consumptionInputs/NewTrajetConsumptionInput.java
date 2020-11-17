@@ -60,7 +60,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     private RecyclerView recyclerViewElect;
     private RecyclerView recyclerViewFuel;
 
-    private MyAdapterElectricityEntries myAdapterElect;
+ //   private MyAdapterElectricityEntries myAdapterElect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

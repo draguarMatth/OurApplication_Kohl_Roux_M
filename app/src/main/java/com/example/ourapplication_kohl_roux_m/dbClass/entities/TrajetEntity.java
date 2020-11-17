@@ -12,11 +12,11 @@ import androidx.room.PrimaryKey;
 public class TrajetEntity implements Comparable {
 
     @PrimaryKey(autoGenerate = true)
-    public int uid;
+    public long uid = 1;
 
     @ColumnInfo(name="Voiture_id")
     @NonNull
-    public int carId;
+    public long carId ;
 
     @ColumnInfo(name = "Nom_trajet")
     public String name;
@@ -48,7 +48,7 @@ public class TrajetEntity implements Comparable {
         this.date = date;
     }
 */
-    public TrajetEntity(@NonNull int carId, String name, @NonNull String date, double kmTot,
+    public TrajetEntity(@NonNull long carId, String name, @NonNull String date, double kmTot,
                         double totRise, double totDeep, double gasolinTot, double electricityTot) {
         this.carId = carId;
         this.name = name;
@@ -60,7 +60,7 @@ public class TrajetEntity implements Comparable {
         this.electricityTot = electricityTot;
     }
 
-    public int getUid() { return uid; }
+    public long getUid() { return uid; }
 
 //    public int getUid() { return uid; }
 
@@ -72,7 +72,7 @@ public class TrajetEntity implements Comparable {
         this.name = name;
     }
 
-    public int getCarId() {
+    public long getCarId() {
         return carId;
     }
 
