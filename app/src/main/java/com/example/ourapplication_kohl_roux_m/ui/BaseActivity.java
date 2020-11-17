@@ -114,7 +114,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(id);
 
         if (id == R.id.nav_vehicule) {
-            intent = new Intent(this, CarDescriptionActivity.class);
+            intent = new Intent(this, InitApp.class);
         } else if (id == R.id.nav_list_trajet) {
             intent = new Intent(this, list_trajet.class);
         } else if (id == R.id.nav_map) {

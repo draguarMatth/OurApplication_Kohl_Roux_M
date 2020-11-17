@@ -23,7 +23,7 @@
         </activity>
  -->
         <activity
-            android:name=".ui.InitApp"
+            android:name=".ui.Start"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +34,11 @@
        <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".ui.InitApp"
+            android:parentActivityName=".ui.Start"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.InitApp" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
         </activity>
         <activity
             android:name=".ui.BaseActivity"
@@ -70,9 +70,6 @@
            android:name="android.support.PARENT_ACTIVITY"
            android:value="com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip" />
        </activity>
-        <activity
-           android:name=".ui.BaseActivity"
-           android:theme="@style/AppTheme.NoActionBar" />
       <activity
            android:name=".ui.management.CreateTrip"
            android:label="Nouveau trajet"
@@ -82,6 +79,16 @@
                android:name="android.support.PARENT_ACTIVITY"
                android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
        </activity>
+
+        <activity
+            android:name=".ui.InitApp"
+            android:label="Page Base"
+            android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
+        </activity>
  <!--                      <activity
                            android:name=".ui.BaseActivity"
                            android:theme="@style/AppTheme.NoActionBar" />

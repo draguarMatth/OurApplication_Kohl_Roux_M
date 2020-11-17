@@ -26,7 +26,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InitApp extends AppCompatActivity {
+public class InitApp extends BaseActivity {
 
     private Button choix1;
     private Button choix2;
