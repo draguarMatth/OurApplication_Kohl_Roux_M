@@ -78,7 +78,11 @@ public class CarMyListViewModel extends AndroidViewModel {
         repository.delete(carEntity, callback, application);
     }
 
-    public void executeModify(final CarEntity carEntity, OnAsyncEventListener callback) {
+    public void modifyOneCar(final CarEntity carEntity, OnAsyncEventListener callback) {
         repository.update(carEntity, callback, application);
+    }
+
+    public void createTunedCar(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.insert(carEntity, callback, application);
     }
 }

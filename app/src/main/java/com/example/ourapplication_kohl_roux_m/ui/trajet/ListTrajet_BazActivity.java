@@ -97,12 +97,15 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
+            
+            TrajetEntity trajet = trajets.get(position);
+            Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
-                    intent.putExtra("CarId", carId);
+            intent.putExtra("Trajet", trajet);
+            intent.putExtra("CarId", carId);
                     startActivity(intent);
                 }
         );
@@ -152,12 +155,12 @@ public class ListTrajet_BazActivity extends BaseActivity {
             viewModel.deleteTrajet(trajet, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Log.d(TAG, "deleteAccount: success");
+                    Log.d(TAG, "deleteTrajet: success");
                 }
 
                 @Override
                 public void onFailure(Exception e) {
-                    Log.d(TAG, "deleteAccount: failure", e);
+                    Log.d(TAG, "deleteTrajet: failure", e);
                 }
             }
             );

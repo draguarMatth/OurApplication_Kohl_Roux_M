@@ -90,8 +90,7 @@ public class CreateTrip extends AppCompatActivity {
              @Override
              public void onFailure(Exception e) {
                  Log.d(TAG, "createIntitRoadTrip: failure", e);
-         //        toast = Toast.makeText(this, "Erreur HOREUR !", Toast.LENGTH_LONG);
-                 System.out.println("Erreur HOREUR ! " + "-------------------Erreur HOREUR !" + " ------------------Erreur HOREUR !");
+//                 toast = Toast.makeText(this, "Erreur HOREUR !", Toast.LENGTH_LONG);
              }
          }).execute(newTrajet);
 

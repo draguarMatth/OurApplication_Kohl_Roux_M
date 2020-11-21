@@ -255,6 +255,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Cancel", (dialog, which) -> alertDialog.dismiss());
         alertDialog.setView(view);
+
         alertDialog.show();
     }
 
