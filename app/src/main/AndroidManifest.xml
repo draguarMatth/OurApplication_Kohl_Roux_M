@@ -70,15 +70,25 @@
        </activity>
 
         <activity
-            android:name=".ui.InitApp"
+            android:name=".ui.car.ListCarActivity"
             android:label="Page Base"
-            android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
+            android:parentActivityName=".ui.Start"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
         </activity>
-       <activity
+
+ <!--       <activity
+            android:name=".ui.InitApp"
+            android:label="Page Base"
+            android:parentActivityName=".ui.Start"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
+        </activity>
+ -->      <activity
            android:name=".ui.trajet.TrajetActivity"
            android:theme="@style/AppTheme.NoActionBar"
            android:parentActivityName=".ui.trajet.ListTrajet_BazActivity">

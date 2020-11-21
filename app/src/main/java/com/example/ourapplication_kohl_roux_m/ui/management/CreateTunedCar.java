@@ -33,13 +33,12 @@ public class CreateTunedCar extends AppCompatActivity {
     private EditText WheelSize;
 
 
-    private String mark, model, nickname;
+    private String mark, model, nickname, wheel;
 
 
     private double fuelConsumption;
     private double batteryCapacity;
     private boolean activity;
-    private double wheel;
 
     private CarEntity newCar;
 
@@ -57,7 +56,7 @@ public class CreateTunedCar extends AppCompatActivity {
 
     private void initializeForm() {
 
-
+/*
         // SPINNER SPINNER SPINNER SPINNER SPINNER SPINNER SPINNER
 
         name = findViewById(R.id.name);
@@ -78,10 +77,13 @@ public class CreateTunedCar extends AppCompatActivity {
                 dateNewTrip = date.getText().toString(),
                 carId
         ));
+
+
+ */
     }
 
 
-    private void saveChanges(String name, String date, long carID ) {
+    private void saveChanges(String nickname, String mark, double fuelCoonsumptio, double batteryCapacity, String wheel, boolean activity ) {
 
         newCar = new CarEntity (nickname, mark, model, fuelConsumption, batteryCapacity, wheel,true);
 
@@ -97,7 +99,7 @@ public class CreateTunedCar extends AppCompatActivity {
                 Log.d(TAG, "createIntitRoadTrip: failure", e);
                 //        toast = Toast.makeText(this, "Erreur HOREUR !", Toast.LENGTH_LONG);
             }
-        }).execute(newTrajet);
+        }).execute(newCar);
 
 
     }

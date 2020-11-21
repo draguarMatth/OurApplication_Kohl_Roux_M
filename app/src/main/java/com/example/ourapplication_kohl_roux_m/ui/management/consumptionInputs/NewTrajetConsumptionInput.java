@@ -76,6 +76,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     private ViewModel viewmodel;
     private RecyclerView recyclerViewElect;
     private RecyclerView recyclerViewFuel;
+    TextView valueInList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +96,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
         addElectButton = (Button) findViewById(R.id.addElectButton);
         addFuelButton = (Button) findViewById(R.id.addFuelButton);
+
+        valueInList = findViewById(R.id.tvRecyclerView);
 
         recyclerViewElect = findViewById(R.id.electInputsRecyclerView);
         recyclerViewFuel = findViewById(R.id.fuelInputsRecyclerView);
@@ -175,6 +178,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
                 addElectItem.setText("");
 
+//                valueInList.setText(newValue);
+
                 recyclerViewElect.setAdapter(electAdapter);
                 recyclerViewElect.refreshDrawableState();
 
@@ -188,9 +193,12 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
                 String newValue = addFuelItem.getText().toString();
 
+                valueInList.setText(newValue);
+
                 fuelInputs.add(newValue);
                 fuelAdapter.setData(fuelInputs);
                 addFuelItem.setText("");
+
 
                 recyclerViewFuel.setAdapter(fuelAdapter);
                 recyclerViewFuel.refreshDrawableState();

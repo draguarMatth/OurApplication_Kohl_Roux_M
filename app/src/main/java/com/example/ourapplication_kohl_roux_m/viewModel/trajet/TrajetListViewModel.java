@@ -27,8 +27,6 @@ public class TrajetListViewModel extends AndroidViewModel {
 //    private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public TrajetListViewModel(@NonNull Application application,
-                                     //final String tripName,
-                                     // CarRepository carRepository,
                                      TrajetRepository trajetRepository) {
         super(application);
 
@@ -37,18 +35,15 @@ public class TrajetListViewModel extends AndroidViewModel {
         repository = trajetRepository;
 
         observableTrajets = new MediatorLiveData<>();
-//        observableCars = new MediatorLiveData<>();
+
         // set by default null, until we get data from the database.
         observableTrajets.setValue(null);
-        //       observableCars.setValue(null);
 
         LiveData<List<TrajetEntity>> trajetList =
                 repository.getTrajet(application);
-//        LiveData<List<CarEntity>> ownAccounts = repository.getByOwner(ownerId, application);
 
         // observe the changes of the entities from the database and forward them
         observableTrajets.addSource(trajetList, observableTrajets::setValue);
-//        observableOwnAccounts.addSource(ownAccounts, observableOwnAccounts::setValue);
     }
 
     /**
@@ -59,25 +54,18 @@ public class TrajetListViewModel extends AndroidViewModel {
         @NonNull
         private final Application application;
 
-       // private final String tripName;
-
-        //       private final long carId;
-
         private final TrajetRepository trajetRepository;
 
-        //       private final CarRepository carRepository;
 
         public Factory(@NonNull Application application) {
             this.application = application;
-          //  this.tripName = tripName;
             trajetRepository = ((BaseApp) application).getTrajetRepository();
-//            carRepository = ((BaseApp) application).getCarRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
             //noinspection unchecked
-            return (T) new TrajetListViewModel(application, trajetRepository /* , carRepository */);
+            return (T) new TrajetListViewModel(application, trajetRepository);
         }
     }
 

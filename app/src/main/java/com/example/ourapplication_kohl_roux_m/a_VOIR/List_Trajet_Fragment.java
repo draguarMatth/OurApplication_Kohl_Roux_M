@@ -11,8 +11,10 @@ import androidx.fragment.app.Fragment;
 import com.example.ourapplication_kohl_roux_m.R;
 
 public class List_Trajet_Fragment extends Fragment {
-
+/*
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         return inflater.inflate(R.layout.activity_list_trajet, container, false);
     }
+
+ */
 }

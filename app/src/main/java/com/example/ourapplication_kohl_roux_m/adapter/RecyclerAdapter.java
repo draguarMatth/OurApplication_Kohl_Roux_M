@@ -53,6 +53,8 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         T item = mData.get(position);
+        if (item.getClass().equals(String.class))
+            holder.mTextView.setText((String) item);
         if (item.getClass().equals(CarEntity.class))
             holder.mTextView.setText(((CarEntity) item).getNickName());
         if (item.getClass().equals(TrajetEntity.class))

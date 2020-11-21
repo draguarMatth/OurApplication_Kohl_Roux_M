@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.ourapplication_kohl_roux_m.R;
 
 public class SecondFragment extends Fragment {
-
+/*
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -33,4 +33,6 @@ public class SecondFragment extends Fragment {
             }
         });
     }
+
+ */
 }

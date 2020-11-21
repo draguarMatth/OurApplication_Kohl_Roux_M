@@ -48,13 +48,14 @@ public class ListCarActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        getLayoutInflater().inflate(R.layout.activity_car, frameLayout);
+        getLayoutInflater().inflate(R.layout.activity_list_my_cars, frameLayout);
 
 
         setTitle( "Gestion des Voitures");
+        navigationView.setCheckedItem(position);
 
 
-        RecyclerView recyclerView = findViewById(R.id.mycarsRecyclerView);
+        RecyclerView recyclerView = findViewById(R.id.carsRecyclerView);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -68,15 +69,14 @@ public class ListCarActivity extends BaseActivity {
 
         adapter = loadMyCars();
 
-        if (adapter == null)
+/*        if (adapter == null)
         {
 
         }
-
+*/
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
 
-                    CarEntity car = cars.get(position);
                     Intent intent = new Intent(ListCarActivity.this, AddMyNewCar.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
@@ -156,7 +156,7 @@ public class ListCarActivity extends BaseActivity {
         final CarEntity car = cars.get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
 
-        final View view = inflater.inflate(R.layout.ok.row_delete_item, null);
+        final View view = inflater.inflate(R.layout.row_delete_item, null);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Voiture effacé, voiture && trajets de la voiture perdus");
