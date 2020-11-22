@@ -10,13 +10,18 @@ import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.UpdateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.DeleteCar;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
+import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarRepository {
 
     private static CarRepository instance;
+
+    private ArrayList <TrajetEntity> trajets;
 
     private CarRepository() {
     }
@@ -61,6 +66,8 @@ public class CarRepository {
 
     public void delete(final CarEntity carEntity, OnAsyncEventListener callback,
                        Application application) {
+
         new DeleteCar(application, callback).execute(carEntity);
+
     }
 }

@@ -60,9 +60,7 @@ public abstract class AppDataBase extends RoomDatabase {
                         super.onCreate(db);
                         Executors.newSingleThreadExecutor().execute(() -> {
                             AppDataBase database = AppDataBase.getInstance(appContext);
-   //                         DatabaseInitializer.populateDatabase(database);
                             initializeDemoData(database);
-                            // notify that the database was created and it's ready to be used
                             database.setDatabaseCreated();
                         });
                     }
@@ -73,23 +71,17 @@ public abstract class AppDataBase extends RoomDatabase {
         Executors.newSingleThreadExecutor().execute(() -> {
             database.runInTransaction(() -> {
                 Log.i(TAG, "Wipe database.");
-             //   database.trajetDao().deleteAll();
-             //   database.carDao().deleteAll();
-
+                database.trajetDao().deleteAll();
+                database.carDao().deleteAll();
                 DatabaseInitializer.populateDatabase(database);
             });
         });
-    }
-
-    public static void initialiizeDb(Context appContext) {
-        Room.databaseBuilder(appContext, AppDataBase.class, DATABASE_NAME);
     }
 
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
     private void updateDatabaseCreated(final Context context) {
-        System.out.println("//////////////////////////////////////////////////////////////////////////////");
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             Log.i(TAG, "Database initialized.");
             setDatabaseCreated();
@@ -101,9 +93,6 @@ public abstract class AppDataBase extends RoomDatabase {
     }
 
     public LiveData<Boolean> getDatabaseCreated() {
-
-        System.out.println("------------------base CREE --------------------------------------");
-
         return isDatabaseCreated;
     }
 

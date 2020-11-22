@@ -45,10 +45,10 @@ public interface DbCarDao {
     @Update
     public void update(CarEntity carEntity);
 
-    @Query("DELETE FROM cars")
-    void deleteAll();
-
     @Delete
     void delete(CarEntity carEntity);
+
+    @Query("DELETE FROM cars")
+    void deleteAll();
 
 }

@@ -43,10 +43,10 @@ public class DatabaseInitializer {
             e.printStackTrace();
         }
 
-        addTrajet(db, db.carDao().getActive().get(0).getUid(),"Anonymous", "07 novembre 2020", 0, 0,0,0,0);
-        addTrajet(db, db.carDao().getActive().get(0).getUid(), "Jvéoboulo","07.11.2019", 152.3, 3, 4, 5, 95);
-        addTrajet(db, db.carDao().getActive().get(0).getUid(), "", "24.02.2020", 64.8, 12, 3, 42.3, 56.4);
-        addTrajet(db, db.carDao().getActive().get(0).getUid(), "Parlavass","12.08.2020", 152.3, 3, 4, 12.6, 60);
+        addTrajet(db,1,"Anonymous", "07 novembre 2020", 0, 0,0,0,0);
+        addTrajet(db, 1, "Jvéoboulo","07.11.2019", 152.3, 3, 4, 5, 95);
+        addTrajet(db, 2, "", "24.02.2020", 64.8, 12, 3, 42.3, 56.4);
+        addTrajet(db, 2, "Parlavass","12.08.2020", 152.3, 3, 4, 12.6, 60);
     }
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {

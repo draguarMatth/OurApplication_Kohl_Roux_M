@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <fragment
+        android:id="@+id/chooseNewCarFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.example.ourapplication_kohl_roux_m.ui.car.FragementChooseNewCar"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+    </fragment>
+
+    <fragment
+        android:id="@+id/listMyCarFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.example.ourapplication_kohl_roux_m.ui.car.FragementChooseNewCar"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+    </fragment>
+    <fragment
+        android:id="@+id/modifyMyCarFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:name="com.example.ourapplication_kohl_roux_m.ui.car.FragementChooseNewCar"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+    </fragment>
 </androidx.constraintlayout.widget.ConstraintLayout>

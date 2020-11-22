@@ -21,8 +21,6 @@ public class CarMyListViewModel extends AndroidViewModel {
     private Application application;
 
     private CarRepository repository;
-
-    // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public CarMyListViewModel(@NonNull Application application,
@@ -62,7 +60,6 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
-            //noinspection unchecked
             return (T) new CarMyListViewModel(application, repository);
         }
     }

@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
@@ -32,6 +35,7 @@ import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener
 import com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +43,10 @@ import java.util.List;
 public class ListCarActivity extends BaseActivity {
 
     private static final String TAG = "CarsList";
+
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+//    private ViewPagerAdapter adapterFragment;
 
     private List<CarEntity> cars;
     private RecyclerAdapter<CarEntity> adapter;
@@ -68,23 +76,32 @@ public class ListCarActivity extends BaseActivity {
         cars = new ArrayList<>();
 
         adapter = loadMyCars();
-
-/*        if (adapter == null)
+/*
+        if (adapter == null)
         {
+ //           tabLayout = (TabLayout) findViewById(R.id.tablayout_id);
+ //           viewPager = (ViewPager) findViewById(R.id.viewpager_id);
+//            adapter = new ViewPagerAdapter(getSupportFragmentManager());
+
+            //Add Fragment Here
+   //         adapter.AddFragment(new List_trajet(), "TRAJET");
+   //         viewPager.setAdapter(adapter);
+   //         tabLayout.setupWithViewPager(viewPager);
+            Fragment nwFgmt = new FragementChooseNewCar();
+            nwFgmt.onCreate(savedInstanceState);
 
         }
 */
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
+            Intent intent = new Intent(ListCarActivity.this, FragementChooseNewCar.class);
+            //                  startActivity(intent);
+            Fragment nwFgmt = new FragementChooseNewCar();
+            //    nwFgmt=(FragementChooseNewCar) getSupportFragmentManager().findFragmentById(R.id.chooseNewCarFragment);
+            nwFgmt.setArguments(getIntent().getExtras());
+            nwFgmt.startActivity(getIntent());
 
-                    Intent intent = new Intent(ListCarActivity.this, AddMyNewCar.class);
-                    intent.setFlags(
-                            Intent.FLAG_ACTIVITY_NO_ANIMATION |
-                                    Intent.FLAG_ACTIVITY_NO_HISTORY
-                    );
-                    startActivity(intent);
-                }
-        );
+        });
 
         CarMyListViewModel.Factory factory = new CarMyListViewModel.Factory(
                 getApplication());
@@ -111,10 +128,7 @@ public class ListCarActivity extends BaseActivity {
 
     }
 
-    private void createDeleteModifyDialog (final int position) {
-    }
-
-        private void createModifyDialog (final int position) {
+    private void createModifyDialog (final int position) {
 
         final CarEntity car = cars.get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -168,10 +182,22 @@ public class ListCarActivity extends BaseActivity {
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
             Toast toast = Toast.makeText(this, "Voiture avec trajets effacés.", Toast.LENGTH_LONG);
 
+         /*   CarMyListViewModel viewModelDel;
+            CarMyListViewModel.Factory factory = new CarMyListViewModel.Factory(
+                    getApplication());
+            viewModelDel = ViewModelProviders.of(this, factory).get(CarMyListViewModel.class);
+            viewModelDel.getMyCarsViewMod().observe(this, carsSL -> {
+                if (carsSL != null) {
+                    cars = carsSL;
+                    adapter.setData(cars);
+                }
+            });
+            */
             viewModel.deleteOneCar(car, new OnAsyncEventListener() {
                         @Override
                         public void onSuccess() {
                             Log.d(TAG, "deleteCar: success");
+                            toast.show();
                         }
 
                         @Override
@@ -242,9 +268,10 @@ public class ListCarActivity extends BaseActivity {
             public void onItemLongClick(View v, int position) {
                 Log.d(TAG, "longClicked position:" + position);
                 Log.d(TAG, "clicked on: " + cars.get(position).getModel() + cars.get(position).getNickName());
-                createDeleteModifyDialog(position);
+                createDeleteDialog(position);
             }
         });
         return adapter;
     }
+
 }

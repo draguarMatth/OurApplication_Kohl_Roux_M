@@ -12,7 +12,9 @@ import androidx.room.PrimaryKey;
 
 import com.example.ourapplication_kohl_roux_m.ui.trajet.TrajetActivity;
 
-@Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = CarEntity.class, parentColumns = "uid", childColumns = "Voiture_id"))
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity (tableName = "trajets", foreignKeys = @ForeignKey(entity = CarEntity.class, parentColumns = "uid", childColumns = "Voiture_id", onDelete = CASCADE))
 public class TrajetEntity implements Comparable, Parcelable {
 
     @PrimaryKey(autoGenerate = true)
@@ -44,8 +46,6 @@ public class TrajetEntity implements Comparable, Parcelable {
     @ColumnInfo(name = "Recharge_electrique")
     public double electricityTot;
 
-    @Ignore
-    Bitmap picture;
 
 /*    public TrajetEntity(int carId, String date) {
         this.carId = carId;
