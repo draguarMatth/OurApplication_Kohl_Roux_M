@@ -26,6 +26,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView mTextView;
+
         ViewHolder(TextView textView) {
             super(textView);
             mTextView = textView;
