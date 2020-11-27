@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OurApplication_Kohl_Roux_M</string>
+    <string name="action_settings">Réglages</string>
+    <string name="first_fragment_label">Premier Fragment</string>
+    <string name="second_fragment_label">Deuxieme Fragment</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
+    <string name="hello_first_fragment">Hello ceci est mon premier fragment</string>
+    <string name="hello_second_fragment">Hello ceci est mon deuxieme  fragment</string>
+    <string name="title_activity_modify_Inputs">Modifier ou supprimer ?</string>
+    <string name="title_activity_settings">Réglages</string>
+    <string name="title_activity_ListTrajet">Listes des Trajets</string>
+    <string name="navigation_drawer_open">Ouvire la navigation</string>
+    <string name="navigation_drawer_close">Fermer la navigation</string>
+    <string name="pref_about_text">Cette app à été développé pour un projet scolaire</string>
+    <string name="pref_header_about">"A propos de "</string>
+    <string name="about">"A propos de "</string>
+    <string name="essence">Essence</string>
+    <string name="fin_du_voyage_save_all">Fin du trajet</string>
+    <string name="nom_du_trajet">Nom du projet</string>
+    <string name="date_du_trajet">Date du trajet</string>
+    <string name="save">Sauvegarder</string>
+    <string name="hello_blank_fragment">Hello fragment vide</string>
+    <string name="pref_select_language">Séléctionné votre langue</string>
+    <string name="pref_summary">"Choisisez votre langue "</string>
+    <string name="main_welcome">Bienvenue</string>
+    <string name="title_activity_about">"A propos de "</string>
+    <string name="hello_world">Hello World!</string>
+</resources>

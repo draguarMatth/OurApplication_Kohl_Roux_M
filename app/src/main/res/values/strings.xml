@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="app_name">OurApplication_Kohl_Roux_M</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -24,11 +24,24 @@
 
     <string name="pref_about_text">This application was developed as part of a study project based on the newly released Android Architecture Components</string>
     <string name="pref_header_about">About (May be, it can not running)</string>
-    <string name="essence">Essence</string>
-    <string name="fin_du_voyage_save_all">Fin du voyage (save all)</string>
-    <string name="nom_du_trajet">Nom du trajet</string>
-    <string name="date_du_trajet">Date du trajet</string>
+    <string name="about">About</string>
+    <string name="essence">Gas</string>
+    <string name="fin_du_voyage_save_all">End of the tripe (save all)</string>
+    <string name="nom_du_trajet">Name of the project</string>
+    <string name="date_du_trajet">Date of trajet</string>
     <string name="save">SAVE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="pref_select_language">Select your language</string>
+    <string name="pref_summary">Define your preferred language</string>
+    <string name="main_welcome">Welcome</string>
+    <string name="title_activity_about">about</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 
 
 </resources>

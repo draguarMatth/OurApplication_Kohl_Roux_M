@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="fr"
+        android:entries="@array/pref_lang_entries"
+        android:entryValues="@array/pref_lang_values"
+        android:key="pref_lang"
+        android:summary="@string/pref_summary"
+        android:title="@string/pref_select_language" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="NOGHT"
+            android:summaryOff="Night Mode is desactivated"
+            android:summaryOn="Night Mode is activated"
+            android:title="Night Mode"
+            android:id="@+id/myswitch">
+        </SwitchPreference>
+
+</PreferenceScreen>
