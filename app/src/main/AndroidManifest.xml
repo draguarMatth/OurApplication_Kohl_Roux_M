@@ -20,6 +20,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.Settings.SettingsActivity" />
+        <activity
+            android:name=".ui.trajet.map_dernier_trajet"
+            android:label="/ @string/title_activity_ListTrajet"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.management.NewTrajetConsumptionInput"
+            android:label="/ @string/title_activity_ListTrajet"
+            android:parentActivityName=".ui.InitApp"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.InitApp" />
+        </activity>
        <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
@@ -32,15 +51,7 @@
         <activity
             android:name=".ui.BaseActivity"
             android:theme="@style/AppTheme.NoActionBar" />
- <!--       <activity
-            android:name=".ui.management.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".ui.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
-        </activity>
--->        <activity
+        <activity
             android:name=".ui.trajet.ListTrajet_BazActivity"
             android:label="/ @string/title_activity_ListTrajet"
             android:parentActivityName=".ui.MainActivity"
@@ -49,16 +60,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
-
-       <activity
-           android:name=".ui.management.consumptionInputs.NewTrajetConsumptionInput"
-           android:label="Saisie de vos données de connsommation"
-           android:parentActivityName=".ui.management.CreateTrip"
-           android:theme="@style/AppTheme.NoActionBar">
-           <meta-data
-           android:name="android.support.PARENT_ACTIVITY"
-           android:value="com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip" />
-       </activity>
       <activity
            android:name=".ui.management.CreateTrip"
            android:label="Nouveau trajet"

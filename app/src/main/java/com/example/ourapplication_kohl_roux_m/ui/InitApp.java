@@ -3,6 +3,7 @@ package com.example.ourapplication_kohl_roux_m.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
@@ -25,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class InitApp extends BaseActivity {
 
@@ -63,13 +66,6 @@ public class InitApp extends BaseActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-/*        fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(InitApp.this, AddNewMyCar.class);
-                    startActivity(intent);
-                }
-        );
-*/
     }
 
     @Override
@@ -84,8 +80,35 @@ public class InitApp extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
+        getMenuInflater().inflate(R.menu.settings, menu);
+        //getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(InitApp.this, SettingsActivity.class);
+                InitApp.this.startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+
+
+    public void changeLanguage(String lang){
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(myLocale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        //TextView welcome = findViewById(R.id.main_txt_welcome);
+        //welcome.setText(R.string.main_welcome);
     }
 
 }

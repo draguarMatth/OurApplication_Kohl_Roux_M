@@ -14,8 +14,8 @@
     <string name="navigation_drawer_open">Ouvire la navigation</string>
     <string name="navigation_drawer_close">Fermer la navigation</string>
     <string name="pref_about_text">Cette app à été développé pour un projet scolaire</string>
-    <string name="pref_header_about">"A propos de "</string>
-    <string name="about">"A propos de "</string>
+    <string name="pref_header_about">A propos de</string>
+    <string name="about">A propos de</string>
     <string name="essence">Essence</string>
     <string name="fin_du_voyage_save_all">Fin du trajet</string>
     <string name="nom_du_trajet">Nom du projet</string>
@@ -23,8 +23,8 @@
     <string name="save">Sauvegarder</string>
     <string name="hello_blank_fragment">Hello fragment vide</string>
     <string name="pref_select_language">Séléctionné votre langue</string>
-    <string name="pref_summary">"Choisisez votre langue "</string>
+    <string name="pref_summary">Choisisez votre langue</string>
     <string name="main_welcome">Bienvenue</string>
-    <string name="title_activity_about">"A propos de "</string>
+    <string name="title_activity_about">A propos de</string>
     <string name="hello_world">Hello World!</string>
 </resources>
