@@ -3,24 +3,23 @@ package com.example.ourapplication_kohl_roux_m.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
 
-import com.example.ourapplication_kohl_roux_m.ui.car.CarDescriptionActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
-
-import com.example.ourapplication_kohl_roux_m.R;
 
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,19 +27,16 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     public static final String PREFS_NAME = "SharedPrefs";
     public static final String PREFS_USER = "LoggedIn";
     /**
-     *  Frame layout: Which is going to be used as parent layout for child activity layout.
-     *  This layout is protected so that child activity can access this
-     */
-    protected FrameLayout frameLayout;
-
-    protected DrawerLayout drawerLayout;
-
-    protected NavigationView navigationView;
-
-    /**
      * Static variable for selected item position. Which can be used in child activity to know which item is selected from the list.
      */
     protected static int position;
+    /**
+     * Frame layout: Which is going to be used as parent layout for child activity layout.
+     * This layout is protected so that child activity can access this
+     */
+    protected FrameLayout frameLayout;
+    protected DrawerLayout drawerLayout;
+    protected NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

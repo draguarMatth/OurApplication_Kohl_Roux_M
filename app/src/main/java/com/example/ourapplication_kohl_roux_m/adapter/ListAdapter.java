@@ -1,23 +1,25 @@
 package com.example.ourapplication_kohl_roux_m.adapter;
 
-import com.example.ourapplication_kohl_roux_m.R;
 import android.content.Context;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.example.ourapplication_kohl_roux_m.R;
+
 import java.util.List;
 
 
 public class ListAdapter<T> extends ArrayAdapter<T> {
 
-    private int mResource;
-    private List<T> mData;
+    private final int mResource;
+    private final List<T> mData;
 
     public ListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<T> data) {
         super(context, resource, data);
@@ -32,7 +34,7 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
     }
 
     @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent){
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
         return getCustomView(position, convertView, parent);
     }
 
@@ -61,13 +63,13 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
         return convertView;
     }
 
-    private static class ViewHolder {
-        TextView itemView;
-    }
-
     public void updateData(List<T> data) {
         mData.clear();
         mData.addAll(data);
         notifyDataSetChanged();
+    }
+
+    private static class ViewHolder {
+        TextView itemView;
     }
 }

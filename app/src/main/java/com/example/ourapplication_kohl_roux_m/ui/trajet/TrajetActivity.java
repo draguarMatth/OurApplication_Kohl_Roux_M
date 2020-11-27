@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
@@ -14,14 +13,7 @@ import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 public class TrajetActivity extends BaseActivity {
 
     private static final String TAG = "ViewTrajet";
-
-    private Intent previousIntent;
     Bundle bundle;
-    private long carId;
-    private long trajetId;
-//    private TrajetEntity trajet;
-    private CarEntity carConcerned;
-
     TextView nameTrajet;
     TextView modelCar;
     TextView nicknameCar;
@@ -30,10 +22,12 @@ public class TrajetActivity extends BaseActivity {
     TextView up;
     TextView consoElect;
     TextView consoFuel;
-
     Button ModifyButton;
     Button backButton;
-
+    private Intent previousIntent;
+    private long carId;
+    private long trajetId;
+    private CarEntity carConcerned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +51,7 @@ public class TrajetActivity extends BaseActivity {
         String name = trajet.getName();
         double dist = trajet.getKmTot();
         double deep = trajet.getTotDeep();
-        double rise =trajet.getTotRise();
+        double rise = trajet.getTotRise();
         double consoE = trajet.getElectricityTot();
         double consoF = trajet.getGasolinTot();
 

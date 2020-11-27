@@ -23,14 +23,8 @@ import java.util.concurrent.Executors;
 public abstract class AppDataBase extends RoomDatabase {
 
     private static final String TAG = "AppDataBase";
-
-    private static AppDataBase instance;
-
     private static final String DATABASE_NAME = "roadTrip-database";
-
-    public abstract DbTrajetDao trajetDao();
-    public abstract DbCarDao carDao();
-
+    private static AppDataBase instance;
     private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
 
     public static AppDataBase getInstance(final Context context) {
@@ -60,9 +54,7 @@ public abstract class AppDataBase extends RoomDatabase {
                         super.onCreate(db);
                         Executors.newSingleThreadExecutor().execute(() -> {
                             AppDataBase database = AppDataBase.getInstance(appContext);
-   //                         DatabaseInitializer.populateDatabase(database);
                             initializeDemoData(database);
-                            // notify that the database was created and it's ready to be used
                             database.setDatabaseCreated();
                         });
                     }
@@ -73,37 +65,32 @@ public abstract class AppDataBase extends RoomDatabase {
         Executors.newSingleThreadExecutor().execute(() -> {
             database.runInTransaction(() -> {
                 Log.i(TAG, "Wipe database.");
-             //   database.trajetDao().deleteAll();
-             //   database.carDao().deleteAll();
-
+                database.trajetDao().deleteAll();
+                database.carDao().deleteAll();
                 DatabaseInitializer.populateDatabase(database);
             });
         });
     }
 
-    public static void initialiizeDb(Context appContext) {
-        Room.databaseBuilder(appContext, AppDataBase.class, DATABASE_NAME);
-    }
+    public abstract DbTrajetDao trajetDao();
+
+    public abstract DbCarDao carDao();
 
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
     private void updateDatabaseCreated(final Context context) {
-        System.out.println("//////////////////////////////////////////////////////////////////////////////");
         if (context.getDatabasePath(DATABASE_NAME).exists()) {
             Log.i(TAG, "Database initialized.");
             setDatabaseCreated();
         }
     }
 
-    private void setDatabaseCreated(){
+    private void setDatabaseCreated() {
         isDatabaseCreated.postValue(true);
     }
 
     public LiveData<Boolean> getDatabaseCreated() {
-
-        System.out.println("------------------base CREE --------------------------------------");
-
         return isDatabaseCreated;
     }
 

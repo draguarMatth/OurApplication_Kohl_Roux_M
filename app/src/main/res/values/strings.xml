@@ -1,11 +1,6 @@
 <resources>
     <string name="app_name">OurApplication_Kohl_Roux_M</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -29,6 +24,25 @@
     <string name="nom_du_trajet">Nom du trajet</string>
     <string name="date_du_trajet">Date du trajet</string>
     <string name="save">SAVE</string>
+    <string name="new_trajet">New_trajet</string>
+    <string name="trajet">Trajet</string>
+    <string name="map_en_cours">Map en cours</string>
+    <string name="saisie_consommation">Saisie consommation</string>
+    <string name="action_logout">action_logout</string>
+    <string name="liste_des_trajets">Liste des trajets</string>
+    <string name="trajetentity_en_cours">trajetEntity en cours</string>
+    <string name="dernier_trajetentity">Dernier trajetEntity</string>
+    <string name="back_stat">back_stat</string>
+    <string name="back_trajet">back_trajet</string>
+    <string name="entrer_la_localisation">Entrer la localisation</string>
+    <string name="entrer_la_d_stination">Entrer la déstination</string>
+    <string name="entrer_la_recharche_batterie">Entrer la recharche batterie</string>
+    <string name="entrer_le_plein_d_essence">Entrer le plein d\'essence</string>
+    <string name="trajet_en_cours">trajet en cours</string>
+    <string name="localisation">Localisation</string>
+    <string name="destination">Destination</string>
+    <string name="recharge_batterie_kw">Recharge Batterie (kW)</string>
+    <string name="plein_d_essence_l">Plein d\'essence (L)</string>
 
 
 </resources>

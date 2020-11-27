@@ -8,34 +8,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
-import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.UpdateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,29 +37,23 @@ import java.util.List;
 public class NewTrajetConsumptionInput extends BaseActivity {
 
     private static final String TAG = "InputConsumptionsActivity";
-
-    private Application application;
-    private List<TrajetEntity> trajets;
-    private TrajetListViewModel viewModel;
-
+    public Bundle bundleTemp;
     Button addElectButton;
     Button addFuelButton;
     FloatingActionButton save;
-
     EditText addElectItem;
     EditText addFuelItem;
-
+    TextView valueInList;
+    private Application application;
+    private List<TrajetEntity> trajets;
+    private TrajetListViewModel viewModel;
     private Intent previousIntent;
     private Bundle bundle;
-    public Bundle bundleTemp;
-
     private TrajetRepository trajetRepository;
     private String trajetDate;
     private long carId;
-
     private RecyclerAdapter<String> electAdapter;
     private List<String> electInputs;
-
     private RecyclerAdapter<String> fuelAdapter;
     private List<String> fuelInputs;
     private int electInputsHashcode;
@@ -90,11 +75,13 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         setTitle("Saisie des données de consommation");
         navigationView.setCheckedItem(position);
 
-        addElectItem = (EditText) findViewById(R.id.saisieElect);
-        addFuelItem = (EditText) findViewById(R.id.saisieCarb);
+        addElectItem = findViewById(R.id.saisieElect);
+        addFuelItem = findViewById(R.id.saisieCarb);
 
-        addElectButton = (Button) findViewById(R.id.addElectButton);
-        addFuelButton = (Button) findViewById(R.id.addFuelButton);
+        addElectButton = findViewById(R.id.addElectButton);
+        addFuelButton = findViewById(R.id.addFuelButton);
+
+        valueInList = findViewById(R.id.tvRecyclerView);
 
         recyclerViewElect = findViewById(R.id.electInputsRecyclerView);
         recyclerViewFuel = findViewById(R.id.fuelInputsRecyclerView);
@@ -121,7 +108,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
-                Log.d(TAG, "clicked on: " + electInputs.get(position).toString());
+                Log.d(TAG, "clicked on: " + electInputs.get(position));
 
                 Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
             }
@@ -129,7 +116,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             @SuppressLint("LongLogTag")
             @Override
             public void onItemLongClick(View v, int position) {
-                Log.d(TAG, "longClicked position:" + position  );
+                Log.d(TAG, "longClicked position:" + position);
                 Log.d(TAG, "longClicked on: " + electInputs.get(position));
 
                 createModifyDialog(position, electInputsHashcode);
@@ -144,7 +131,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             @Override
             public void onItemClick(View v, int position) {
                 Log.d(TAG, "clicked position:" + position);
-                Log.d(TAG, "clicked on: " + fuelInputs.get(position).toString());
+                Log.d(TAG, "clicked on: " + fuelInputs.get(position));
 
                 Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
             }
@@ -153,7 +140,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             @Override
             public void onItemLongClick(View v, int position) {
                 Log.d(TAG, "longClicked position:" + position);
-                Log.d(TAG, "longClicked on: " + fuelInputs.get(position).toString());
+                Log.d(TAG, "longClicked on: " + fuelInputs.get(position));
 
                 createModifyDialog(position, fuelInputsHashcode);
             }
@@ -168,12 +155,14 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         addElectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String newValue = addElectItem.getText().toString();
+                String newValue = addElectItem.getText().toString();
 
                 electInputs.add(newValue);
                 electAdapter.setData(electInputs);
 
                 addElectItem.setText("");
+
+//                valueInList.setText(newValue);
 
                 recyclerViewElect.setAdapter(electAdapter);
                 recyclerViewElect.refreshDrawableState();
@@ -188,9 +177,12 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
                 String newValue = addFuelItem.getText().toString();
 
+                valueInList.setText(newValue);
+
                 fuelInputs.add(newValue);
                 fuelAdapter.setData(fuelInputs);
                 addFuelItem.setText("");
+
 
                 recyclerViewFuel.setAdapter(fuelAdapter);
                 recyclerViewFuel.refreshDrawableState();
@@ -201,8 +193,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
         save = findViewById(R.id.saveTrip);
         save.setOnClickListener(view -> {
-                saveChanges();
-            }
+                    saveChanges();
+                }
         );
     }
 
@@ -212,17 +204,17 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
-         finish();
+        finish();
         return super.onNavigationItemSelected(item);
     }
 
     @SuppressLint("StaticFieldLeak")
     private void createModifyDialog(final int position, final int hashcodeInputs) {
 
-        List <String> aModif = getList(hashcodeInputs);
- //       RecyclerView recyclerAmodif =  getRecyclerView(hashcodeInputs);
+        List<String> aModif = getList(hashcodeInputs);
+        //       RecyclerView recyclerAmodif =  getRecyclerView(hashcodeInputs);
 
-        final String value = (String) getList(hashcodeInputs).get(position);
+        final String value = getList(hashcodeInputs).get(position);
         LayoutInflater inflater = LayoutInflater.from(this);
         final View view = inflater.inflate(R.layout.row_delete_item, null);
 
@@ -255,18 +247,20 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Cancel", (dialog, which) -> alertDialog.dismiss());
         alertDialog.setView(view);
+
         alertDialog.show();
     }
 
-    private List <String> getList(int hashcode){
+    private List<String> getList(int hashcode) {
 
-        if(hashcode == electInputsHashcode)
+        if (hashcode == electInputsHashcode)
             return electInputs;
         return fuelInputs;
     }
-    private RecyclerView getRecyclerView(int hashcode){
 
-        if(hashcode == electInputsHashcode){
+    private RecyclerView getRecyclerView(int hashcode) {
+
+        if (hashcode == electInputsHashcode) {
             electAdapter.setData(electInputs);
             recyclerViewElect.setAdapter(electAdapter);
             return recyclerViewElect;
@@ -304,6 +298,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
  */
         setResponse(true);
     }
+
     private void setResponse(Boolean response) {
         if (response) {
             Intent intent = new Intent(NewTrajetConsumptionInput.this, ListTrajet_BazActivity.class);
@@ -317,8 +312,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
 
     private double calcul(List<String> saisies) {
         double result = 0;
-        for (String item : saisies){
-            result+=(Double.valueOf(item));
+        for (String item : saisies) {
+            result += (Double.valueOf(item));
         }
 
         return result;

@@ -21,13 +21,13 @@ import com.example.ourapplication_kohl_roux_m.R;
 import java.util.List;
 
 
-public class SettingsActivity extends PreferenceActivity{
+public class SettingsActivity extends PreferenceActivity {
 
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = (preference, value) -> {
+    private static final Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = (preference, value) -> {
         String stringValue = value.toString();
 
         if (preference instanceof ListPreference) {
@@ -85,7 +85,7 @@ public class SettingsActivity extends PreferenceActivity{
         super.onCreate(savedInstanceState);
         setupActionBar();
 //        setActionBarTitle(getString(R.string.title_activity_settings));
-        setActionBarTitle( "titre de l'activité settings");
+        setActionBarTitle("titre de l'activité settings");
     }
 
     /**

@@ -18,15 +18,13 @@ import java.util.List;
 
 public class CarMyListViewModel extends AndroidViewModel {
 
-    private Application application;
+    private final Application application;
 
-    private CarRepository repository;
-
-    // MediatorLiveData can observe other LiveData objects and react on their emissions.
+    private final CarRepository repository;
     private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public CarMyListViewModel(@NonNull Application application,
-                                CarRepository carRepository) {
+                              CarRepository carRepository) {
         super(application);
 
         this.application = application;
@@ -46,6 +44,25 @@ public class CarMyListViewModel extends AndroidViewModel {
     }
 
     /**
+     * Expose the LiveData MyCars query so the UI can observe it.
+     */
+    public LiveData<List<CarEntity>> getMyCarsViewMod() {
+        return observableCars;
+    }
+
+    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.delete(carEntity, callback, application);
+    }
+
+    public void modifyOneCar(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.update(carEntity, callback, application);
+    }
+
+    public void createTunedCar(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.insert(carEntity, callback, application);
+    }
+
+    /**
      * A creator is used to inject the id into the ViewModel
      */
     public static class Factory extends ViewModelProvider.NewInstanceFactory {
@@ -62,23 +79,7 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
-            //noinspection unchecked
             return (T) new CarMyListViewModel(application, repository);
         }
-    }
-
-    /**
-     * Expose the LiveData MyCars query so the UI can observe it.
-     */
-    public LiveData<List<CarEntity>> getMyCarsViewMod() {
-        return observableCars;
-    }
-
-    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.delete(carEntity, callback, application);
-    }
-
-    public void executeModify(final CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.update(carEntity, callback, application);
     }
 }

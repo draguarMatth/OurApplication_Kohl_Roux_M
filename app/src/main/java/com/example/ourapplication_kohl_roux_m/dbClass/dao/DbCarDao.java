@@ -19,7 +19,7 @@ public interface DbCarDao {
 //    CarEntity carEntity = new CarEntity();
 
     @Query("SELECT * FROM cars WHERE uid IN (:carIds)")
-    LiveData<CarEntity> getById(long [] carIds);
+    LiveData<CarEntity> getById(long[] carIds);
 
     @Query("SELECT * FROM cars")
     LiveData<List<CarEntity>> getAll();
@@ -43,12 +43,12 @@ public interface DbCarDao {
     void insertAll(List<CarEntity> carEntityList);
 
     @Update
-    public void update(CarEntity carEntity);
-
-    @Query("DELETE FROM cars")
-    void deleteAll();
+    void update(CarEntity carEntity);
 
     @Delete
     void delete(CarEntity carEntity);
+
+    @Query("DELETE FROM cars")
+    void deleteAll();
 
 }

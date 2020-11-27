@@ -1,20 +1,14 @@
 package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 
 public class list_trajet extends BaseActivity {
@@ -68,7 +62,7 @@ public class list_trajet extends BaseActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_list_trajet, menu);
         return true;
     }
