@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.car.ListCarActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 
 public class Start extends AppCompatActivity {
 
     private Button choix;
 
-    protected void onCreate(Bundle savecInstacneState){
+    protected void onCreate(Bundle savecInstacneState) {
         super.onCreate(savecInstacneState);
         setContentView(R.layout.activity_start);
 
@@ -25,7 +24,7 @@ public class Start extends AppCompatActivity {
         choix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
- //               Intent intent = new Intent(Start.this, InitApp.class);
+                //               Intent intent = new Intent(Start.this, InitApp.class);
                 Intent intent = new Intent(Start.this, ListCarActivity.class);
                 startActivity(intent);
             }
@@ -34,7 +33,7 @@ public class Start extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }

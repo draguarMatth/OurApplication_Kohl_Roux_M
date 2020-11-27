@@ -2,9 +2,7 @@ package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -15,37 +13,36 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProviders;
-
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
-
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
+import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
-import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByCarViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
+//import androidx.appcompat.app.AppCompatActivity;
+
 public class ListTrajet_BazActivity extends BaseActivity {
 
     private static final String TAG = "ListTrajet";
 
+    private Intent previousIntent;
+    private Bundle bundle;
+
     private List<TrajetEntity> trajets;
     private RecyclerAdapter<TrajetEntity> adapter;
     private TrajetListViewModel viewModel;
-    private long carId = 1;
+    private long carId;
 
 
     @Override
@@ -53,10 +50,13 @@ public class ListTrajet_BazActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
 
-        setTitle( "Liste Trajets");
+        setTitle("Liste Trajets");
         navigationView.setCheckedItem(position);
 
         RecyclerView recyclerView = findViewById(R.id.trajetsRecyclerView);
+        previousIntent = getIntent();
+        bundle = previousIntent.getExtras();
+        carId = (long) bundle.get("CarId");
 
         // use a linear layout manager
 
@@ -97,15 +97,15 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
-            
-            TrajetEntity trajet = trajets.get(position);
-            Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
+
+                    TrajetEntity trajet = trajets.get(position);
+                    Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
-            intent.putExtra("Trajet", trajet);
-            intent.putExtra("CarId", carId);
+                    intent.putExtra("Trajet", trajet);
+                    intent.putExtra("CarId", carId);
                     startActivity(intent);
                 }
         );
@@ -153,16 +153,16 @@ public class ListTrajet_BazActivity extends BaseActivity {
             Toast toast = Toast.makeText(this, "Trajet effacé.", Toast.LENGTH_LONG);
 
             viewModel.deleteTrajet(trajet, new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
-                    Log.d(TAG, "deleteTrajet: success");
-                }
+                        @Override
+                        public void onSuccess() {
+                            Log.d(TAG, "deleteTrajet: success");
+                        }
 
-                @Override
-                public void onFailure(Exception e) {
-                    Log.d(TAG, "deleteTrajet: failure", e);
-                }
-            }
+                        @Override
+                        public void onFailure(Exception e) {
+                            Log.d(TAG, "deleteTrajet: failure", e);
+                        }
+                    }
             );
             toast.show();
         });

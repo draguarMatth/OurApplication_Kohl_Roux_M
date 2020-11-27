@@ -23,14 +23,8 @@ import java.util.concurrent.Executors;
 public abstract class AppDataBase extends RoomDatabase {
 
     private static final String TAG = "AppDataBase";
-
-    private static AppDataBase instance;
-
     private static final String DATABASE_NAME = "roadTrip-database";
-
-    public abstract DbTrajetDao trajetDao();
-    public abstract DbCarDao carDao();
-
+    private static AppDataBase instance;
     private final MutableLiveData<Boolean> isDatabaseCreated = new MutableLiveData<>();
 
     public static AppDataBase getInstance(final Context context) {
@@ -78,6 +72,10 @@ public abstract class AppDataBase extends RoomDatabase {
         });
     }
 
+    public abstract DbTrajetDao trajetDao();
+
+    public abstract DbCarDao carDao();
+
     /**
      * Check whether the database already exists and expose it via {@link #getDatabaseCreated()}
      */
@@ -88,7 +86,7 @@ public abstract class AppDataBase extends RoomDatabase {
         }
     }
 
-    private void setDatabaseCreated(){
+    private void setDatabaseCreated() {
         isDatabaseCreated.postValue(true);
     }
 

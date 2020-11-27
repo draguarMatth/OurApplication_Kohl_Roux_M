@@ -1,37 +1,39 @@
 package com.example.ourapplication_kohl_roux_m.adapter;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 
 import java.util.List;
 import java.util.Objects;
 
-
-public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolderText> {
+public class RecyclerAdapterWithPicture<T> extends RecyclerView.Adapter<RecyclerAdapterWithPicture.ViewHolder> {
 
     private final RecyclerViewItemClickListener mListener;
     private List<T> mData;
 
-
-    public RecyclerAdapter(RecyclerViewItemClickListener listener) {
+    public RecyclerAdapterWithPicture(RecyclerViewItemClickListener listener) {
         mListener = listener;
     }
 
     @Override
-    public ViewHolderText onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_view, parent, false);
-        final ViewHolderText viewHolder = new ViewHolderText(v);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recycler_view_with_picture, parent, false);
+        final ViewHolder viewHolder = new ViewHolder(v);
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
         v.setOnLongClickListener(view -> {
             mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
@@ -40,16 +42,24 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         return viewHolder;
     }
 
+    @SuppressLint("LongLogTag")
     @Override
-    public void onBindViewHolder(ViewHolderText holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         T item = mData.get(position);
-        if (item.getClass().equals(String.class))
-            holder.mTextView.setText((String) item);
-        if (item.getClass().equals(CarEntity.class)) {
-            holder.mTextView.setText(((CarEntity) item).getNickName());
+
+        if (!item.getClass().equals(CarEntity.class)) {
+            Log.i(getClass().toString(), "Data no corresponding");
         }
-        if (item.getClass().equals(TrajetEntity.class))
-            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
+        if (((CarEntity) item).getNickName().isEmpty())
+            holder.mTextView.setText(((CarEntity) item).getModel());
+        else
+            holder.mTextView.setText(((CarEntity) item).getNickName());
+
+        if (((CarEntity) item).getPicture() == 0)
+            holder.imageView.setImageResource(R.drawable.simplex_car);
+        else
+            holder.imageView.setImageResource(((CarEntity) item).getPicture());
+
     }
 
     @Override
@@ -82,10 +92,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                     if (mData instanceof CarEntity) {
                         return mData.get(oldItemPosition).equals(data.get(newItemPosition));
                     }
-                    if (mData instanceof TrajetEntity) {
-                        return mData.get(oldItemPosition).equals(
-                                data.get(newItemPosition));
-                    }
+
                     return false;
                 }
 
@@ -97,13 +104,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                         return Objects.equals(newCarEntity.getUid(), (oldCarEntity.getUid()))
                                 && Objects.equals(newCarEntity.getNickName(), oldCarEntity.getNickName());
                     }
-                    if (mData instanceof TrajetEntity) {
-                        TrajetEntity newClient = (TrajetEntity) data.get(newItemPosition);
-                        TrajetEntity oldClient = (TrajetEntity) mData.get(newItemPosition);
-                        return Objects.equals(newClient.getCarId(), oldClient.getCarId())
-                                && Objects.equals(newClient.getName(), oldClient.getName())
-                                && Objects.equals(newClient.getDate(), oldClient.getDate());
-                    }
+
                     return false;
                 }
             });
@@ -115,13 +116,15 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    static class ViewHolderText extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView mTextView;
+        ImageView imageView;
 
-        ViewHolderText(TextView textView) {
-            super(textView);
-            mTextView = textView;
+        ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imageView = itemView.findViewById(R.id.pictureView);
+            mTextView = itemView.findViewById(R.id.txtPictureView);
         }
     }
 }

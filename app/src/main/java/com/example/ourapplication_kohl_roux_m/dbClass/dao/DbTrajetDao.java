@@ -10,7 +10,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
-import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public interface DbTrajetDao {
     LiveData<List<TrajetEntity>> getByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId)")
-        LiveData<List<TrajetEntity>> getByCarId(long carId);
+    LiveData<List<TrajetEntity>> getByCarId(long carId);
 
     @Query("SELECT * FROM trajets")
     LiveData<List<TrajetEntity>> getAll();
@@ -66,13 +65,13 @@ public interface DbTrajetDao {
     long insert(TrajetEntity trajetEntity) throws SQLiteConstraintException;
 
     @Update
-    public void update(TrajetEntity trajets);
+    void update(TrajetEntity trajets);
 
-/*    @Update
-    public void updateConsoGasolin(TrajetEntity trajetEntity);
-    @Update
-    public void updateConsoElectric(TrajetEntity trajetEntity);
-*/
+    /*    @Update
+        public void updateConsoGasolin(TrajetEntity trajetEntity);
+        @Update
+        public void updateConsoElectric(TrajetEntity trajetEntity);
+    */
     @Delete
     void delete(TrajetEntity trajetEntity);
 

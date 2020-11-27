@@ -18,13 +18,13 @@ import java.util.List;
 
 public class TrajetListViewModel extends AndroidViewModel {
 
-    private Application application;
+    private final Application application;
 
-    private TrajetRepository repository;
+    private final TrajetRepository repository;
     private final MediatorLiveData<List<TrajetEntity>> observableTrajets;
 
     public TrajetListViewModel(@NonNull Application application,
-                                     TrajetRepository trajetRepository) {
+                               TrajetRepository trajetRepository) {
         super(application);
 
         this.application = application;
@@ -41,6 +41,17 @@ public class TrajetListViewModel extends AndroidViewModel {
 
         // observe the changes of the entities from the database and forward them
         observableTrajets.addSource(trajetList, observableTrajets::setValue);
+    }
+
+    /**
+     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     */
+    public LiveData<List<TrajetEntity>> getTrajetsviewMod() {
+        return observableTrajets;
+    }
+
+    public void deleteTrajet(TrajetEntity trajet, OnAsyncEventListener callback) {
+        repository.delete(trajet, callback, application);
     }
 
     /**
@@ -63,17 +74,6 @@ public class TrajetListViewModel extends AndroidViewModel {
         public <T extends ViewModel> T create(Class<T> modelClass) {
             return (T) new TrajetListViewModel(application, trajetRepository);
         }
-    }
-
-    /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
-     */
-    public LiveData<List<TrajetEntity>> getTrajetsviewMod() {
-        return observableTrajets;
-    }
-
-    public void deleteTrajet(TrajetEntity trajet, OnAsyncEventListener callback) {
-        repository.delete(trajet, callback, application);
     }
 
 }

@@ -7,24 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModelProviders;
-
-import com.example.ourapplication_kohl_roux_m.BaseApp;
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
-import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
-import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class InitApp extends BaseActivity {
 
@@ -33,7 +18,7 @@ public class InitApp extends BaseActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_main_app, frameLayout);
 
@@ -58,8 +43,8 @@ public class InitApp extends BaseActivity {
         choix2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(InitApp.this, ListTrajet_BazActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(InitApp.this, ListTrajet_BazActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -83,7 +68,7 @@ public class InitApp extends BaseActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }

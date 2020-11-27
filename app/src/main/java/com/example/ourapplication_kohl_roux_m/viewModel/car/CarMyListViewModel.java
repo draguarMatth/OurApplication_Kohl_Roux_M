@@ -18,13 +18,13 @@ import java.util.List;
 
 public class CarMyListViewModel extends AndroidViewModel {
 
-    private Application application;
+    private final Application application;
 
-    private CarRepository repository;
+    private final CarRepository repository;
     private final MediatorLiveData<List<CarEntity>> observableCars;
 
     public CarMyListViewModel(@NonNull Application application,
-                                CarRepository carRepository) {
+                              CarRepository carRepository) {
         super(application);
 
         this.application = application;
@@ -41,6 +41,25 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         // observe the changes of the entities from the database and forward them
         observableCars.addSource(carList, observableCars::setValue);
+    }
+
+    /**
+     * Expose the LiveData MyCars query so the UI can observe it.
+     */
+    public LiveData<List<CarEntity>> getMyCarsViewMod() {
+        return observableCars;
+    }
+
+    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.delete(carEntity, callback, application);
+    }
+
+    public void modifyOneCar(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.update(carEntity, callback, application);
+    }
+
+    public void createTunedCar(final CarEntity carEntity, OnAsyncEventListener callback) {
+        repository.insert(carEntity, callback, application);
     }
 
     /**
@@ -62,24 +81,5 @@ public class CarMyListViewModel extends AndroidViewModel {
         public <T extends ViewModel> T create(Class<T> modelClass) {
             return (T) new CarMyListViewModel(application, repository);
         }
-    }
-
-    /**
-     * Expose the LiveData MyCars query so the UI can observe it.
-     */
-    public LiveData<List<CarEntity>> getMyCarsViewMod() {
-        return observableCars;
-    }
-
-    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.delete(carEntity, callback, application);
-    }
-
-    public void modifyOneCar(final CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.update(carEntity, callback, application);
-    }
-
-    public void createTunedCar(final CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.insert(carEntity, callback, application);
     }
 }

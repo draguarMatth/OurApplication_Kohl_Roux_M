@@ -3,7 +3,6 @@ package com.example.ourapplication_kohl_roux_m.ui.management;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -11,13 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
-import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.car.ListCarActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CreateTunedCar extends AppCompatActivity {
 
@@ -83,9 +78,10 @@ public class CreateTunedCar extends AppCompatActivity {
     }
 
 
-    private void saveChanges(String nickname, String mark, double fuelCoonsumptio, double batteryCapacity, String wheel, boolean activity ) {
+    private void saveChanges(String nickname, String mark, double fuelCoonsumptio, double batteryCapacity, String wheel, boolean activity, int drawable) {
 
-        newCar = new CarEntity (nickname, mark, model, fuelConsumption, batteryCapacity, wheel,true);
+
+        newCar = new CarEntity(nickname, mark, model, fuelConsumption, batteryCapacity, wheel, true, R.drawable.simplex_car);
 
         new CreateCar(getApplication(), new OnAsyncEventListener() {
             @Override
@@ -103,6 +99,7 @@ public class CreateTunedCar extends AppCompatActivity {
 
 
     }
+
     private void setResponse(Boolean response) {
         if (response) {
             Intent intent = new Intent(CreateTunedCar.this, ListCarActivity.class);

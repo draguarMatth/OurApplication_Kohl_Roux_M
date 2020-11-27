@@ -15,13 +15,12 @@ import com.example.ourapplication_kohl_roux_m.R;
 
 import java.util.List;
 
-
-public class ListAdapter<T> extends ArrayAdapter<T> {
+public class ListPictureAdapter<T> extends ArrayAdapter<T> {
 
     private final int mResource;
     private final List<T> mData;
 
-    public ListAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<T> data) {
+    public ListPictureAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<T> data) {
         super(context, resource, data);
         mResource = resource;
         mData = data;
@@ -50,7 +49,8 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
                     .inflate(mResource, parent, false);
 
             viewHolder = new ViewHolder();
-            viewHolder.itemView = convertView.findViewById(R.id.tvRowListView);
+            viewHolder.itemText = convertView.findViewById(R.id.txtPictureView);
+//        viewHolder.imgView = convertView.findViewById(R.id.pictureView);
 
             convertView.setTag(viewHolder);
         } else {
@@ -58,7 +58,16 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
         }
         T item = getItem(position);
         if (item != null) {
-            viewHolder.itemView.setText(item.toString());
+            viewHolder.itemText.setText(item.toString());
+/*                if (item.getClass().equals(CarEntity.class)) {
+                        if(((CarEntity) item).getPicture() >= 0)
+                                viewHolder.imgView.setImageResource(((CarEntity) item).getPicture());
+                        else
+                                viewHolder.imgView.setImageResource(R.drawable.simplex_car);
+                }
+
+ */
+
         }
         return convertView;
     }
@@ -70,6 +79,7 @@ public class ListAdapter<T> extends ArrayAdapter<T> {
     }
 
     private static class ViewHolder {
-        TextView itemView;
+        TextView itemText;
+//    ImageView imgView;
     }
 }

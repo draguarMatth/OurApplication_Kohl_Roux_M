@@ -9,11 +9,11 @@ import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class DeleteTrajet extends AsyncTask<TrajetEntity, Void, Void> {
 
-    private Application application;
-    private OnAsyncEventListener callback;
+    private final Application application;
+    private final OnAsyncEventListener callback;
     private Exception exception;
 
-    public DeleteTrajet(Application application , OnAsyncEventListener callback) {
+    public DeleteTrajet(Application application, OnAsyncEventListener callback) {
         this.application = application;
         this.callback = callback;
     }

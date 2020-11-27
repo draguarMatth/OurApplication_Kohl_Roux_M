@@ -9,8 +9,8 @@ import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class DeleteCar extends AsyncTask<CarEntity, Void, Void> {
 
-    private Application application;
-    private OnAsyncEventListener callback;
+    private final Application application;
+    private final OnAsyncEventListener callback;
     private Exception exception;
 
     public DeleteCar(Application application, OnAsyncEventListener callback) {

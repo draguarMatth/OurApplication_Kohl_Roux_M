@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TrajetListByNameViewModel extends AndroidViewModel {
 
-    private Application application;
+    private final Application application;
 
-    private TrajetRepository repository;
+    private final TrajetRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<TrajetEntity>> observableTrajets;
@@ -39,7 +39,7 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
 //        observableCars = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
         observableTrajets.setValue(null);
- //       observableCars.setValue(null);
+        //       observableCars.setValue(null);
 
         LiveData<List<TrajetEntity>> trajetList =
                 repository.getTrajetByName(tripName, application);
@@ -48,6 +48,13 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
         // observe the changes of the entities from the database and forward them
         observableTrajets.addSource(trajetList, observableTrajets::setValue);
 //        observableOwnAccounts.addSource(ownAccounts, observableOwnAccounts::setValue);
+    }
+
+    /**
+     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     */
+    public LiveData<List<TrajetEntity>> getTrajet() {
+        return observableTrajets;
     }
 
     /**
@@ -60,11 +67,11 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
 
         private final String tripName;
 
- //       private final long carId;
+        //       private final long carId;
 
         private final TrajetRepository trajetRepository;
 
- //       private final CarRepository carRepository;
+        //       private final CarRepository carRepository;
 
         public Factory(@NonNull Application application, String tripName) {
             this.application = application;
@@ -78,13 +85,6 @@ public class TrajetListByNameViewModel extends AndroidViewModel {
             //noinspection unchecked
             return (T) new TrajetListByNameViewModel(application, tripName, trajetRepository /* , carRepository */);
         }
-    }
-
-    /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
-     */
-    public LiveData<List<TrajetEntity>> getTrajet() {
-        return observableTrajets;
     }
 
     /**
