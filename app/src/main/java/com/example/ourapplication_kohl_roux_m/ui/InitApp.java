@@ -1,7 +1,9 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,6 +51,9 @@ public class InitApp extends BaseActivity {
         choix1 = findViewById(R.id.btn);
         choix2 = findViewById(R.id.addFuelButton);
 
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        changeLanguage(sharedPrefs.getString("pref_lang", "fr"));
+
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +86,6 @@ public class InitApp extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.settings, menu);
-        //getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }
 

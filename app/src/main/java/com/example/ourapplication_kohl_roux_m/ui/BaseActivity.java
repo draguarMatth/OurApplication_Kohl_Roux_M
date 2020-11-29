@@ -92,12 +92,14 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        if (item.getItemId() == R.id.action_settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(BaseActivity.this, SettingsActivity.class);
+                BaseActivity.this.startActivity(intent);
+                break;
         }
+        return true;
 
-        return super.onOptionsItemSelected(item);
 
     }
 
@@ -138,12 +140,5 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences.Editor editor = getSharedPreferences(BaseActivity.PREFS_NAME, 0).edit();
         editor.remove(BaseActivity.PREFS_USER);
         editor.apply();
-
-/*        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
-
- */
     }
 }
