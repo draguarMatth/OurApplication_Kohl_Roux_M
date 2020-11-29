@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.InitApp;
@@ -14,7 +16,6 @@ import com.example.ourapplication_kohl_roux_m.ui.InitApp;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Switch myswitch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -24,11 +25,6 @@ public class SettingsActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void restartApp(){
-        Intent i = new Intent(getApplicationContext(),SettingsActivity.class);
-        startActivity(i);
-        finish();
-    }
 
     //insert action - toolbar
     @Override
@@ -46,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.action_back:
-                Intent i = new Intent(SettingsActivity.this, InitApp.class);
+                Intent i = new Intent( SettingsActivity.this, InitApp.class);
                 SettingsActivity.this.startActivity(i);
                 this.finish();
                 break;
