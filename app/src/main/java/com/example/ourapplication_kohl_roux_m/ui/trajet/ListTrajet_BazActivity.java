@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -26,9 +27,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
+import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
+import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByCarViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -129,6 +133,20 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(ListTrajet_BazActivity.this, SettingsActivity.class);
+                ListTrajet_BazActivity.this.startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
     private void createDeleteDialog(final int position) {
 
         final TrajetEntity trajet = trajets.get(position);
@@ -147,16 +165,16 @@ public class ListTrajet_BazActivity extends BaseActivity {
             Toast toast = Toast.makeText(this, "Trajet effacé.", Toast.LENGTH_LONG);
 
             viewModel.deleteTrajet(trajet, new OnAsyncEventListener() {
-                @Override
-                public void onSuccess() {
-                    Log.d(TAG, "deleteAccount: success");
-                }
+                        @Override
+                        public void onSuccess() {
+                            Log.d(TAG, "deleteAccount: success");
+                        }
 
-                @Override
-                public void onFailure(Exception e) {
-                    Log.d(TAG, "deleteAccount: failure", e);
-                }
-            }
+                        @Override
+                        public void onFailure(Exception e) {
+                            Log.d(TAG, "deleteAccount: failure", e);
+                        }
+                    }
             );
             toast.show();
         });

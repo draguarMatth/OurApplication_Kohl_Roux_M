@@ -3,20 +3,26 @@ package com.example.ourapplication_kohl_roux_m.ui.management;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class CreateTrip extends AppCompatActivity {
+public class CreateTrip extends BaseActivity {
 
      private static final String TAG = "RegisterNewRoadTrip";
 
@@ -35,7 +41,7 @@ public class CreateTrip extends AppCompatActivity {
      @Override
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_new_roadtrip_init);
+         getLayoutInflater().inflate(R.layout.activity_new_roadtrip_init, frameLayout);
 
          previousIntent = getIntent();
          bundle = previousIntent.getExtras();
@@ -44,7 +50,33 @@ public class CreateTrip extends AppCompatActivity {
          initializeForm();
          toast = Toast.makeText(this, "Saisissez les niveaux de batterie et de carburant actuel", Toast.LENGTH_LONG);
 
+         setTitle( "Create Trajets");
+         navigationView.setCheckedItem(position);
      }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == BaseActivity.position) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return false;
+        }
+        finish();
+        return super.onNavigationItemSelected(item);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(CreateTrip.this, SettingsActivity.class);
+                CreateTrip.this.startActivity(intent);
+                break;
+        }
+        return true;
+    }
 
      private void initializeForm() {
 

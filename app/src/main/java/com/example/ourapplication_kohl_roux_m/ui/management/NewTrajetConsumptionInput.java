@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
@@ -207,6 +209,26 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         return super.onNavigationItemSelected(item);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(NewTrajetConsumptionInput.this, SettingsActivity.class);
+                NewTrajetConsumptionInput.this.startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_map_trajet, menu);
+        return true;
+    }
+
     @SuppressLint("StaticFieldLeak")
     private void createModifyDialog(final int position, final int hashcodeInputs) {
 
@@ -268,31 +290,6 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     }
 
     private void saveChanges() {
-/*
-        TrajetEntity upDTrajet = ((BaseApp)getApplication()).getDatabase().trajetDao().getByDate(trajetDate);
-
-        upDTrajet.electricityTot = calcul(electInputs) ;
-        upDTrajet.gasolinTot = calcul(fuelInputs);
-        upDTrajet.kmTot = ;
-        upDTrajet.totDeep = ;
-        upDTrajet.totRise = ;
-
-        new UpdateTrajet(getApplication(), new OnAsyncEventListener() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onSuccess() {
-                setResponse(true);
-                Log.d(TAG, "Enregistrement consommation : succès");
-            }
-
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onFailure(Exception e) {
-                Log.d(TAG, "Enregistrement consommation : échoué", e);
-            }
-        }).execute(upDTrajet);
-
- */
         setResponse(true);
     }
     private void setResponse(Boolean response) {

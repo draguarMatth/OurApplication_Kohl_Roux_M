@@ -1,5 +1,6 @@
 package com.example.ourapplication_kohl_roux_m.ui.trajet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.InitApp;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 
 public class map_dernier_trajet extends BaseActivity {
 
@@ -31,16 +34,22 @@ public class map_dernier_trajet extends BaseActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
-        /*
-        The activity has to be finished manually in order to guarantee the navigation hierarchy working.
-        */
         finish();
         return super.onNavigationItemSelected(item);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_map_trajet, menu);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(map_dernier_trajet.this, SettingsActivity.class);
+                map_dernier_trajet.this.startActivity(intent);
+                break;
+        }
         return true;
     }
+
 }

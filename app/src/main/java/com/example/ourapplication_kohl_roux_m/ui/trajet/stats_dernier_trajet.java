@@ -20,7 +20,10 @@ public class stats_dernier_trajet extends BaseActivity {
 
     protected void onCreate(Bundle savecInstacneState){
         super.onCreate(savecInstacneState);
-        setContentView(R.layout.activity_stats_dernier_trajet);
+        getLayoutInflater().inflate(R.layout.activity_stats_dernier_trajet, frameLayout);
+
+        setTitle( "Stats Trajets");
+        navigationView.setCheckedItem(position);
 
         map = (Button) findViewById(R.id.map);
 
@@ -39,9 +42,6 @@ public class stats_dernier_trajet extends BaseActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
-        /*
-        The activity has to be finished manually in order to guarantee the navigation hierarchy working.
-        */
         finish();
         return super.onNavigationItemSelected(item);
     }

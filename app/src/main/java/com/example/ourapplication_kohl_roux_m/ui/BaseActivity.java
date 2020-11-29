@@ -5,9 +5,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 
+import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
 import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
@@ -116,13 +117,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_vehicule) {
             intent = new Intent(this, InitApp.class);
-        } else if (id == R.id.nav_list_trajet) {
-            intent = new Intent(this, list_trajet.class);
+        } else if (id == R.id.nav_trajet) {
+            intent = new Intent(this, ListTrajet_BazActivity.class);
         } else if (id == R.id.nav_map) {
             intent = new Intent(this, map_dernier_trajet.class);
-        } else if (id == R.id.nav_consumption) {
-            intent = new Intent(this, NewTrajetConsumptionInput.class);
         }
+
 
         if (intent != null) {
             intent.setFlags(
