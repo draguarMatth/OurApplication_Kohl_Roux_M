@@ -16,7 +16,6 @@ import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,8 +37,6 @@ public class CreateTrip extends BaseActivity {
     private String trajetDate;
     private TrajetEntity newTrajet;
 
-    private List<TrajetEntity> listTrajetToUpD;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +45,6 @@ public class CreateTrip extends BaseActivity {
         previousIntent = getIntent();
         bundle = previousIntent.getExtras();
         carId = (long) bundle.get("CarId");
-
-        TrajetListViewModel.Factory factory = new TrajetListViewModel.Factory(
-                getApplication());
-        TrajetListViewModel viewModel = ViewModelProviders.of(this, factory).get(TrajetListViewModel.class);
-        viewModel.getTrajetsviewMod().observe(this, trajetsL -> {
-            if (trajetsL != null) {
-                listTrajetToUpD = trajetsL;
-            }
-        });
 
         initializeForm();
         Toast toast = Toast.makeText(this, "Saisissez les niveaux de batterie et de carburant actuel", Toast.LENGTH_LONG);

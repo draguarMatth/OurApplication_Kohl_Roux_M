@@ -19,18 +19,12 @@ import androidx.core.view.GravityCompat;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapterWithPicture;
-import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.CreateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.car.UpdateCar;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
-import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.car.CarSingleViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 public class CarDescription extends BaseActivity {
 
@@ -152,19 +146,21 @@ public class CarDescription extends BaseActivity {
         if (carEntity.isCarForTrip())
             chkBoxActivity.setChecked(true);
 
+        chkBoxActivity.setActivated(true);
+
         chkBoxActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (((CheckBox) v).isChecked()) {
-                    carEntity.setCarForTrip(true);
+                if (carEntity.isCarForTrip()) {
+                    carEntity.setCarForTrip(false);
                 }
-                carEntity.setCarForTrip(false);
+                carEntity.setCarForTrip(true);
             }
         });
 
         fab.setOnClickListener(view -> {
             carEntity.setNickName(txtVwNickname.getText().toString());
-            //           carEntity.setPicture(imageCar.get);
+            carEntity.setPicture(R.drawable.i8);
 
             updateCar(carEntity);
         });

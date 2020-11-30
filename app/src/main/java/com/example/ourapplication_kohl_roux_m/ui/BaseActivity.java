@@ -16,7 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
+import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;

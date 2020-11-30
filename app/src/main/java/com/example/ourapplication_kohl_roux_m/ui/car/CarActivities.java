@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
@@ -64,7 +62,6 @@ public class CarActivities extends BaseActivity {
 
         finish();
         return super.onNavigationItemSelected(item);
-
     }
 
 
@@ -81,6 +78,7 @@ public class CarActivities extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_car, menu);
+
         return true;
     }
 }

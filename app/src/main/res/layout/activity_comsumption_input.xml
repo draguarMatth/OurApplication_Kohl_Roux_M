@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.management.consumptionInputs.NewTrajetConsumptionInput">
+    tools:context=".ui.management.NewTrajetConsumptionInput">
 
 
     <com.google.android.material.appbar.AppBarLayout

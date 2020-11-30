@@ -1,4 +1,4 @@
-package com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs;
+package com.example.ourapplication_kohl_roux_m.ui.management;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -25,14 +25,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapter;
-import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.UpdateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetSingleViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -54,10 +52,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     private TextView valueInList;
 
     private Application application;
-    private List<TrajetEntity> trajets;
-    private List<TrajetEntity> listTrajetToUpD;
-    private TrajetSingleViewModel viewModel;
 
+    private TrajetSingleViewModel viewModel;
     private TrajetEntity upDTrajet;
     private String trajetDate;
     private long carId;
@@ -67,7 +63,6 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     private List<String> fuelInputs;
     private int electInputsHashcode;
     private int fuelInputsHashcode;
-    private ViewModel viewmodel;
     private RecyclerView recyclerViewElect;
     private RecyclerView recyclerViewFuel;
 
@@ -75,8 +70,6 @@ public class NewTrajetConsumptionInput extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         application = getApplication();
-
-        Activity activityAv = this.getParent();
 
         getLayoutInflater().inflate(R.layout.activity_comsumption_input, frameLayout);
         previousIntent = getIntent();
