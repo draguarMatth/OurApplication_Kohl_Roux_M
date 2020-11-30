@@ -1,8 +1,10 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.os.Bundle;
-import androidx.core.view.GravityCompat;
+
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
+
 import com.example.ourapplication_kohl_roux_m.R;
 
 
@@ -33,7 +35,6 @@ public class MainActivity extends BaseActivity {
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 
         alertDialog.setTitle("Ceci devrait afficher une boite de dialogue d'alerte !");
-
         alertDialog.setCancelable(false);
         alertDialog.show();
     }

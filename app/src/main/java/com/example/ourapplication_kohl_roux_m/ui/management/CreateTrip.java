@@ -11,44 +11,50 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.lifecycle.ViewModelProviders;
 
+import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet.CreateTrajet;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
+import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
+import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 
 public class CreateTrip extends BaseActivity {
 
-     private static final String TAG = "RegisterNewRoadTrip";
+    private static final String TAG = "RegisterNewRoadTrip";
 
-     private Toast toast;
-
-     private EditText name;
-     private EditText date;
+    private EditText name;
+    private EditText date;
     private String nameNewTrip, dateNewTrip;
 
     private Intent previousIntent;
-    private Bundle bundle;
+    public Bundle bundle;
     private long carId;
     private String trajetDate;
     private TrajetEntity newTrajet;
 
-     @Override
-     protected void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-         getLayoutInflater().inflate(R.layout.activity_new_roadtrip_init, frameLayout);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new_roadtrip_init);
 
-         previousIntent = getIntent();
-         bundle = previousIntent.getExtras();
-         carId = (long) bundle.get("CarId");
+        previousIntent = getIntent();
+        bundle = previousIntent.getExtras();
+        carId = (long) bundle.get("CarId");
 
-         initializeForm();
-         toast = Toast.makeText(this, "Saisissez les niveaux de batterie et de carburant actuel", Toast.LENGTH_LONG);
+        initializeForm();
+        Toast toast = Toast.makeText(this, "Saisissez les niveaux de batterie et de carburant actuel", Toast.LENGTH_LONG);
 
          setTitle( "Create Trajets");
          navigationView.setCheckedItem(position);
@@ -77,56 +83,59 @@ public class CreateTrip extends BaseActivity {
         }
         return true;
     }
+    }
 
-     private void initializeForm() {
+    private void initializeForm() {
 
-         String format = "dd/MM/yy H:mm:ss";
-         java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-         java.util.Date date1 = new java.util.Date();
+        String format = "dd/MM/yy H:mm:ss";
+        java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat(format);
+        java.util.Date date1 = new java.util.Date();
 
-         name = findViewById(R.id.name);
-         date= findViewById(R.id.date);
+        name = findViewById(R.id.name);
+        date = findViewById(R.id.date);
 
-         date.setText(formater.format( date1 ));
+        date.setText(formater.format(date1));
 
-         Button saveBtn = findViewById(R.id.editButtonSAve);
-         saveBtn.setOnClickListener(view -> saveChanges(
-                 nameNewTrip = name.getText().toString(),
-                 dateNewTrip = date.getText().toString(),
-                 carId
-                 ));
+        Button saveBtn = findViewById(R.id.editButtonSAve);
+        saveBtn.setOnClickListener(view -> saveChanges(
+                nameNewTrip = name.getText().toString(),
+                dateNewTrip = date.getText().toString(),
+                carId
+        ));
 
-         FloatingActionButton save = findViewById(R.id.saveTrip);
-         save.setOnClickListener(view ->  saveChanges(
-                 nameNewTrip = name.getText().toString(),
-                 dateNewTrip = date.getText().toString(),
-                 carId
-         ));
-     }
+        FloatingActionButton save = findViewById(R.id.saveTrip);
+        save.setOnClickListener(view -> saveChanges(
+                nameNewTrip = name.getText().toString(),
+                dateNewTrip = date.getText().toString(),
+                carId
+        ));
+    }
 
+    private void saveChanges(String name, String date, long carID) {
 
-     private void saveChanges(String name, String date, long carID ) {
+        newTrajet = new TrajetEntity(carId, nameNewTrip, dateNewTrip, 0,
+                0, 0, 0, 0);
 
-         newTrajet = new TrajetEntity (carId, nameNewTrip, dateNewTrip, 0,
-         0,0, 0, 0);
+        new CreateTrajet(getApplication(), new OnAsyncEventListener() {
+            @Override
+            public void onSuccess() {
+                trajetDate = newTrajet.getDate();
+                Intent intent = new Intent(CreateTrip.this, NewTrajetConsumptionInput.class);
+                intent.putExtra("TrajetDate", trajetDate);
+                intent.putExtra("CarId", carId);
+                startActivity(intent);
 
-         new CreateTrajet(getApplication(), new OnAsyncEventListener() {
-             @Override
-             public void onSuccess() {
-             setResponse(true);
-             Log.d(TAG, "createIntitRoadTrip : success");
-             }
+                Log.d(TAG, "createIntitRoadTrip : success");
+            }
 
-             @Override
-             public void onFailure(Exception e) {
-                 Log.d(TAG, "createIntitRoadTrip: failure", e);
-         //        toast = Toast.makeText(this, "Erreur HOREUR !", Toast.LENGTH_LONG);
-                 System.out.println("Erreur HOREUR ! " + "-------------------Erreur HOREUR !" + " ------------------Erreur HOREUR !");
-             }
-         }).execute(newTrajet);
+            @Override
+            public void onFailure(Exception e) {
+                Log.d(TAG, "createIntitRoadTrip: failure", e);
+            }
 
+        }).execute(newTrajet);
+    }
 
-     }
     private void setResponse(Boolean response) {
         if (response) {
             trajetDate = newTrajet.getDate();
@@ -135,8 +144,18 @@ public class CreateTrip extends BaseActivity {
             intent.putExtra("CarId", carId);
             startActivity(intent);
         } else {
-            toast = Toast.makeText(this, "Erreur dans la saisie", Toast.LENGTH_LONG);
-
+            Toast toast = Toast.makeText(this, "Erreur dans la saisie", Toast.LENGTH_LONG);
+            toast.show();
         }
     }
- }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == BaseActivity.position) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return false;
+        }
+        finish();
+        return super.onNavigationItemSelected(item);
+    }
+}

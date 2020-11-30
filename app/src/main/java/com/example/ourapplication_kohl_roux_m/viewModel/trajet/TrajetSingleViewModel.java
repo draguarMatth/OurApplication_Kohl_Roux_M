@@ -14,43 +14,43 @@ import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepositor
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
-import java.util.List;
-
-public class TrajetListViewModel extends AndroidViewModel {
+public class TrajetSingleViewModel extends AndroidViewModel {
 
     private final Application application;
 
     private final TrajetRepository repository;
-    private final MediatorLiveData<List<TrajetEntity>> observableTrajets;
+    private final long carId;
+    private final String dateOfTrip;
+    private final MediatorLiveData<TrajetEntity> observableTrajet;
 
-    public TrajetListViewModel(@NonNull Application application,
-                               TrajetRepository trajetRepository) {
+    public TrajetSingleViewModel(@NonNull Application application,
+                                 TrajetRepository trajetRepository, long carId, String dateOfTrip) {
         super(application);
 
         this.application = application;
 
         repository = trajetRepository;
+        this.carId = carId;
+        this.dateOfTrip = dateOfTrip;
 
-        observableTrajets = new MediatorLiveData<>();
+        observableTrajet = new MediatorLiveData<>();
 
-        // set by default null, until we get data from the database.
-        observableTrajets.setValue(null);
+        observableTrajet.setValue(null);
 
-        LiveData<List<TrajetEntity>> trajetList =
-                repository.getTrajet(application);
+        LiveData<TrajetEntity> trajet =
+                repository.getOneTrajet(carId, dateOfTrip, application);
 
-        // observe the changes of the entities from the database and forward them
-        observableTrajets.addSource(trajetList, observableTrajets::setValue);
+        observableTrajet.addSource(trajet, observableTrajet::setValue);
     }
 
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<TrajetEntity>> getTrajetsviewMod() {
-        return observableTrajets;
+    public LiveData<TrajetEntity> getSingleTripviewMod() {
+        return observableTrajet;
     }
 
-    public void deleteTrajet(TrajetEntity trajet, OnAsyncEventListener callback) {
+    public void update(TrajetEntity trajet, OnAsyncEventListener callback) {
         repository.delete(trajet, callback, application);
     }
 
@@ -61,18 +61,20 @@ public class TrajetListViewModel extends AndroidViewModel {
 
         @NonNull
         private final Application application;
-
         private final TrajetRepository trajetRepository;
+        private long carId;
+        private String dateOfTrip;
 
-
-        public Factory(@NonNull Application application) {
+        public Factory(@NonNull Application application, final long carId, final String dateOfTrip) {
             this.application = application;
+            this.carId = carId;
+            this.dateOfTrip = dateOfTrip;
             trajetRepository = ((BaseApp) application).getTrajetRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
-            return (T) new TrajetListViewModel(application, trajetRepository);
+            return (T) new TrajetSingleViewModel(application, trajetRepository, carId, dateOfTrip);
         }
     }
 

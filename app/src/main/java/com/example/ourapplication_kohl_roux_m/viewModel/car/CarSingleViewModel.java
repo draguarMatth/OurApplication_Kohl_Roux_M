@@ -14,16 +14,14 @@ import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
-import java.util.List;
-
-public class CarMyListViewModel extends AndroidViewModel {
+public class CarSingleViewModel extends AndroidViewModel {
 
     private final Application application;
 
     private final CarRepository repository;
-    private final MediatorLiveData<List<CarEntity>> observableCars;
+    private final MediatorLiveData<CarEntity> observableCar;
 
-    public CarMyListViewModel(@NonNull Application application,
+    public CarSingleViewModel(final long carId, @NonNull Application application,
                               CarRepository carRepository) {
         super(application);
 
@@ -31,35 +29,27 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         repository = carRepository;
 
-        observableCars = new MediatorLiveData<>();
+        observableCar = new MediatorLiveData<>();
         // set by default null, until we get data from the database.
-        observableCars.setValue(null);
+        observableCar.setValue(null);
 
-        LiveData<List<CarEntity>> carList =
-                repository.getMyCars(application);
+        LiveData<CarEntity> car =
+                repository.getCar(carId, application);
 
 
         // observe the changes of the entities from the database and forward them
-        observableCars.addSource(carList, observableCars::setValue);
+        observableCar.addSource(car, observableCar::setValue);
     }
 
     /**
      * Expose the LiveData MyCars query so the UI can observe it.
      */
-    public LiveData<List<CarEntity>> getMyCarsViewMod() {
-        return observableCars;
-    }
-
-    public void deleteOneCar(CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.delete(carEntity, callback, application);
+    public LiveData<CarEntity> getMyCarViewMod() {
+        return observableCar;
     }
 
     public void modifyOneCar(final CarEntity carEntity, OnAsyncEventListener callback) {
         repository.update(carEntity, callback, application);
-    }
-
-    public void createTunedCar(final CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.insert(carEntity, callback, application);
     }
 
     /**
@@ -72,14 +62,17 @@ public class CarMyListViewModel extends AndroidViewModel {
 
         private final CarRepository repository;
 
-        public Factory(@NonNull Application application) {
+        private long carId;
+
+        public Factory(final long carId, @NonNull Application application) {
             this.application = application;
+            this.carId = carId;
             repository = ((BaseApp) application).getCarRepository();
         }
 
         @Override
         public <T extends ViewModel> T create(Class<T> modelClass) {
-            return (T) new CarMyListViewModel(application, repository);
+            return (T) new CarSingleViewModel(carId, application, repository);
         }
     }
 }

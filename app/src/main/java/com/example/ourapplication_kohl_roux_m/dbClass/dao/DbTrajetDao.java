@@ -10,21 +10,20 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
-import com.example.ourapplication_kohl_roux_m.dbClass.pojo.TrajetByThisCar;
 
 import java.util.List;
 
 @Dao
 public interface DbTrajetDao {
 
-    @Query("SELECT * FROM trajets WHERE Date LIKE (:date)")
-    TrajetEntity getByDate(String date);
+    @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId) AND Date LIKE (:date) ")
+    LiveData<TrajetEntity> getOneByCar(long carId, String date);
 
     @Query("SELECT * FROM trajets WHERE Nom_trajet LIKE (:name)")
     LiveData<List<TrajetEntity>> getByName(String name);
 
     @Query("SELECT * FROM trajets WHERE Voiture_id = (:carId)")
-        LiveData<List<TrajetEntity>> getByCarId(long carId);
+    LiveData<List<TrajetEntity>> getByCarId(long carId);
 
     @Query("SELECT * FROM trajets")
     LiveData<List<TrajetEntity>> getAll();
@@ -33,7 +32,7 @@ public interface DbTrajetDao {
     List<TrajetEntity> getAllTrajets();
 
     @Query("SELECT * FROM trajets WHERE uid = (:uid) Limit 1")
-    TrajetEntity getById(long uid);
+    LiveData<TrajetEntity> getById(long uid);
 
     @Query("SELECT * FROM trajets WHERE uid IN (:trajetIds)")
     List<TrajetEntity> loadAllByIds(long[] trajetIds);
@@ -66,13 +65,8 @@ public interface DbTrajetDao {
     long insert(TrajetEntity trajetEntity) throws SQLiteConstraintException;
 
     @Update
-    public void update(TrajetEntity trajets);
+    void update(TrajetEntity trajet);
 
-/*    @Update
-    public void updateConsoGasolin(TrajetEntity trajetEntity);
-    @Update
-    public void updateConsoElectric(TrajetEntity trajetEntity);
-*/
     @Delete
     void delete(TrajetEntity trajetEntity);
 

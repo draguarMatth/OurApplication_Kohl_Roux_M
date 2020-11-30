@@ -7,9 +7,6 @@ import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.Repository.TrajetRepository;
 
 
-/**
- * Android Application class. Used for accessing singletons.
- */
 public class BaseApp extends Application {
 
     @Override

@@ -1,5 +1,5 @@
 package com.example.ourapplication_kohl_roux_m.a_VOIR;
-
+/*
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,3 +16,4 @@ public class List_Trajet_Fragment extends Fragment {
         return inflater.inflate(R.layout.activity_list_trajet, container, false);
     }
 }
+*/

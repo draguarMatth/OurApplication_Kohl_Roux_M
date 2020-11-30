@@ -1,10 +1,11 @@
 package com.example.ourapplication_kohl_roux_m.adapter;
 
-import androidx.recyclerview.widget.DiffUtil;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
@@ -15,33 +16,21 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolderText> {
 
+    private final RecyclerViewItemClickListener mListener;
     private List<T> mData;
-    private RecyclerViewItemClickListener mListener;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
-        TextView mTextView;
-        ViewHolder(TextView textView) {
-            super(textView);
-            mTextView = textView;
-        }
-    }
 
     public RecyclerAdapter(RecyclerViewItemClickListener listener) {
         mListener = listener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
+    public ViewHolderText onCreateViewHolder(ViewGroup parent, int viewType) {
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view, parent, false);
-        final ViewHolder viewHolder = new ViewHolder(v);
+        final ViewHolderText viewHolder = new ViewHolderText(v);
         v.setOnClickListener(view -> mListener.onItemClick(view, viewHolder.getAdapterPosition()));
         v.setOnLongClickListener(view -> {
             mListener.onItemLongClick(view, viewHolder.getAdapterPosition());
@@ -51,12 +40,16 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolderText holder, int position) {
         T item = mData.get(position);
-        if (item.getClass().equals(CarEntity.class))
+        if (item.getClass().equals(String.class))
+            holder.mTextView.setText((String) item);
+        if (item.getClass().equals(CarEntity.class)) {
             holder.mTextView.setText(((CarEntity) item).getNickName());
+        }
         if (item.getClass().equals(TrajetEntity.class))
-            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
+            holder.mTextView.setText(((TrajetEntity) item).getName() + " "
+                    + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
     }
 
     @Override
@@ -87,11 +80,11 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                 @Override
                 public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
                     if (mData instanceof CarEntity) {
-                        return ((CarEntity) mData.get(oldItemPosition)).equals(((CarEntity) data.get(newItemPosition)));
+                        return mData.get(oldItemPosition).equals(data.get(newItemPosition));
                     }
                     if (mData instanceof TrajetEntity) {
-                        return ((TrajetEntity) mData.get(oldItemPosition)).equals(
-                                ((TrajetEntity) data.get(newItemPosition)));
+                        return mData.get(oldItemPosition).equals(
+                                data.get(newItemPosition));
                     }
                     return false;
                 }
@@ -101,24 +94,30 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
                     if (mData instanceof CarEntity) {
                         CarEntity newCarEntity = (CarEntity) data.get(newItemPosition);
                         CarEntity oldCarEntity = (CarEntity) mData.get(newItemPosition);
-                        return Objects.equals(newCarEntity.getUid(),(oldCarEntity.getUid()))
-                                && Objects.equals(newCarEntity.getNickName(), oldCarEntity.getNickName())
-                               /* && Objects.equals(newCarEntity.getBalance(), oldCarEntity.getBalance())
-                                && newCarEntity.getOwner().equals(oldCarEntity.getOwner()) */ ;
+                        return Objects.equals(newCarEntity.getUid(), (oldCarEntity.getUid()))
+                                && Objects.equals(newCarEntity.getNickName(), oldCarEntity.getNickName());
                     }
                     if (mData instanceof TrajetEntity) {
                         TrajetEntity newClient = (TrajetEntity) data.get(newItemPosition);
                         TrajetEntity oldClient = (TrajetEntity) mData.get(newItemPosition);
                         return Objects.equals(newClient.getCarId(), oldClient.getCarId())
                                 && Objects.equals(newClient.getName(), oldClient.getName())
-                                && Objects.equals(newClient.getDate(), oldClient.getDate())
-                               /* && newClient.getPassword().equals(oldClient.getPassword()) */ ;
+                                && Objects.equals(newClient.getDate(), oldClient.getDate());
                     }
                     return false;
                 }
             });
             mData = data;
             result.dispatchUpdatesTo(this);
+        }
+    }
+
+    static class ViewHolderText extends RecyclerView.ViewHolder {
+        TextView mTextView;
+
+        ViewHolderText(TextView textView) {
+            super(textView);
+            mTextView = textView;
         }
     }
 }

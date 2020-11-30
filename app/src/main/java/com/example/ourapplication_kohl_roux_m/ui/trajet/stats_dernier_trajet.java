@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 
 import com.example.ourapplication_kohl_roux_m.R;
@@ -18,14 +17,14 @@ public class stats_dernier_trajet extends BaseActivity {
 
     private Button map;
 
-    protected void onCreate(Bundle savecInstacneState){
+    protected void onCreate(Bundle savecInstacneState) {
         super.onCreate(savecInstacneState);
         getLayoutInflater().inflate(R.layout.activity_stats_dernier_trajet, frameLayout);
 
         setTitle( "Stats Trajets");
         navigationView.setCheckedItem(position);
 
-        map = (Button) findViewById(R.id.map);
+        map = findViewById(R.id.map);
 
         map.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +46,7 @@ public class stats_dernier_trajet extends BaseActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_dernier_trajet, menu);
         return true;
     }

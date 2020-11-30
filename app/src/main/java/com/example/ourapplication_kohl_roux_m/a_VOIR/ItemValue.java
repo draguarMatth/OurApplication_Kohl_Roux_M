@@ -1,5 +1,5 @@
 package com.example.ourapplication_kohl_roux_m.a_VOIR;
-
+/*
 public class ItemValue {
 
         private double val;
@@ -21,5 +21,5 @@ public class ItemValue {
         return  String.valueOf(val)  ;
     }
 }
-
+*/
 

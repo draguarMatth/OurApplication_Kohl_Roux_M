@@ -5,17 +5,17 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "cars")
+@Entity(tableName = "cars")
 public class CarEntity implements Comparable {
 
-    @ColumnInfo(name="uid")
+    @ColumnInfo(name = "uid")
     @PrimaryKey(autoGenerate = true)
     public long uid;
 
-    @ColumnInfo(name="Nickname")
+    @ColumnInfo(name = "Nickname")
     public String nickName;
 
-    @ColumnInfo(name="Marque")
+    @ColumnInfo(name = "Marque")
     @NonNull
     public String carTradeMark;
 
@@ -37,20 +37,11 @@ public class CarEntity implements Comparable {
     @NonNull
     public boolean carForTrip;
 
-/*    public CarEntity(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
-
-        this.carTradeMark = carTradeMark;
-        this.model = model;
-        this.consoEssence = consoEssence;
-        this.batteryPower = batteryPower;
-        this.carForTrip = activate;
-
-    }
-
- */
+    @ColumnInfo(name = "picture")
+    public int picture;
 
     public CarEntity(@NonNull String nickName, @NonNull String carTradeMark, @NonNull String model,
-                     @NonNull double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip) {
+                     @NonNull double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip, int picture) {
         this.nickName = nickName;
         this.carTradeMark = carTradeMark;
         this.model = model;
@@ -58,6 +49,7 @@ public class CarEntity implements Comparable {
         this.batteryPower = batteryPower;
         this.wheelSize = wheelSize;
         this.carForTrip = carForTrip;
+        this.picture = picture;
     }
 
     public long getUid() {
@@ -66,6 +58,10 @@ public class CarEntity implements Comparable {
 
     public String getNickName() {
         return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getCarTradeMark() {
@@ -84,16 +80,20 @@ public class CarEntity implements Comparable {
         return batteryPower;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public int getPicture() {
+        return picture;
     }
 
-    public void setWheelSize(String wheelSize) {
-        this.wheelSize = wheelSize;
+    public void setPicture(int pathRDrawable) {
+        this.picture = pathRDrawable;
     }
 
     public String getWheelSize() {
         return wheelSize;
+    }
+
+    public void setWheelSize(String wheelSize) {
+        this.wheelSize = wheelSize;
     }
 
     public boolean isCarForTrip() {
@@ -110,13 +110,12 @@ public class CarEntity implements Comparable {
         if (obj == this) return true;
         if (!(obj instanceof CarEntity)) return false;
         CarEntity o = (CarEntity) obj;
-        if (o.getUid() != this.getUid()) return false;
-        return true ;
+        return o.getUid() == this.getUid();
     }
 
     @Override
     public String toString() {
-        return uid + " / " + nickName ;
+        return uid + " / " + nickName;
     }
 
     @Override

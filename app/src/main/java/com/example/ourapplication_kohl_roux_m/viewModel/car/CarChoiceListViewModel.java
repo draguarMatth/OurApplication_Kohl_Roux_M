@@ -17,16 +17,16 @@ import java.util.List;
 
 public class CarChoiceListViewModel extends AndroidViewModel {
 
-    private Application application;
+    private final Application application;
 
-    private CarRepository repository;
+    private final CarRepository repository;
 
     // MediatorLiveData can observe other LiveData objects and react on their emissions.
     private final MediatorLiveData<List<CarEntity>> observableCars;
 //    private final MediatorLiveData<List<AccountEntity>> observableOwnAccounts;
 
     public CarChoiceListViewModel(@NonNull Application application,
-                                CarRepository carRepository) {
+                                  CarRepository carRepository) {
         super(application);
 
         this.application = application;
@@ -43,6 +43,20 @@ public class CarChoiceListViewModel extends AndroidViewModel {
 
         // observe the changes of the entities from the database and forward them
         observableCars.addSource(carAllList, observableCars::setValue);
+    }
+
+    /**
+     * Expose the LiveData ClientAccounts query so the UI can observe it.
+     */
+    public LiveData<List<CarEntity>> getAllCar() {
+        return observableCars;
+    }
+
+    /**
+     * Expose the LiveData AccountEntities query so the UI can observe it.
+     */
+    public LiveData<List<CarEntity>> getOwnAccounts() {
+        return observableCars;
     }
 
     /**
@@ -66,29 +80,4 @@ public class CarChoiceListViewModel extends AndroidViewModel {
             return (T) new CarChoiceListViewModel(application, carRepository);
         }
     }
-
-    /**
-     * Expose the LiveData ClientAccounts query so the UI can observe it.
-     */
-    public LiveData<List<CarEntity>> getAllCar() {
-        return observableCars;
-    }
-
-    /**
-     * Expose the LiveData AccountEntities query so the UI can observe it.
-     */
-    public LiveData<List<CarEntity>> getOwnAccounts() {
-        return observableCars;
-    }
-
- /*   public void insertTunedCar(CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.insertTunedCar(carEntity, callback, application);
-    }
-
-    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
-                                   OnAsyncEventListener callback) {
-        repository.transaction(sender, recipient, callback, application);
-
-    }
-  */
 }

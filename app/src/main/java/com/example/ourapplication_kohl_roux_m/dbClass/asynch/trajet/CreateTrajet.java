@@ -1,7 +1,6 @@
 package com.example.ourapplication_kohl_roux_m.dbClass.asynch.trajet;
 
 import android.app.Application;
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
@@ -11,13 +10,11 @@ import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class CreateTrajet extends AsyncTask<TrajetEntity, Void, Void> {
 
-//    private AppDataBase appDatabase;
-    private Application application;
-    private OnAsyncEventListener callback;
+    private final Application application;
+    private final OnAsyncEventListener callback;
     private Exception exception;
 
-    public CreateTrajet( Application application , OnAsyncEventListener callback) {
-//        database = AppDataBase.getInstance(context);
+    public CreateTrajet(Application application, OnAsyncEventListener callback) {
         this.application = application;
         this.callback = callback;
     }
