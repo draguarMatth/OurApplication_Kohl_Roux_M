@@ -12,18 +12,28 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.InitApp;
+import com.example.ourapplication_kohl_roux_m.ui.Start;
 
 
 public class SettingsActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content,new SettingsFragment())
                 .commit();
+
+
+
+
     }
+
+
 
 
     //insert action - toolbar
