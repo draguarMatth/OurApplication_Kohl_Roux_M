@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
+import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
@@ -21,6 +22,8 @@ public class DeleteTrajet extends AsyncTask<TrajetEntity, Void, Void> {
     @Override
     protected Void doInBackground(TrajetEntity... params) {
         try {
+            AppDataBase.getInstance(application.getBaseContext()).getDatabaseCreated();
+
             for (TrajetEntity trajetEntity : params)
                 ((BaseApp) application).getDatabase().trajetDao().delete(trajetEntity);
         } catch (Exception e) {

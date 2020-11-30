@@ -9,7 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.ui.car.ListCarActivity;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar;
 
 public class Start extends AppCompatActivity {
 
@@ -24,12 +24,10 @@ public class Start extends AppCompatActivity {
         choix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //               Intent intent = new Intent(Start.this, InitApp.class);
-                Intent intent = new Intent(Start.this, ListCarActivity.class);
+                Intent intent = new Intent(Start.this, ListMyCar.class);
                 startActivity(intent);
             }
         });
-
     }
 
     @Override

@@ -28,7 +28,6 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
 
     @Override
     public ViewHolderText onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycler_view, parent, false);
         final ViewHolderText viewHolder = new ViewHolderText(v);
@@ -49,7 +48,8 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
             holder.mTextView.setText(((CarEntity) item).getNickName());
         }
         if (item.getClass().equals(TrajetEntity.class))
-            holder.mTextView.setText(((TrajetEntity) item).getName() + " " + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
+            holder.mTextView.setText(((TrajetEntity) item).getName() + " "
+                    + ((TrajetEntity) item).getDate() + " " + ((TrajetEntity) item).getKmTot());
     }
 
     @Override
@@ -112,11 +112,7 @@ public class RecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerAdapter.Vie
         }
     }
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     static class ViewHolderText extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         TextView mTextView;
 
         ViewHolderText(TextView textView) {

@@ -55,25 +55,24 @@
 
         <activity
             android:name=".ui.management.consumptionInputs.NewTrajetConsumptionInput"
-            android:label="Saisie de vos données de connsommation"
-            android:parentActivityName=".ui.management.CreateTrip"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip" />
-        </activity>
-        <activity
-            android:name=".ui.management.CreateTrip"
-            android:label="Nouveau trajet"
+            android:label="@string/consommation"
             android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
         </activity>
-
         <activity
-            android:name=".ui.car.ListCarActivity"
+            android:name=".ui.management.CreateTrip"
+            android:label="@string/newTrip"
+            android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
+        </activity>
+        <activity
+            android:name=".ui.car.ListMyCar"
             android:label="Page Base"
             android:parentActivityName=".ui.Start"
             android:theme="@style/AppTheme.NoActionBar">
@@ -81,15 +80,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
         </activity>
-
         <activity
            android:name=".ui.car.ChooseNewCar"
-           android:label="Page Base"
-           android:parentActivityName=".ui.car.ListCarActivity"
+           android:label="Nouvelle voiture"
+           android:parentActivityName=".ui.car.ListMyCar"
            android:theme="@style/AppTheme.NoActionBar">
            <meta-data
                android:name="android.support.PARENT_ACTIVITY"
-               android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListCarActivity" />
+               android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
         </activity>
         <activity
             android:name=".ui.trajet.TrajetActivity"
@@ -98,6 +96,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
+        </activity>
+        <activity
+            android:name=".ui.car.CarDescription"
+            android:parentActivityName=".ui.car.ListMyCar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
+        </activity>
+        <activity
+            android:name=".ui.car.CarActivities"
+            android:parentActivityName=".ui.car.ListMyCar"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
         </activity>
     </application>
 

@@ -1,5 +1,5 @@
 package com.example.ourapplication_kohl_roux_m.a_VOIR;
-
+/*
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,5 +26,8 @@ public class list_trajet extends AppCompatActivity {
         listView.setAdapter(adapter);
 
  */
-    }
+
+/*
+   }
 }
+*/

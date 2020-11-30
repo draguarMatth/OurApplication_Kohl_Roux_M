@@ -40,19 +40,6 @@ public class CarEntity implements Comparable {
     @ColumnInfo(name = "picture")
     public int picture;
 
-
-/*    public CarEntity(String carTradeMark, String model,  double consoEssence,  double batteryPower, boolean activate) {
-
-        this.carTradeMark = carTradeMark;
-        this.model = model;
-        this.consoEssence = consoEssence;
-        this.batteryPower = batteryPower;
-        this.carForTrip = activate;
-
-    }
-
- */
-
     public CarEntity(@NonNull String nickName, @NonNull String carTradeMark, @NonNull String model,
                      @NonNull double consoEssence, double batteryPower, String wheelSize, @NonNull boolean carForTrip, int picture) {
         this.nickName = nickName;

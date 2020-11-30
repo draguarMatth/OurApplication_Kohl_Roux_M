@@ -16,7 +16,6 @@ import java.util.List;
 
 @Dao
 public interface DbCarDao {
-//    CarEntity carEntity = new CarEntity();
 
     @Query("SELECT * FROM cars WHERE uid IN (:carIds)")
     LiveData<CarEntity> getById(long[] carIds);
@@ -28,7 +27,7 @@ public interface DbCarDao {
     LiveData<List<CarEntity>> getByActivity();
 
     @Query("SELECT * FROM cars WHERE uid = (:uid) ")
-    CarEntity getCar(long uid);
+    LiveData<CarEntity> getCar(long uid);
 
     @Query("SELECT * FROM cars WHERE active = 1 ")
     List<CarEntity> getActive();

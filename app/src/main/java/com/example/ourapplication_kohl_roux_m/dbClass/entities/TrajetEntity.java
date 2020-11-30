@@ -44,12 +44,6 @@ public class TrajetEntity implements Comparable, Parcelable {
     @ColumnInfo(name = "Consommation_Essence")
     public double gasolinTot;
 
-
-    /*    public TrajetEntity(int carId, String date) {
-            this.carId = carId;
-            this.date = date;
-        }
-    */
     @ColumnInfo(name = "Recharge_electrique")
     public double electricityTot;
 

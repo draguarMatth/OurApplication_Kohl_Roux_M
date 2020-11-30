@@ -17,7 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.consumptionInputs.NewTrajetConsumptionInput;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.list_trajet;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,14 +26,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     public static final String PREFS_NAME = "SharedPrefs";
     public static final String PREFS_USER = "LoggedIn";
-    /**
-     * Static variable for selected item position. Which can be used in child activity to know which item is selected from the list.
-     */
+
     protected static int position;
-    /**
-     * Frame layout: Which is going to be used as parent layout for child activity layout.
-     * This layout is protected so that child activity can access this
-     */
+
     protected FrameLayout frameLayout;
     protected DrawerLayout drawerLayout;
     protected NavigationView navigationView;
@@ -75,16 +70,13 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
         if (item.getItemId() == R.id.action_settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
@@ -97,7 +89,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == BaseActivity.position) {
@@ -112,7 +103,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_vehicule) {
             intent = new Intent(this, InitApp.class);
         } else if (id == R.id.nav_list_trajet) {
-            intent = new Intent(this, list_trajet.class);
+            intent = new Intent(this, ListTrajet_BazActivity.class);
         } else if (id == R.id.nav_map) {
             intent = new Intent(this, map_dernier_trajet.class);
         } else if (id == R.id.nav_consumption) {
@@ -135,12 +126,5 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences.Editor editor = getSharedPreferences(BaseActivity.PREFS_NAME, 0).edit();
         editor.remove(BaseActivity.PREFS_USER);
         editor.apply();
-
-/*        Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(intent);
-
- */
     }
 }

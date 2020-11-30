@@ -19,7 +19,6 @@ import com.example.ourapplication_kohl_roux_m.dbClass.entities.TrajetEntity;
 import java.util.concurrent.Executors;
 
 @Database(entities = {TrajetEntity.class, CarEntity.class}, version = 1)
-//@Database(entities = {CarEntity.class}, version= 1)
 public abstract class AppDataBase extends RoomDatabase {
 
     private static final String TAG = "AppDataBase";

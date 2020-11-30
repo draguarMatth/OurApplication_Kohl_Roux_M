@@ -12,7 +12,6 @@ import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
 
 public class map_dernier_trajet extends BaseActivity {
 
-
     protected void onCreate(Bundle savecInstacneState) {
         super.onCreate(savecInstacneState);
         getLayoutInflater().inflate(R.layout.activity_map_dernier_trajet, frameLayout);

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import com.example.ourapplication_kohl_roux_m.BaseApp;
+import com.example.ourapplication_kohl_roux_m.dbClass.AppDataBase;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
@@ -20,6 +21,8 @@ public class DeleteCar extends AsyncTask<CarEntity, Void, Void> {
 
     @Override
     protected Void doInBackground(CarEntity... params) {
+        AppDataBase.getInstance(application.getBaseContext()).getDatabaseCreated();
+
         try {
             for (CarEntity carEntity : params)
                 ((BaseApp) application).getDatabase().carDao().delete(carEntity);

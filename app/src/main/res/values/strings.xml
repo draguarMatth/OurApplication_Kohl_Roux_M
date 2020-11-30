@@ -43,6 +43,9 @@
     <string name="destination">Destination</string>
     <string name="recharge_batterie_kw">Recharge Batterie (kW)</string>
     <string name="plein_d_essence_l">Plein d\'essence (L)</string>
+    <string name="nom_perso_de_la_voiture">Nom perso de la voiture</string>
+    <string name="consommation">Saisie de vos données de connsommation</string>
+    <string name="newTrip">Nouveau trajet</string>
 
 
 </resources>

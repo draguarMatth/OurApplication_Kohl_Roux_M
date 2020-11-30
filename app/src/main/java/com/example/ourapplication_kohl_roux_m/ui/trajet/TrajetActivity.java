@@ -15,19 +15,12 @@ public class TrajetActivity extends BaseActivity {
     private static final String TAG = "ViewTrajet";
     Bundle bundle;
     TextView nameTrajet;
-    TextView modelCar;
-    TextView nicknameCar;
     TextView distance;
     TextView down;
     TextView up;
     TextView consoElect;
     TextView consoFuel;
-    Button ModifyButton;
-    Button backButton;
     private Intent previousIntent;
-    private long carId;
-    private long trajetId;
-    private CarEntity carConcerned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,13 +10,11 @@ import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 
 public class CreateTrajet extends AsyncTask<TrajetEntity, Void, Void> {
 
-    //    private AppDataBase appDatabase;
     private final Application application;
     private final OnAsyncEventListener callback;
     private Exception exception;
 
     public CreateTrajet(Application application, OnAsyncEventListener callback) {
-//        database = AppDataBase.getInstance(context);
         this.application = application;
         this.callback = callback;
     }

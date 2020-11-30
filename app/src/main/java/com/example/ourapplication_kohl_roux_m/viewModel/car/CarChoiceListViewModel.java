@@ -80,15 +80,4 @@ public class CarChoiceListViewModel extends AndroidViewModel {
             return (T) new CarChoiceListViewModel(application, carRepository);
         }
     }
-
- /*   public void insertTunedCar(CarEntity carEntity, OnAsyncEventListener callback) {
-        repository.insertTunedCar(carEntity, callback, application);
-    }
-
-    public void executeTransaction(final AccountEntity sender, final AccountEntity recipient,
-                                   OnAsyncEventListener callback) {
-        repository.transaction(sender, recipient, callback, application);
-
-    }
-  */
 }

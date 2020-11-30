@@ -49,13 +49,8 @@ public class InitApp extends BaseActivity {
         });
 
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-/*        fab.setOnClickListener(view -> {
-                    Intent intent = new Intent(InitApp.this, AddNewMyCar.class);
-                    startActivity(intent);
-                }
-        );
-*/
-    }
+}
+
 
     @Override
     protected void onResume() {

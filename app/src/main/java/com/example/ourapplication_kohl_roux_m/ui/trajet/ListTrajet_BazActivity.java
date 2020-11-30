@@ -31,8 +31,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 
-//import androidx.appcompat.app.AppCompatActivity;
-
 public class ListTrajet_BazActivity extends BaseActivity {
 
     private static final String TAG = "ListTrajet";
@@ -42,9 +40,8 @@ public class ListTrajet_BazActivity extends BaseActivity {
 
     private List<TrajetEntity> trajets;
     private RecyclerAdapter<TrajetEntity> adapter;
-//    private TrajetListViewModel viewModel;
     private TrajetListByCarViewModel viewModel;
-    private long carId;
+    public long carId;
 
 
     @Override
@@ -59,8 +56,6 @@ public class ListTrajet_BazActivity extends BaseActivity {
         previousIntent = getIntent();
         bundle = previousIntent.getExtras();
         carId = (long) bundle.get("CarId");
-
-        // use a linear layout manager
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -100,15 +95,18 @@ public class ListTrajet_BazActivity extends BaseActivity {
         FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(view -> {
 
-                    TrajetEntity trajet = trajets.get(position);
                     Intent intent = new Intent(ListTrajet_BazActivity.this, CreateTrip.class);
                     intent.setFlags(
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
-                    intent.putExtra("Trajet", trajet);
+                    if (position != 0) {
+                        TrajetEntity trajet = trajets.get(position);
+                        intent.putExtra("Trajet", trajet);
+                    }
                     intent.putExtra("CarId", carId);
                     startActivity(intent);
+
                 }
         );
 
@@ -170,5 +168,4 @@ public class ListTrajet_BazActivity extends BaseActivity {
         });
         alertDialog.show();
     }
-
 }
