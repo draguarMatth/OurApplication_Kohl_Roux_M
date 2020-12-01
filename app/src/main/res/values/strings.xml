@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
     <string name="app_name">OurApplication_Kohl_Roux_M</string>
     <string name="action_settings">Settings</string>
 
@@ -8,7 +8,7 @@
     <string name="title_activity_modify_Inputs">Modify or delete ?</string>
 
     <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_ListTrajet">List of Rides</string>
+    <string name="title_activity_ListTrajet">List Trajets</string>
 
 
     <string name="disclaimer" translatable="false">Copyright &#169; 2020\nHES-SO Valais//Wallis Sierre</string>
@@ -42,16 +42,16 @@
     <string name="map_en_cours">Map in progress</string>
     <string name="saisie_consommation">Consuption Input</string>
     <string name="action_logout">action_logout</string>
-    <string name="liste_des_trajets">List of rides</string>
-    <string name="trajetentity_en_cours">RideEntity in progress</string>
-    <string name="dernier_trajetentity">Last rideEntity</string>
-    <string name="back_stat">"back "</string>
-    <string name="back_trajet">"back "</string>
-    <string name="entrer_la_localisation">Enter the location</string>
-    <string name="entrer_la_d_stination">Enter the  destination</string>
-    <string name="entrer_la_recharche_batterie">Battery Input</string>
-    <string name="entrer_le_plein_d_essence">Refueling Input</string>
-    <string name="trajet_en_cours">Ride in progress</string>
+    <string name="liste_des_trajets">Liste des trajets</string>
+    <string name="trajetentity_en_cours">trajetEntity en cours</string>
+    <string name="dernier_trajetentity">Dernier trajetEntity</string>
+    <string name="back_stat">back_stat</string>
+    <string name="back_trajet">back_trajet</string>
+    <string name="entrer_la_localisation">Entrer la localisation</string>
+    <string name="entrer_la_d_stination">Entrer la déstination</string>
+    <string name="entrer_la_recharche_batterie">Entrer la recharche batterie</string>
+    <string name="entrer_le_plein_d_essence">Entrer le plein d\'essence</string>
+    <string name="trajet_en_cours">trajet en cours</string>
     <string name="localisation">Localisation</string>
     <string name="destination">Destination</string>
     <string name="recharge_batterie_kw">Batterie charging (kW)</string>
@@ -63,6 +63,15 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="recharge_batterie_kw">Recharge Batterie (kW)</string>
+    <string name="plein_d_essence_l">Plein d\'essence (L)</string>
+    <string name="nom_perso_de_la_voiture">Nom perso de la voiture</string>
+    <string name="consommation">Saisie de vos données de connsommation</string>
+    <string name="newTrip">Nouveau trajet</string>
+    <string name="dimension_pneus">Dimension pneus</string>
+    <string name="battery">Battery</string>
+    <string name="consommation_carburant">Consommation carburant</string>
+    <string name="mod_le_de_voiture">Modèle de voiture</string>
 
 
 </resources>
