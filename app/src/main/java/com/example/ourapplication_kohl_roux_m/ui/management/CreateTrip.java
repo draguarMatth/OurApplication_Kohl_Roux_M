@@ -83,7 +83,6 @@ public class CreateTrip extends BaseActivity {
         }
         return true;
     }
-    }
 
     private void initializeForm() {
 
@@ -149,13 +148,4 @@ public class CreateTrip extends BaseActivity {
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == BaseActivity.position) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return false;
-        }
-        finish();
-        return super.onNavigationItemSelected(item);
-    }
 }

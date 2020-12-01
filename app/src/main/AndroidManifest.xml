@@ -32,15 +32,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
         </activity>
-        <activity
-            android:name=".ui.management.NewTrajetConsumptionInput"
-            android:label="/ @string/title_activity_ListTrajet"
-            android:parentActivityName=".ui.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
-        </activity>
        <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
@@ -61,17 +52,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
-        </activity>
-      <activity
-           android:name=".ui.management.CreateTrip"
-           android:label="Nouveau trajet"
-           android:parentActivityName=".ui.trajet.ListTrajet_BazActivity"
-           android:theme="@style/AppTheme.NoActionBar">
-           <meta-data
-               android:name="android.support.PARENT_ACTIVITY"
-               android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
-       </activity>
-
+        </activity
 
         <activity
             android:name=".ui.management.NewTrajetConsumptionInput"
@@ -117,6 +98,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
         </activity>
+
         <activity
             android:name=".ui.car.CarDescription"
             android:parentActivityName=".ui.car.ListMyCar"

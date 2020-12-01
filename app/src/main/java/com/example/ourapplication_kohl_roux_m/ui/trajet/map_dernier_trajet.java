@@ -44,9 +44,8 @@ public class map_dernier_trajet extends BaseActivity {
                 map_dernier_trajet.this.startActivity(intent);
                 break;
         }
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_map_trajet, menu);
         return true;
     }
+
 
 }

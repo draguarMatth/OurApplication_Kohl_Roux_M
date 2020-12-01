@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

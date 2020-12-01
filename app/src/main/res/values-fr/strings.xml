@@ -27,4 +27,26 @@
     <string name="main_welcome">Bienvenue</string>
     <string name="title_activity_about">A propos de</string>
     <string name="hello_world">Hello World!</string>
+    <string name="new_trajet">nouveau trajet</string>
+    <string name="trajet">Trajet</string>
+    <string name="map_en_cours">Map en cours</string>
+    <string name="saisie_consommation">Saisie consommation</string>
+    <string name="action_logout">action de déconection</string>
+    <string name="liste_des_trajets">Liste des trajets</string>
+    <string name="trajetentity_en_cours">trajetEntity en cours</string>
+    <string name="dernier_trajetentity">Dernier trajetEntity</string>
+    <string name="back_stat">"retour "</string>
+    <string name="back_trajet">retour</string>
+    <string name="entrer_la_localisation">Entrer la localisation</string>
+    <string name="entrer_la_d_stination">Entrer la déstination</string>
+    <string name="entrer_la_recharche_batterie">Entrer la recharche batterie</string>
+    <string name="entrer_le_plein_d_essence">Entrer le plein d\'essence</string>
+    <string name="trajet_en_cours">trajet en cours</string>
+    <string name="localisation">Localisation</string>
+    <string name="destination">Déstination</string>
+    <string name="plein_d_essence_l">Plein d\'essence (L)</string>
+    <string name="recharge_batterie_kw">Recharge Batterie (kW)</string>
+    <string name="nom_perso_de_la_voiture">Nom perso de la voiture</string>
+    <string name="consommation">Saisie de vos données de connsommation</string>
+    <string name="newTrip">Nouveau trajet</string>
 </resources>
