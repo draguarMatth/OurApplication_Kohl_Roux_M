@@ -210,11 +210,6 @@ public class ChooseNewCar extends AppCompatActivity {
         super.onPostResume();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
-        return true;
-    }
 
     private ArrayList<String> extractListFromCsv(String toCompare, int place, int rang, String path, ArrayList<String> tokens) {
         ArrayList<String> list = new ArrayList<>();

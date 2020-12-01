@@ -70,20 +70,6 @@ public class CreateTrip extends BaseActivity {
         return super.onNavigationItemSelected(item);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent intent = new Intent(CreateTrip.this, SettingsActivity.class);
-                CreateTrip.this.startActivity(intent);
-                break;
-        }
-        return true;
-    }
-
     private void initializeForm() {
 
         String format = "dd/MM/yy H:mm:ss";

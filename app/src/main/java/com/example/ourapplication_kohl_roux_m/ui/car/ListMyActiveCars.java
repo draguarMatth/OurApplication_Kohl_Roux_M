@@ -22,6 +22,7 @@ import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapterWithPicture;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel;
@@ -139,7 +140,21 @@ public class ListMyActiveCars extends BaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
+        getMenuInflater().inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent intent = new Intent(ListMyActiveCars.this, SettingsActivity.class);
+                ListMyActiveCars.this.startActivity(intent);
+                break;
+        }
         return true;
     }
 

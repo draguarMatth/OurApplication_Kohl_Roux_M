@@ -6,12 +6,6 @@
             android:id="@+id/nav_vehicule"
             android:title="Mes voitures" />
         <item
-            android:id="@+id/nav_trajet"
-            android:title="Trajet" />
-        <item
-            android:id="@+id/nav_map"
-            android:title="Map en cours"/>
-        <item
             android:id="@+id/nav_none"
             android:title=""
             android:visible="false"/>

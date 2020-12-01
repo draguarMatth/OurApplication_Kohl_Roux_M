@@ -217,25 +217,6 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         return super.onNavigationItemSelected(item);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent intent = new Intent(NewTrajetConsumptionInput.this, SettingsActivity.class);
-                NewTrajetConsumptionInput.this.startActivity(intent);
-                break;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_map_trajet, menu);
-        return true;
-    }
 
     @SuppressLint("StaticFieldLeak")
     private void createModifyDialog(final int position, final int hashcodeInputs) {

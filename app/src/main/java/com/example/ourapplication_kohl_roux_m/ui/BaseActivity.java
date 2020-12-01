@@ -1,7 +1,6 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,26 +8,17 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 
-import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
-import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
-import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
+import com.example.ourapplication_kohl_roux_m.ui.Settings.SettingsActivity;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
 import com.google.android.material.navigation.NavigationView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
-import com.google.android.material.navigation.NavigationView;
 
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -78,11 +68,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.settings, menu);
         return true;
     }
 
@@ -117,27 +105,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(id);
 
         if (id == R.id.nav_vehicule) {
-            intent = new Intent(this, InitApp.class);
-        } else if (id == R.id.nav_trajet) {
+            intent = new Intent(this, ListMyActiveCars.class);
+        }/* else if (id == R.id.nav_trajet) {
             intent = new Intent(this, ListTrajet_BazActivity.class);
-        } else if (id == R.id.nav_map) {
-            intent = new Intent(this, map_dernier_trajet.class);
+        }*/
+
+            if (intent != null) {
+                intent.setFlags(
+                        Intent.FLAG_ACTIVITY_NO_ANIMATION
+                );
+                startActivity(intent);
+            }
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return true;
         }
 
-
-        if (intent != null) {
-            intent.setFlags(
-                    Intent.FLAG_ACTIVITY_NO_ANIMATION
-            );
-            startActivity(intent);
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 
-    public void logout() {
-        SharedPreferences.Editor editor = getSharedPreferences(BaseActivity.PREFS_NAME, 0).edit();
-        editor.remove(BaseActivity.PREFS_USER);
-        editor.apply();
-    }
-}

@@ -76,7 +76,6 @@ public class InitApp extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.settings, menu);
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }
 

@@ -75,10 +75,4 @@ public class CarActivities extends BaseActivity {
         super.onPostResume();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
-
-        return true;
-    }
 }

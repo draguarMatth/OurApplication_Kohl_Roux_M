@@ -4,15 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.ourapplication_kohl_roux_m.R;
-import com.example.ourapplication_kohl_roux_m.ui.InitApp;
-import com.example.ourapplication_kohl_roux_m.ui.Start;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
 
 
 public class SettingsActivity extends AppCompatActivity {
@@ -27,14 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content,new SettingsFragment())
                 .commit();
-
-
-
-
     }
-
-
-
 
     //insert action - toolbar
     @Override
@@ -52,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.action_back:
-                Intent i = new Intent( SettingsActivity.this, InitApp.class);
+                Intent i = new Intent( SettingsActivity.this, ListMyActiveCars.class);
                 SettingsActivity.this.startActivity(i);
                 this.finish();
                 break;
