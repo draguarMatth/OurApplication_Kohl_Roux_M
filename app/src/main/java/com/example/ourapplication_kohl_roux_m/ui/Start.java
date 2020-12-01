@@ -20,6 +20,7 @@ import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 //import com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar;
 import com.google.android.gms.common.util.DeviceProperties;
 //import com.opencsv.CSVWriter;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,14 +47,17 @@ public class Start extends AppCompatActivity {
             choix = findViewById(R.id.btnstart);
             fileList = new ArrayList<>();
 
-            choix.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Intent intent = new Intent(Start.this, ListMyCar.class);
-                    //startActivity(intent);
-                }
-            });
+        choix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Start.this, ListMyActiveCars.class);
+                startActivity(intent);
+            }
+        });
 
+        File downLoadFile = getExternalFilesDir("/liste") ;
+
+    }
 
             myswitch = findViewById(R.id.myswitch);
             if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {

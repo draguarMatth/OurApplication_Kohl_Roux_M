@@ -14,7 +14,7 @@ import com.example.ourapplication_kohl_roux_m.dbClass.Repository.CarRepository;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 
 import java.util.List;
-
+/*
 public class CarChoiceListViewModel extends AndroidViewModel {
 
     private final Application application;
@@ -48,21 +48,21 @@ public class CarChoiceListViewModel extends AndroidViewModel {
     /**
      * Expose the LiveData ClientAccounts query so the UI can observe it.
      */
-    public LiveData<List<CarEntity>> getAllCar() {
+ /*   public LiveData<List<CarEntity>> getAllCar() {
         return observableCars;
     }
 
     /**
      * Expose the LiveData AccountEntities query so the UI can observe it.
      */
-    public LiveData<List<CarEntity>> getOwnAccounts() {
+/*    public LiveData<List<CarEntity>> getOwnAccounts() {
         return observableCars;
     }
 
     /**
      * A creator is used to inject the account id into the ViewModel
      */
-    public static class Factory extends ViewModelProvider.NewInstanceFactory {
+ /*   public static class Factory extends ViewModelProvider.NewInstanceFactory {
 
         @NonNull
         private final Application application;
@@ -81,3 +81,4 @@ public class CarChoiceListViewModel extends AndroidViewModel {
         }
     }
 }
+*/
