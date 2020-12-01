@@ -62,13 +62,6 @@ public class CreateTrip extends BaseActivity {
 
         date.setText(formater.format(date1));
 
-        Button saveBtn = findViewById(R.id.editButtonSAve);
-        saveBtn.setOnClickListener(view -> saveChanges(
-                nameNewTrip = name.getText().toString(),
-                dateNewTrip = date.getText().toString(),
-                carId
-        ));
-
         FloatingActionButton save = findViewById(R.id.saveTrip);
         save.setOnClickListener(view -> saveChanges(
                 nameNewTrip = name.getText().toString(),

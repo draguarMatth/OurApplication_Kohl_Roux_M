@@ -25,7 +25,6 @@ import com.example.ourapplication_kohl_roux_m.ui.management.CreateTrip;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListByCarViewModel;
-import com.example.ourapplication_kohl_roux_m.viewModel.trajet.TrajetListViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -64,6 +63,15 @@ public class ListTrajet_BazActivity extends BaseActivity {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
+        TrajetListByCarViewModel.Factory factory = new TrajetListByCarViewModel.Factory(
+                getApplication(), carId);
+        viewModel = ViewModelProviders.of(this, factory).get(TrajetListByCarViewModel.class);
+        viewModel.getTrajetByCarViewModel().observe(this, trajetsL -> {
+            if (trajetsL != null) {
+                trajets = trajetsL;
+                adapter.setData(trajets);
+            }
+        });
 
         trajets = new ArrayList<>();
         adapter = new RecyclerAdapter<>(new RecyclerViewItemClickListener() {
@@ -100,25 +108,11 @@ public class ListTrajet_BazActivity extends BaseActivity {
                             Intent.FLAG_ACTIVITY_NO_ANIMATION |
                                     Intent.FLAG_ACTIVITY_NO_HISTORY
                     );
-                    if (position != 0) {
-                        TrajetEntity trajet = trajets.get(position);
-                        intent.putExtra("Trajet", trajet);
-                    }
                     intent.putExtra("CarId", carId);
                     startActivity(intent);
 
                 }
         );
-
-        TrajetListByCarViewModel.Factory factory = new TrajetListByCarViewModel.Factory(
-                getApplication(), carId);
-        viewModel = ViewModelProviders.of(this, factory).get(TrajetListByCarViewModel.class);
-        viewModel.getTrajetByCarViewModel().observe(this, trajetsL -> {
-            if (trajetsL != null) {
-                trajets = trajetsL;
-                adapter.setData(trajets);
-            }
-        });
 
         recyclerView.setAdapter(adapter);
     }
