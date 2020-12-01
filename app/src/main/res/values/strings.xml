@@ -46,6 +46,10 @@
     <string name="nom_perso_de_la_voiture">Nom perso de la voiture</string>
     <string name="consommation">Saisie de vos données de connsommation</string>
     <string name="newTrip">Nouveau trajet</string>
+    <string name="dimension_pneus">Dimension pneus</string>
+    <string name="battery">Battery</string>
+    <string name="consommation_carburant">Consommation carburant</string>
+    <string name="mod_le_de_voiture">Modèle de voiture</string>
 
 
 </resources>
