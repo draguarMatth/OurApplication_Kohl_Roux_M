@@ -2,7 +2,6 @@ package com.example.ourapplication_kohl_roux_m.ui.car;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -89,7 +88,7 @@ public class CarDescription extends BaseActivity {
             @Override
             public void onSuccess() {
                 Log.d(TAG, "Modify new car : success");
-                Intent intent = new Intent(CarDescription.this, ListMyCar.class);
+                Intent intent = new Intent(CarDescription.this, ListMyActiveCars.class);
                 startActivity(intent);
                 toastSuccess.show();
             }

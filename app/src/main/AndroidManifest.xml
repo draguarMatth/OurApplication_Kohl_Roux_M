@@ -72,7 +72,16 @@
                 android:value="com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity" />
         </activity>
         <activity
-            android:name=".ui.car.ListMyCar"
+            android:name=".ui.car.ListMyActiveCars"
+            android:label="Page Base"
+            android:parentActivityName=".ui.Start"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.ourapplication_kohl_roux_m.ui.Start" />
+        </activity>
+        <activity
+            android:name=".ui.car.ListAllMyCars"
             android:label="Page Base"
             android:parentActivityName=".ui.Start"
             android:theme="@style/AppTheme.NoActionBar">
@@ -83,11 +92,11 @@
         <activity
            android:name=".ui.car.ChooseNewCar"
            android:label="Nouvelle voiture"
-           android:parentActivityName=".ui.car.ListMyCar"
+           android:parentActivityName=".ui.car.ListMyActiveCars"
            android:theme="@style/AppTheme.NoActionBar">
            <meta-data
                android:name="android.support.PARENT_ACTIVITY"
-               android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
+               android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars" />
         </activity>
         <activity
             android:name=".ui.trajet.TrajetActivity"
@@ -99,19 +108,19 @@
         </activity>
         <activity
             android:name=".ui.car.CarDescription"
-            android:parentActivityName=".ui.car.ListMyCar"
+            android:parentActivityName=".ui.car.ListMyActiveCars"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars" />
         </activity>
         <activity
             android:name=".ui.car.CarActivities"
-            android:parentActivityName=".ui.car.ListMyCar"
+            android:parentActivityName=".ui.car.ListMyActiveCars"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyCar" />
+                android:value="com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars" />
         </activity>
     </application>
 
