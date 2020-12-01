@@ -25,5 +25,4 @@
         android:icon="@drawable/ic_baseline_arrow_back_ios_24"
         android:title="Dernier trajetEntity"
         app:showAsAction="never"/>
-§
 </menu>

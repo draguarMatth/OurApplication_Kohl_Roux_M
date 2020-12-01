@@ -102,26 +102,6 @@ public class CarDescription extends BaseActivity {
 
     }
 
-    private void createDeleteDialog(final int position) {
-
-        LayoutInflater inflater = LayoutInflater.from(this);
-
-        final View view = inflater.inflate(R.layout.row_delete_item, null);
-
-        final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Voiture effacé, voiture && trajets de la voiture perdus");
-        alertDialog.setCancelable(true);
-
-        final TextView deleteMessage = view.findViewById(R.id.tv_delete_item);
-        deleteMessage.setText("Attention, la voiture " + carEntity.getNickName() + ", model " + carEntity.getModel() + ", sera définitivement perdu !");
-
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Voiture avec trajets effacés.", Toast.LENGTH_LONG);
-            toast.show();
-        });
-
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -147,18 +127,12 @@ public class CarDescription extends BaseActivity {
 
         chkBoxActivity.setActivated(true);
 
-        chkBoxActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (carEntity.isCarForTrip()) {
-                    carEntity.setCarForTrip(false);
-                }
-                carEntity.setCarForTrip(true);
-            }
-        });
-
         fab.setOnClickListener(view -> {
             carEntity.setNickName(txtVwNickname.getText().toString());
+            if(chkBoxActivity.isChecked())
+                carEntity.setCarForTrip(true);
+            else
+                carEntity.setCarForTrip(false);
             carEntity.setPicture(R.drawable.i8);
 
             updateCar(carEntity);

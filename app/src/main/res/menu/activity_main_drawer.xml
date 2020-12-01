@@ -8,16 +8,9 @@
         <item
             android:id="@+id/nav_trajet"
             android:title="Trajet" />
-        <!-- sous menus : Ajouter, Statistiques -->
         <item
-            android:id="@+id/nav_map"
-            android:title="Map en cours"/>
-        <item
-            android:id="@+id/nav_consumption"
-            android:title="Saisie consommation"/>
-        <item
-            android:id="@+id/nav_logout"
-            android:title="action_logout"/>
+            android:id="@+id/nav_all_cars"
+            android:title="Whole my cars"/>
         <item
             android:id="@+id/nav_none"
             android:title=""

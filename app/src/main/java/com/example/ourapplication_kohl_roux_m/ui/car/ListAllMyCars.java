@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -57,13 +58,6 @@ public class ListAllMyCars extends BaseActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         cars = new ArrayList<>();
-        adapter = loadMyCars();
-
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(view -> {
-            Intent intent = new Intent(ListAllMyCars.this, ChooseNewCar.class);
-            startActivity(intent);
-        });
 
         AllMyCarsListViewModel.Factory factory = new AllMyCarsListViewModel.Factory(
                 getApplication());
@@ -73,6 +67,14 @@ public class ListAllMyCars extends BaseActivity {
                 cars = carsSL;
                 adapter.setData(cars);
             }
+        });
+
+        adapter = loadMyCars();
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(view -> {
+            Intent intent = new Intent(ListAllMyCars.this, ChooseNewCar.class);
+            startActivity(intent);
         });
 
         recyclerView.setAdapter(adapter);
@@ -137,9 +139,10 @@ public class ListAllMyCars extends BaseActivity {
         super.onPostResume();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
+
+    public boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_add_car, menu) ;
+ //       getMenuInflater().inflate(R.menu.menu_add_car, menu);
         return true;
     }
 

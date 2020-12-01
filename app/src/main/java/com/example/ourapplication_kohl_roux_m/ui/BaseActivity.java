@@ -15,6 +15,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListAllMyCars;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
 import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
 import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
 import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
@@ -101,17 +103,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(id);
 
         if (id == R.id.nav_vehicule) {
-            intent = new Intent(this, InitApp.class);
+            intent = new Intent(this, ListMyActiveCars.class);
         } else if (id == R.id.nav_list_trajet) {
             intent = new Intent(this, ListTrajet_BazActivity.class);
-        } else if (id == R.id.nav_map) {
-            intent = new Intent(this, map_dernier_trajet.class);
-        } else if (id == R.id.nav_consumption) {
-            intent = new Intent(this, NewTrajetConsumptionInput.class);
-        } else if (id == R.id.nav_logout) {
-            logout();
+        } else if (id == R.id.nav_all_cars) {
+            intent = new Intent(this, ListAllMyCars.class);
         }
-
         if (intent != null) {
             intent.setFlags(
                     Intent.FLAG_ACTIVITY_NO_ANIMATION
@@ -120,11 +117,5 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void logout() {
-        SharedPreferences.Editor editor = getSharedPreferences(BaseActivity.PREFS_NAME, 0).edit();
-        editor.remove(BaseActivity.PREFS_USER);
-        editor.apply();
     }
 }

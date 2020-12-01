@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.adapter.RecyclerAdapterWithPicture;
 import com.example.ourapplication_kohl_roux_m.dbClass.entities.CarEntity;
 import com.example.ourapplication_kohl_roux_m.ui.BaseActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
 import com.example.ourapplication_kohl_roux_m.util.OnAsyncEventListener;
 import com.example.ourapplication_kohl_roux_m.util.RecyclerViewItemClickListener;
 import com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel;
@@ -78,17 +80,6 @@ public class ListMyActiveCars extends BaseActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == BaseActivity.position) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return false;
-        }
-
-        finish();
-        return super.onNavigationItemSelected(item);
-    }
-
     private void createDeleteDialog(final int position) {
 
         final CarEntity car = cars.get(position);
@@ -137,12 +128,6 @@ public class ListMyActiveCars extends BaseActivity {
         super.onPostResume();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_add_car, menu);
-        return true;
-    }
-
     public RecyclerAdapterWithPicture<CarEntity> loadMyCars() {
         RecyclerAdapterWithPicture<CarEntity> adapter = new RecyclerAdapterWithPicture<>(new RecyclerViewItemClickListener() {
             @Override
@@ -166,5 +151,42 @@ public class ListMyActiveCars extends BaseActivity {
         });
 
         return adapter;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_add_car, menu);
+        return true;
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == BaseActivity.position) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return false;
+        }
+        BaseActivity.position = id;
+        Intent intent = null;
+
+        navigationView.setCheckedItem(id);
+
+        if (id == R.id.nav_vehicule) {
+            intent = new Intent(this, ListMyActiveCars.class);
+        } else if (id == R.id.nav_all_cars) {
+            intent = new Intent(this, ListAllMyCars.class);
+        }
+
+        if (intent != null) {
+            intent.setFlags(
+                    Intent.FLAG_ACTIVITY_NO_ANIMATION
+            );
+            startActivity(intent);
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return super.onNavigationItemSelected(item);
     }
 }
