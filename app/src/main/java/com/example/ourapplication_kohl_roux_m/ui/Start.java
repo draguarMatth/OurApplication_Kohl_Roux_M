@@ -37,9 +37,12 @@ public class Start extends AppCompatActivity {
 
     protected void onCreate(Bundle savecInstacneState) {
 
+
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             setTheme(R.style.DarkTheme);
         } else setTheme(R.style.AppTheme);
+
+
 
         super.onCreate(savecInstacneState);
         setContentView(R.layout.activity_start);
@@ -56,6 +59,7 @@ public class Start extends AppCompatActivity {
         });
 
         File downLoadFile = getExternalFilesDir("/liste");
+
 
         myswitch = findViewById(R.id.myswitch);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
@@ -74,6 +78,8 @@ public class Start extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
 
