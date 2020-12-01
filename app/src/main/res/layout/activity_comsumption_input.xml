@@ -113,6 +113,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
         android:layout_marginTop="70dp"
-        android:text="Electricité" />
+        android:text="@string/elect" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

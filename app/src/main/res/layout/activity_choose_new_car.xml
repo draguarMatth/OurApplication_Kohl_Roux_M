@@ -18,7 +18,7 @@
         android:completionThreshold="1"
         android:ems="0"
         android:gravity="center"
-        android:hint="Choisir le constructeur "
+        android:hint="@string/choose_consut"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:textSize="24sp"

@@ -115,7 +115,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + electInputs.get(position));
 
-                Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, getString(R.string.long_press), Toast.LENGTH_LONG);
             }
 
             @SuppressLint("LongLogTag")
@@ -138,7 +138,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
                 Log.d(TAG, "clicked position:" + position);
                 Log.d(TAG, "clicked on: " + fuelInputs.get(position));
 
-                Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, "Appui long pour modifier", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(NewTrajetConsumptionInput.this, getString(R.string.long_press), Toast.LENGTH_LONG);
             }
 
             @SuppressLint("LongLogTag")
@@ -234,8 +234,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         final TextView modifyMessage = view.findViewById(R.id.editNumberToModify);
         modifyMessage.setText(value);
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Modify", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Valeur modifiée", Toast.LENGTH_LONG);
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.modify), (dialog, which) -> {
+            Toast toast = Toast.makeText(this, getString(R.string.data_mod), Toast.LENGTH_LONG);
 
             String newValue = modifyMessage.getText().toString();
 
@@ -245,8 +245,8 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             toast.show();
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Delete", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Valeur effacée", Toast.LENGTH_LONG);
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.delete), (dialog, which) -> {
+            Toast toast = Toast.makeText(this, getString(R.string.data_dele), Toast.LENGTH_LONG);
 
             aModif.remove(position);
             getRecyclerView(hashcodeInputs).refreshDrawableState();
@@ -254,7 +254,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             toast.show();
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Cancel", (dialog, which) -> alertDialog.dismiss());
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.cancel), (dialog, which) -> alertDialog.dismiss());
         alertDialog.setView(view);
 
         alertDialog.show();
@@ -292,13 +292,13 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             @Override
             public void onSuccess() {
                 setResponse(true);
-                Log.d(TAG, "Enregistrement consommation : succès");
+                Log.d(TAG, getString(R.string.Input_succ));
             }
 
             @SuppressLint("LongLogTag")
             @Override
             public void onFailure(Exception e) {
-                Log.d(TAG, "Enregistrement consommation : échoué", e);
+                Log.d(TAG, getString(R.string.Input_fail), e);
             }
 
         }).execute(upDTrajet);
@@ -311,7 +311,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
             intent.putExtra("CarId", carId);
             startActivity(intent);
         } else {
-            Toast toast = Toast.makeText(this, "Trajet non enregistré", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, getString(R.string.Ride_n_save), Toast.LENGTH_LONG);
 
         }
     }

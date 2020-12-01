@@ -57,7 +57,7 @@ public class ChooseNewCar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_new_car);
 
-        setTitle("Ajout d'une voiture");
+        setTitle(getString(R.string.add_car));
 
         initializeForm();
 
@@ -180,13 +180,13 @@ public class ChooseNewCar extends AppCompatActivity {
     private void addNewCar(final CarEntity newCar) {
 
         final CarEntity car = newCar;
-        Toast toastSuccess = Toast.makeText(this, "Nouvelle voiture crée et prête au départ.", Toast.LENGTH_LONG);
-        Toast toastFailed = Toast.makeText(this, "Problème, voiture non crée.", Toast.LENGTH_LONG);
+        Toast toastSuccess = Toast.makeText(this, getString(R.string.add_car_succes), Toast.LENGTH_LONG);
+        Toast toastFailed = Toast.makeText(this, getString(R.string.add_car_failed), Toast.LENGTH_LONG);
 
         new CreateCar(getApplication(), new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Log.d(TAG, "Add new car : success");
+                    Log.d(TAG, getString(R.string.add_car_s));
                     Intent intent = new Intent(ChooseNewCar.this, ListMyActiveCars.class);
                     startActivity(intent);
                     toastSuccess.show();
@@ -194,7 +194,7 @@ public class ChooseNewCar extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Exception e) {
-                    Log.d(TAG, "Add new car: failure", e);
+                    Log.d(TAG, getString(R.string.add_car_f), e);
                     toastFailed.show();
                 }
             }).execute(newCar);
@@ -235,7 +235,7 @@ public class ChooseNewCar extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "The specified file was not found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.not_found), Toast.LENGTH_SHORT).show();
         }
 
         Collections.sort(list);

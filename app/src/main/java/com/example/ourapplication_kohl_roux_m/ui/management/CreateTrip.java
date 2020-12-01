@@ -54,9 +54,9 @@ public class CreateTrip extends BaseActivity {
         carId = (long) bundle.get("CarId");
 
         initializeForm();
-        Toast toast = Toast.makeText(this, "Saisissez les niveaux de batterie et de carburant actuel", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(this, getString(R.string.battery_and_gas_input), Toast.LENGTH_LONG);
 
-         setTitle( "Create Trajets");
+         setTitle(getString(R.string.create_ride));
          navigationView.setCheckedItem(position);
      }
 
@@ -103,12 +103,12 @@ public class CreateTrip extends BaseActivity {
                 intent.putExtra("CarId", carId);
                 startActivity(intent);
 
-                Log.d(TAG, "createIntitRoadTrip : success");
+                Log.d(TAG, getString(R.string.create_ride_succes));
             }
 
             @Override
             public void onFailure(Exception e) {
-                Log.d(TAG, "createIntitRoadTrip: failure", e);
+                Log.d(TAG, getString(R.string.create_ride_error), e);
             }
 
         }).execute(newTrajet);
@@ -122,7 +122,7 @@ public class CreateTrip extends BaseActivity {
             intent.putExtra("CarId", carId);
             startActivity(intent);
         } else {
-            Toast toast = Toast.makeText(this, "Erreur dans la saisie", Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, getString(R.string.input_error), Toast.LENGTH_LONG);
             toast.show();
         }
     }
