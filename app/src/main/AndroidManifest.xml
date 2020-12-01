@@ -52,7 +52,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.ourapplication_kohl_roux_m.ui.MainActivity" />
-        </activity
+        </activity>
 
         <activity
             android:name=".ui.management.NewTrajetConsumptionInput"
