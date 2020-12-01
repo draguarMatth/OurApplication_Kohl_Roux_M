@@ -1,6 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.app.admin.DevicePolicyManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -42,6 +43,8 @@ public class Start extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        File downLoadFile = getExternalFilesDir("/liste") ;
 
     }
 
