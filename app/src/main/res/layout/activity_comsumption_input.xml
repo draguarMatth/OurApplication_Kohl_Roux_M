@@ -72,15 +72,6 @@
         android:ems="10"
         android:inputType="numberDecimal" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="TODO"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/electInputsRecyclerView"
         android:layout_width="110dp"
@@ -112,7 +103,9 @@
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@android:color/holo_green_light"
         android:text="@string/fin_du_voyage_save_all"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:srcCompat="@android:drawable/ic_menu_save"
+        />
 
     <TextView
         android:id="@+id/textView"

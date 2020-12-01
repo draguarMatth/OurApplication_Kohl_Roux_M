@@ -1,6 +1,7 @@
 package com.example.ourapplication_kohl_roux_m.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +20,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.ourapplication_kohl_roux_m.R;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListAllMyCars;
+import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
+import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
+import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
+import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
+import com.google.android.material.navigation.NavigationView;
 
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -106,19 +114,18 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_vehicule) {
             intent = new Intent(this, ListMyActiveCars.class);
-        }/* else if (id == R.id.nav_trajet) {
+        } else if (id == R.id.nav_list_trajet) {
             intent = new Intent(this, ListTrajet_BazActivity.class);
-        }*/
-
-            if (intent != null) {
-                intent.setFlags(
-                        Intent.FLAG_ACTIVITY_NO_ANIMATION
-                );
-                startActivity(intent);
-            }
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return true;
+        } else if (id == R.id.nav_all_cars) {
+            intent = new Intent(this, ListAllMyCars.class);
         }
-
+        if (intent != null) {
+            intent.setFlags(
+                    Intent.FLAG_ACTIVITY_NO_ANIMATION
+            );
+            startActivity(intent);
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
     }
-
+}

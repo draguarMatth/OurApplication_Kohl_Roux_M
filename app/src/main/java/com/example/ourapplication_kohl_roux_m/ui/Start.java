@@ -75,6 +75,10 @@ public class Start extends AppCompatActivity {
             }
         });
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.menu_add_car, menu);
+        return true;
     }
 
         public void restartApp () {
@@ -83,7 +87,3 @@ public class Start extends AppCompatActivity {
             finish();
         }
     }
-
-
-
-

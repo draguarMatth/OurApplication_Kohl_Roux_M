@@ -76,7 +76,7 @@ public class AllMyCarsListViewModel extends AndroidViewModel {
 
             @Override
             public <T extends ViewModel> T create(Class<T> modelClass) {
-                return (T) new com.example.ourapplication_kohl_roux_m.viewModel.car.CarMyListViewModel(application, repository);
+                return (T) new AllMyCarsListViewModel(application, repository);
             }
         }
 
