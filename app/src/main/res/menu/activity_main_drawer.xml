@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_vehicule"
-            android:title="Mes voitures" />
-        <item
-            android:id="@+id/nav_trajet"
-            android:title="Trajet" />
-        <item
-            android:id="@+id/nav_all_cars"
-            android:title="Whole my cars"/>
-        <item
-            android:id="@+id/nav_none"
-            android:title=""
-            android:visible="false"/>
-    </group>
+    <menu
+        android:id="@+id/menu_add_car"
+        android:title="Mes voitures" />
+    <menu
+        android:id="@+id/menu_list_trajet"
+        android:title="Trajet" />
+    <menu
+        android:id="@+id/nav_none"
+        android:title=""
+        android:visible="false"/>
 
 </menu>

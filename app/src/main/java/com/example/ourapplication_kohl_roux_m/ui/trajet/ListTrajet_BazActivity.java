@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -49,7 +51,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
 
         setTitle("Liste Trajets");
-        navigationView.setCheckedItem(position);
+        navigationView.setCheckedItem(R.id.nav_list_trajet);
 
         RecyclerView recyclerView = findViewById(R.id.trajetsRecyclerView);
         previousIntent = getIntent();
@@ -161,5 +163,13 @@ public class ListTrajet_BazActivity extends BaseActivity {
             toast.show();
         });
         alertDialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_list_trajet, menu);
+        return true;
     }
 }

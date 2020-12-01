@@ -46,7 +46,7 @@ public class ListAllMyCars extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_list_my_cars, frameLayout);
 
         setTitle("Gestion des Voitures");
-        navigationView.setCheckedItem(position);
+        navigationView.setCheckedItem(R.id.nav_all_cars);
 
         RecyclerView recyclerView = findViewById(R.id.carsRecyclerView);
 
@@ -139,10 +139,11 @@ public class ListAllMyCars extends BaseActivity {
         super.onPostResume();
     }
 
-
-    public boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_add_car, menu) ;
- //       getMenuInflater().inflate(R.menu.menu_add_car, menu);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_add_car, menu);
         return true;
     }
 

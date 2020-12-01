@@ -47,7 +47,8 @@ public class ListMyActiveCars extends BaseActivity {
         getLayoutInflater().inflate(R.layout.activity_list_my_cars, frameLayout);
 
         setTitle("Gestion des Voitures");
-        navigationView.setCheckedItem(position);
+        navigationView.setCheckedItem(R.id.nav_vehicule);
+
 
         RecyclerView recyclerView = findViewById(R.id.carsRecyclerView);
 
@@ -164,11 +165,11 @@ public class ListMyActiveCars extends BaseActivity {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == BaseActivity.position) {
+        if (id == ListMyActiveCars.position) {
             drawerLayout.closeDrawer(GravityCompat.START);
             return false;
         }
-        BaseActivity.position = id;
+        ListMyActiveCars.position = id;
         Intent intent = null;
 
         navigationView.setCheckedItem(id);
