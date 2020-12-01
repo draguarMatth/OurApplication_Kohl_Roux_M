@@ -42,12 +42,13 @@ public class ListMyActiveCars extends BaseActivity {
     private CarMyListViewModel viewModel;
     private long carId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_my_cars, frameLayout);
 
-        setTitle("Gestion des Voitures");
+        setTitle(getString(R.string.car_list));
         navigationView.setCheckedItem(position);
 
         RecyclerView recyclerView = findViewById(R.id.carsRecyclerView);
@@ -89,32 +90,32 @@ public class ListMyActiveCars extends BaseActivity {
         final View view = inflater.inflate(R.layout.row_delete_item, null);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Voiture effacé, voiture && trajets de la voiture perdus");
+        alertDialog.setTitle(getString(R.string.delete_car_ride));
         alertDialog.setCancelable(true);
 
         final TextView deleteMessage = view.findViewById(R.id.tv_delete_item);
-        deleteMessage.setText("Attention, la voiture " + car.getNickName() + ", model " + car.getModel() + ", sera définitivement perdu !");
+        deleteMessage.setText(getString(R.string.warining_car) + car.getNickName() + getString(R.string.model) + car.getModel() + getString(R.string.lost_car));
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Voiture avec trajets effacés.", Toast.LENGTH_LONG);
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), (dialog, which) -> {
+            Toast toast = Toast.makeText(this, getString(R.string.Cars_w_deleted_r), Toast.LENGTH_LONG);
 
             viewModel.deleteOneCar(car, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Log.d(TAG, "deleteCar: success");
+                    Log.d(TAG, getString(R.string.delete_car_s));
                     toast.show();
                 }
 
                 @Override
                 public void onFailure(Exception e) {
-                    Log.d(TAG, "deleteCar: failure", e);
+                    Log.d(TAG, getString(R.string.delete_car_f), e);
                 }
             });
 
             toast.show();
         });
 
-        alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_NEUTRAL, "Cancel", (dialog, which) -> alertDialog.dismiss());
+        alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_NEUTRAL, getString(R.string.cancel), (dialog, which) -> alertDialog.dismiss());
         alertDialog.setView(view);
         alertDialog.show();
     }
@@ -127,12 +128,6 @@ public class ListMyActiveCars extends BaseActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings, menu);
-        return true;
     }
 
     @Override
@@ -174,13 +169,7 @@ public class ListMyActiveCars extends BaseActivity {
         return adapter;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_add_car, menu);
-        return true;
-    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -196,8 +185,6 @@ public class ListMyActiveCars extends BaseActivity {
 
         if (id == R.id.nav_vehicule) {
             intent = new Intent(this, ListMyActiveCars.class);
-        } else if (id == R.id.nav_all_cars) {
-            intent = new Intent(this, ListAllMyCars.class);
         }
 
         if (intent != null) {

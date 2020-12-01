@@ -59,14 +59,33 @@
     <string name="nom_perso_de_la_voiture">Name of the car</string>
     <string name="consommation">Consuption Input data</string>
     <string name="newTrip">New Ride</string>
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="dimension_pneus">Wheel dimension</string>
     <string name="battery">Battery</string>
     <string name="consommation_carburant">Gas Consuption</string>
     <string name="mod_le_de_voiture">Car model</string>
-
-
+    <string name="car_list">Car Gestion</string>
+    <string name="first_fragment_label">first fragment</string>
+    <string name="second_fragment_label">second fragment</string>
+    <string name="delete_car_ride">Deleted car, car and ride of the lost car</string>
+    <string name="warining_car">Warning, the car</string>
+    <string name="model">model</string>
+    <string name="lost_car">will be definitly lost !</string>
+    <string name="delete">Delete</string>
+    <string name="Cars_w_deleted_r">Cars with deleted rides</string>
+    <string name="delete_car_f">deleted car failed</string>
+    <string name="delete_car_s">deleted car succed</string>
+    <string name="cancel">Cancel</string>
+    <string name="list_ride">List of rides</string>
+    <string name="my_car">My Cars</string>
+    <string name="start_app">START APP</string>
+    <string name="start">START</string>
+    <string name="night_mode">Dark Mode</string>
+    <string name="e_night_mode">Enable Dark Mode</string>
+    <string name="car_desc">Cars description</string>
+    <string name="car_data_mod">car data Modified</string>
+    <string name="car_failed_mod">warning, car not modified</string>
+    <string name="modify_car_f">Modify new car : success</string>
+    <string name="modify_car_s">Modify new car: failure</string>
 </resources>

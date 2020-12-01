@@ -81,7 +81,7 @@ public class NewTrajetConsumptionInput extends BaseActivity {
         carId = (long) bundle.get("CarId");
         trajetDate = (String) bundle.get("TrajetDate");
 
-        setTitle("Saisie des données de consommation");
+        setTitle(getString(R.string.consommation));
         navigationView.setCheckedItem(position);
 
         addElectItem = findViewById(R.id.saisieElect);

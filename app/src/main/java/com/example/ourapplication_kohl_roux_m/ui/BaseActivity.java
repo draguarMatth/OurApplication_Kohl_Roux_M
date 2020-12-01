@@ -3,6 +3,7 @@ package com.example.ourapplication_kohl_roux_m.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -21,12 +22,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.ourapplication_kohl_roux_m.R;
 import com.example.ourapplication_kohl_roux_m.ui.car.ListAllMyCars;
-import com.example.ourapplication_kohl_roux_m.ui.car.ListMyActiveCars;
-import com.example.ourapplication_kohl_roux_m.ui.management.SettingsActivity;
-import com.example.ourapplication_kohl_roux_m.ui.management.NewTrajetConsumptionInput;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.ListTrajet_BazActivity;
-import com.example.ourapplication_kohl_roux_m.ui.trajet.map_dernier_trajet;
-import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 
 public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +55,8 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.base_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        changeLanguage(sharedPrefs.getString("pref_lang", "fr"));
     }
 
     @Override
@@ -116,8 +115,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(this, ListMyActiveCars.class);
         } else if (id == R.id.nav_list_trajet) {
             intent = new Intent(this, ListTrajet_BazActivity.class);
-        } else if (id == R.id.nav_all_cars) {
-            intent = new Intent(this, ListAllMyCars.class);
         }
         if (intent != null) {
             intent.setFlags(
@@ -127,5 +124,15 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void changeLanguage(String lang){
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        android.content.res.Configuration config = new android.content.res.Configuration();
+        config.setLocale(myLocale);
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        //TextView welcome = findViewById(R.id.main_txt_welcome);
+        //welcome.setText(R.string.main_welcome);
     }
 }

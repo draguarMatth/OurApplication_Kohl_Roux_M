@@ -50,7 +50,7 @@ public class ListTrajet_BazActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_trajet, frameLayout);
 
-        setTitle("Liste Trajets");
+        setTitle(getString(R.string.list_ride));
         navigationView.setCheckedItem(position);
 
         RecyclerView recyclerView = findViewById(R.id.trajetsRecyclerView);

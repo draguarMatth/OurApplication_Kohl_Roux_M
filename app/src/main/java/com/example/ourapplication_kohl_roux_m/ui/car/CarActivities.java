@@ -32,7 +32,7 @@ public class CarActivities extends BaseActivity {
 
         carId = (long) getIntent().getExtras().get("CarId");
 
-        setTitle("Gestion des Voitures");
+        setTitle(getString(R.string.car_list));
         navigationView.setCheckedItem(position);
 
 

@@ -53,4 +53,25 @@
     <string name="battery">Batterie</string>
     <string name="consommation_carburant">Consommation carburant</string>
     <string name="mod_le_de_voiture">Modèle de voiture</string>
+    <string name="car_list">Gestion des Voitures</string>
+    <string name="delete_car_ride">Voiture effacé, voiture et trajets de la voiture perdus</string>
+    <string name="warining_car">Attention, la voiture</string>
+    <string name="model">model</string>
+    <string name="lost_car">,sera définitivement perdu !</string>
+    <string name="delete">Effacer</string>
+    <string name="Cars_w_deleted_r">Voiture avec trajets effacés.</string>
+    <string name="delete_car_f">supression : échoué</string>
+    <string name="delete_car_s">supression : réussi</string>
+    <string name="cancel">Annuler</string>
+    <string name="list_ride">Liste des trajets</string>
+    <string name="my_car">"Mes voitures "</string>
+    <string name="start_app">Démarrer l\'app</string>
+    <string name="start">Démarrer</string>
+    <string name="night_mode">Mode Nuit</string>
+    <string name="e_night_mode">Activer Mode Nuit</string>
+    <string name="car_desc">Description Voiture</string>
+    <string name="car_data_mod">Données de la voiture modifiées</string>
+    <string name="car_failed_mod">Problème, voiture non modifiée</string>
+    <string name="modify_car_f">Nouvelle voiture moifié : réussi</string>
+    <string name="modify_car_s">Nouvelle voiture moifié : échoué</string>
 </resources>

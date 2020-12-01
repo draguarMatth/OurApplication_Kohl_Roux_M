@@ -47,7 +47,7 @@ public class CarDescription extends BaseActivity {
 
         carId = (long) getIntent().getExtras().get("CarId");
 
-        setTitle("Description Voiture");
+        setTitle(getString(R.string.car_desc));
         navigationView.setCheckedItem(position);
 
         imageCar = findViewById(R.id.image);
@@ -81,13 +81,13 @@ public class CarDescription extends BaseActivity {
 
     private void updateCar(final CarEntity newCar) {
 
-        Toast toastSuccess = Toast.makeText(this, "Données de la voiture modifiées", Toast.LENGTH_LONG);
-        Toast toastFailed = Toast.makeText(this, "Problème, voiture non modifiée", Toast.LENGTH_LONG);
+        Toast toastSuccess = Toast.makeText(this, getString(R.string.car_data_mod), Toast.LENGTH_LONG);
+        Toast toastFailed = Toast.makeText(this, getString(R.string.car_failed_mod), Toast.LENGTH_LONG);
 
         new UpdateCar(getApplication(), new OnAsyncEventListener() {
             @Override
             public void onSuccess() {
-                Log.d(TAG, "Modify new car : success");
+                Log.d(TAG, getString(R.string.modify_car_s));
                 Intent intent = new Intent(CarDescription.this, ListMyActiveCars.class);
                 startActivity(intent);
                 toastSuccess.show();
@@ -95,7 +95,7 @@ public class CarDescription extends BaseActivity {
 
             @Override
             public void onFailure(Exception e) {
-                Log.d(TAG, "Modify new car: failure", e);
+                Log.d(TAG, getString(R.string.modify_car_f), e);
                 toastFailed.show();
             }
         }).execute(newCar);

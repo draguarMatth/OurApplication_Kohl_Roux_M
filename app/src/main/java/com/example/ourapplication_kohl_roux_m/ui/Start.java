@@ -41,11 +41,11 @@ public class Start extends AppCompatActivity {
             setTheme(R.style.DarkTheme);
         } else setTheme(R.style.AppTheme);
 
-            super.onCreate(savecInstacneState);
-            setContentView(R.layout.activity_start);
+        super.onCreate(savecInstacneState);
+        setContentView(R.layout.activity_start);
 
-            choix = findViewById(R.id.btnstart);
-            fileList = new ArrayList<>();
+        choix = findViewById(R.id.btnstart);
+        fileList = new ArrayList<>();
 
         choix.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +55,7 @@ public class Start extends AppCompatActivity {
             }
         });
 
-        File downLoadFile = getExternalFilesDir("/liste") ;
+        File downLoadFile = getExternalFilesDir("/liste");
 
         myswitch = findViewById(R.id.myswitch);
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
@@ -74,16 +74,13 @@ public class Start extends AppCompatActivity {
                 }
             }
         });
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.menu_add_car, menu);
-        return true;
     }
 
-        public void restartApp () {
-            Intent i = new Intent(getApplicationContext(), Start.class);
-            startActivity(i);
-            finish();
-        }
+
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(), Start.class);
+        startActivity(i);
+        finish();
     }
+
+}

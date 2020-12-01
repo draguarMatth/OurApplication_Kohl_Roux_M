@@ -39,8 +39,6 @@ public class InitApp extends BaseActivity {
         choix1 = findViewById(R.id.btn);
         choix2 = findViewById(R.id.addFuelButton);
 
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        changeLanguage(sharedPrefs.getString("pref_lang", "fr"));
 
         choix1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,16 +91,5 @@ public class InitApp extends BaseActivity {
         return true;
     }
 
-
-
-    public void changeLanguage(String lang){
-        Locale myLocale = new Locale(lang);
-        Locale.setDefault(myLocale);
-        android.content.res.Configuration config = new android.content.res.Configuration();
-        config.setLocale(myLocale);
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        //TextView welcome = findViewById(R.id.main_txt_welcome);
-        //welcome.setText(R.string.main_welcome);
-    }
 
 }

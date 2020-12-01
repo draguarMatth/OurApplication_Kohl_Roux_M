@@ -46,7 +46,7 @@ public class ListAllMyCars extends BaseActivity {
         super.onCreate(savedInstanceState);
         getLayoutInflater().inflate(R.layout.activity_list_my_cars, frameLayout);
 
-        setTitle("Gestion des Voitures");
+        setTitle(getString(R.string.car_list));
         navigationView.setCheckedItem(position);
 
         RecyclerView recyclerView = findViewById(R.id.carsRecyclerView);
@@ -100,25 +100,25 @@ public class ListAllMyCars extends BaseActivity {
         final View view = inflater.inflate(R.layout.row_delete_item, null);
 
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-        alertDialog.setTitle("Voiture effacé, voiture && trajets de la voiture perdus");
+        alertDialog.setTitle(getString(R.string.delete_car_ride));
         alertDialog.setCancelable(true);
 
         final TextView deleteMessage = view.findViewById(R.id.tv_delete_item);
-        deleteMessage.setText("Attention, la voiture " + car.getNickName() + ", model " + car.getModel() + ", sera définitivement perdu !");
+        deleteMessage.setText(getString(R.string.warining_car) + car.getNickName() + getString(R.string.model) + car.getModel() + getString(R.string.lost_car));
 
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Effacer", (dialog, which) -> {
-            Toast toast = Toast.makeText(this, "Voiture avec trajets effacés.", Toast.LENGTH_LONG);
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.delete), (dialog, which) -> {
+            Toast toast = Toast.makeText(this, getString(R.string.Cars_w_deleted_r), Toast.LENGTH_LONG);
 
             viewModel.deleteOneCar(car, new OnAsyncEventListener() {
                 @Override
                 public void onSuccess() {
-                    Log.d(TAG, "deleteCar: success");
+                    Log.d(TAG, getString(R.string.delete_car_s));
                     toast.show();
                 }
 
                 @Override
                 public void onFailure(Exception e) {
-                    Log.d(TAG, "deleteCar: failure", e);
+                    Log.d(TAG, getString(R.string.delete_car_f), e);
                 }
             });
 
@@ -156,8 +156,7 @@ public class ListAllMyCars extends BaseActivity {
 
 
     public boolean onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_add_car, menu) ;
- //       getMenuInflater().inflate(R.menu.menu_add_car, menu);
+        inflater.inflate(R.menu.settings, menu) ;
         return true;
     }
 
